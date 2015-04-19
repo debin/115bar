@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <?php include(HEADER);?>
+    <script type="text/javascript" src="/public/js/jquery.md5.js"></script>
+    <style>
+        .margin-b20{
+            height:20px;
+            color:red;
+        }
+    </style>
+    <body>
+        <section>
+            <div class="container">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div style="margin-top: 100px;">
+                            <div style="font-size:24px;text-align:center; margin-bottom: 20px;">
+                                <span><?php echo _("la_4542");?></span>
+                            </div>
+                            <div class="col-sm-12">
+                                <label class="control-label col-sm-2"><?php echo _("la_722");?></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputname" name="username" placeholder='<?php echo _("la_722");?>'>
+                                    <div class="usernameerror margin-b20">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <label class="control-label col-sm-2"><?php echo _("la_02");?></label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="inputPassword" name="password" placeholder='<?php echo _("la_02");?>'>
+                                    <div class="margin-b20 passworderror">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <label class="control-label col-sm-2"><?php echo _("la_17");?></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="vcode" name="vcode" placeholder='<?php echo _("la_17");?>'>
+                                    <span><img id="km_vcode" class="btn" src="/sign/ajaxvcode"></span>
+                                    <div class="margin-b20 vcodeerror">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="dian pull-right">
+                                    <!-- <a href="/sign/repassword">忘记密码？</a> -->
+                                </div>
+                            </div>
+                            <div class="col-sm-1 col-sm-offset-5">
+                                <button id="login" class="btn btn-default"> <span class="glyphicon glyphicon-log-in"></span> </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
+<script>
+    $(document).ready(function() {
+        $("#login").click(function() {
+            var username = $.trim($("#inputname").val());
+            var password = $.trim($("#inputPassword").val());
+            var vcode = $.trim($("#vcode").val());
+            $(".usernameerror").find("span").html(validusername(username));
+            $(".passworderror").find("span").html(validpassword(password));
+            if (validpassword(password) == '' && validusername(username) == '') {
+                if (password.length !=32) {
+                    password = $.md5(password);
+                };
+
+                $("#inputPassword").val(password);
+                $.ajax({
+                    type:"post",
+                    url:"/sign/login",
+                    data:{
+                        username:username,password:password,vcode:vcode,
+                    },
+                    success:function(data){
+                        data = eval("("+data+")");
+                        if(data['code'] != 1){
+                            alert(data['msg']);
+                        }else{
+                            window.location.href = "/";
+                        }
+                    }
+                });
+            }
+        });
+    });
+
+    // 点击切换验证码
+    $("#km_vcode").click(function() {
+        $(this).attr({src: "/sign/ajaxvcode?&t=" + (new Date).getTime()})
+    });
+
+    function validusername(username){
+        if (username == '') {
+            return '<?php echo _("la_435");?>';
+        }
+        if(username.length > 20){
+            return '<?php echo _("la_4575");?>';
+        }
+        return '';
+    }
+    function validpassword(password) {
+        if (password == '') {
+            return '<?php echo _("la_4579");?>';
+        }
+        if (password.length < 6) {
+            return '<?php echo _("la_4576");?>';
+        } else if (password.length!=32 && password.length > 20) {
+            return '<?php echo _("la_4577");?>';
+        }
+        return '';
+    }
+</script>
