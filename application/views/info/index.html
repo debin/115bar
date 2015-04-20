@@ -1,0 +1,32 @@
+<div class="container" style="am-vertical-align">
+
+    <div class="col-sm-10 padding-t15 am-vertical-align-middle">
+    <ol class="am-breadcrumb">
+      <li><a href="/" class="am-icon-home">首页</a></li>
+      <li><a href="/t">礼包圈</a></li>
+      <li class="am-active">详情</li>
+    </ol>
+
+
+    <article class="am-article">
+      <div class="am-article-hd">
+        <h1 class="am-article-title"><?php echo $output['detail']['subject'];?></h1>
+        <p class="am-article-meta"><a href="<?php echo Yaf_Registry::get("config")->webroot;?>"><?php echo Yaf_Registry::get("config")->webroot;?></a></p>
+      </div>
+
+      <div class="am-article-bd">
+        <p class="am-article-lead"><?php echo $output['detail']['abstract'];?></p>
+        <hr class="am-article-divider"/>
+        <div class="am-u-sm-11 am-u-sm-centered">
+        <div class="am-align-left">
+          <img src="http://global.bing.com/az/hprichbg/rb/UchisarCastle_EN-US10838608428_1920x1080.jpg" alt="" width="240">
+        </div>
+        <?php echo $output['detail']['deal_content'];?>
+        <div class="am-align-right"><img src="http://global.bing.com/az/hprichbg/rb/UchisarCastle_EN-US10838608428_1920x1080.jpg" alt="" width="240"></div>
+        </div>
+      </div>
+    </article>
+
+
+    </div>
+</div>

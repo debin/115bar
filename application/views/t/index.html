@@ -1,126 +1,43 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <?php include(HEADER);?>
-    <script type="text/javascript" src="/public/js/jquery.md5.js"></script>
-    <style>
-        .margin-b20{
-            height:20px;
-            color:red;
-        }
-    </style>
-    <body>
-        <section>
-            <div class="container">
-                <div class="col-sm-10 col-sm-offset-1">
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <div style="margin-top: 100px;">
-                            <div style="font-size:24px;text-align:center; margin-bottom: 20px;">
-                                <span><?php echo _("la_4542");?></span>
-                            </div>
-                            <div class="col-sm-12">
-                                <label class="control-label col-sm-2"><?php echo _("la_722");?></label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputname" name="username" placeholder='<?php echo _("la_722");?>'>
-                                    <div class="usernameerror margin-b20">
-                                        <span></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <label class="control-label col-sm-2"><?php echo _("la_02");?></label>
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputPassword" name="password" placeholder='<?php echo _("la_02");?>'>
-                                    <div class="margin-b20 passworderror">
-                                        <span></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <label class="control-label col-sm-2"><?php echo _("la_17");?></label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="vcode" name="vcode" placeholder='<?php echo _("la_17");?>'>
-                                    <span><img id="km_vcode" class="btn" src="/sign/ajaxvcode"></span>
-                                    <div class="margin-b20 vcodeerror">
-                                        <span></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="dian pull-right">
-                                    <!-- <a href="/sign/repassword">忘记密码？</a> -->
-                                </div>
-                            </div>
-                            <div class="col-sm-1 col-sm-offset-5">
-                                <button id="login" class="btn btn-default"> <span class="glyphicon glyphicon-log-in"></span> </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </body>
-</html>
-<script>
-    $(document).ready(function() {
-        $("#login").click(function() {
-            var username = $.trim($("#inputname").val());
-            var password = $.trim($("#inputPassword").val());
-            var vcode = $.trim($("#vcode").val());
-            $(".usernameerror").find("span").html(validusername(username));
-            $(".passworderror").find("span").html(validpassword(password));
-            if (validpassword(password) == '' && validusername(username) == '') {
-                if (password.length !=32) {
-                    password = $.md5(password);
-                };
+<div class="container" style="am-container am-margin-horizontal">
 
-                $("#inputPassword").val(password);
-                $.ajax({
-                    type:"post",
-                    url:"/sign/login",
-                    data:{
-                        username:username,password:password,vcode:vcode,
-                    },
-                    success:function(data){
-                        data = eval("("+data+")");
-                        if(data['code'] != 1){
-                            alert(data['msg']);
-                        }else{
-                            window.location.href = "/";
-                        }
-                    }
-                });
-            }
-        });
-    });
+    <div class="col-sm-10 padding-t15 am-margin-horizontal">
 
-    // 点击切换验证码
-    $("#km_vcode").click(function() {
-        $(this).attr({src: "/sign/ajaxvcode?&t=" + (new Date).getTime()})
-    });
+    <ol class="am-breadcrumb">
+      <li><a href="/" class="am-icon-home">首页</a></li>
+      <li><a href="" class="am-active">礼包圈</a></li>
+      <!-- <li class="am-active">内容</li> -->
+    </ol>
 
-    function validusername(username){
-        if (username == '') {
-            return '<?php echo _("la_435");?>';
-        }
-        if(username.length > 20){
-            return '<?php echo _("la_4575");?>';
-        }
-        return '';
-    }
-    function validpassword(password) {
-        if (password == '') {
-            return '<?php echo _("la_4579");?>';
-        }
-        if (password.length < 6) {
-            return '<?php echo _("la_4576");?>';
-        } else if (password.length!=32 && password.length > 20) {
-            return '<?php echo _("la_4577");?>';
-        }
-        return '';
-    }
-</script>
+        <div data-am-widget="list_news" class="am-list-news am-list-news-default">
+          <!--列表标题-->
+          <div class="am-list-news-hd am-cf">
+            <!--带更多链接-->
+            <a href="###" class="">
+              <h2>115礼包资源</h2>
+              <span class="am-list-news-more am-fr">更多 &raquo;</span>
+            </a>
+          </div>
+          <div class="am-list-news-bd">
+            <ul class="am-list">
+              <?php foreach ($output['list'] as $key => $value): ?>
+              <li class="am-g am-list-item-desced">
+                <a href="/info/<?php echo $value['id'];?>" class="am-list-item-hd "><?php echo $value['subject'];?></a>
+                <div class="am-list-item-text"><?php echo $value['abstract'];?></div>
+              </li>
+              <?php endforeach;?>
+            </ul>
+          </div>
+        </div>
+
+        <ul class="am-pagination am-pagination-centered">
+          <li class="am-disabled"><a href="#">&laquo;</a></li>
+          <li class="am-active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">&raquo;</a></li>
+        </ul>
+
+    </div>
+</div>

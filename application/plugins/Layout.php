@@ -35,7 +35,9 @@ class LayoutPlugin extends Yaf_Plugin_Abstract {
         //     echo $property->getName()."<br/>";
         // }
         // exit;
-
+        if (!isset(Yaf_Dispatcher::getInstance()->c->layout)) {
+            return;
+        }
         $this->_layoutFile = Yaf_Dispatcher::getInstance()->c->layout;
 
         /* wrap it in the layout */

@@ -20,13 +20,23 @@ class TController extends BasicController {
         if (empty($page)) {
             $page = 1;
         }
-        echo $page;
-        echo '';exit;
-        $session = Yaf_Session::getInstance();
-        if ($session->user) {
-            $this->redirect("/");
-        }
-        $this->getView()->display("sign/login.html");
+        $pagesize = 20;
+        $data = array('status'=>0);
+        $total = TopicModel::getInfoCount($data);
+        $list_arr = TopicModel::getInfoByPage($data,$page,$pagesize);
+        $page_count = ($total<$pagesize)?1:intval($total/$pagesize);
+        $page_count = ($total%$pagesize>0)?$page_count+1:$page_count;
+
+        // var_dump($total);exit;
+        $output                       = array();
+        $output['total']              = $total;
+        $output['list']               = $list_arr;
+        $output['data']['page']       = $page;
+        $output['data']['pagesize']   = $pagesize;
+        $output['data']['page_count'] = $page_count;
+        // $output                       = cat_html($output);
+        $this->getView()->assign("output", $output);
+        // $this->getView()->display("topics/index.html");
     }
 
     /**

@@ -31,6 +31,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract {
         //添加配置中的路由
         $router = Yaf_Dispatcher::getInstance()->getRouter();
         $router->addConfig(Yaf_Registry::get("config")->routes);
+        // var_dump($router->getRoutes());exit;
         // $user = new UserPlugin();
         // $dispatcher->registerPlugin($user);
     }

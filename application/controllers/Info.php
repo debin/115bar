@@ -1,12 +1,12 @@
 <?php
 
 /*
- * 主题列表
- * @author dbb
- * @date(2014-12-15)
+ * 信息页
+ * @author ldb
+ * @date(2015-04-15)
  */
 
-class TopicsController extends BasicController {
+class InfoController extends BasicController {
 
     /**
      * 登录模板
@@ -15,35 +15,21 @@ class TopicsController extends BasicController {
      * @date(2014-12-15)
      */
     public function indexAction() {
-        $page = $this->getRequest()->getParam("page", 0);
-        $page = intval($page);
-        if (empty($page)) {
-            $page = 1;
-        }
-        $pagesize = 20;
-        $data = array('status'=>0);
-        $total = TopicModel::getInfoCount($data);
-        $list_arr = TopicModel::getInfoByPage($data,$page,$pagesize);
-        $page_count = ($total<$pagesize)?1:intval($total/$pagesize);
-        $page_count = ($total%$pagesize>0)?$page_count+1:$page_count;
-
-        // var_dump($total);exit;
-        $output                       = array();
-        $output['total']              = $total;
-        $output['list']               = $list_arr;
-        $output['data']['page']       = $page;
-        $output['data']['pagesize']   = $pagesize;
-        $output['data']['page_count'] = $page_count;
-        // $output                       = cat_html($output);
+        $id = $this->getRequest()->getParam("id", 0);
+        $id = intval($id);
+        $detail = TopicModel::getInfoById($id);
+        $output           = array();
+        $output['id']     = $id;
+        $output['detail'] = $detail;
         $this->getView()->assign("output", $output);
-        // $this->getView()->display("topics/index.html");
+        // $this->getView()->display("sign/login.html");
     }
 
     /**
      * 账户登录
      *
-     * @author dbb
-     * @date(2014-12-15)
+     * @author ldb
+     * @date(2015-04-15)
      */
     public function detailAction() {
         echo $_GET['ff'];
