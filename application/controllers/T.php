@@ -27,6 +27,11 @@ class TController extends BasicController {
         $page_count = ($total<$pagesize)?1:intval($total/$pagesize);
         $page_count = ($total%$pagesize>0)?$page_count+1:$page_count;
 
+        // 分页
+        $getpage = new PageModel("http://dev.115bar.com/t",$total, $page,$pagesize,'/');
+        $paginate = $getpage->showpage();
+        // echo $page->showpage();
+
         // var_dump($total);exit;
         $output                       = array();
         $output['total']              = $total;
@@ -34,6 +39,7 @@ class TController extends BasicController {
         $output['data']['page']       = $page;
         $output['data']['pagesize']   = $pagesize;
         $output['data']['page_count'] = $page_count;
+        $output['paginate']           = $paginate;
         // $output                       = cat_html($output);
         $this->getView()->assign("output", $output);
         // $this->getView()->display("topics/index.html");

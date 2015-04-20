@@ -4,7 +4,7 @@
 
     <ol class="am-breadcrumb">
       <li><a href="/" class="am-icon-home">首页</a></li>
-      <li><a href="" class="am-active">礼包圈</a></li>
+      <li class="am-active">礼包圈</li>
       <!-- <li class="am-active">内容</li> -->
     </ol>
 
@@ -29,6 +29,7 @@
           </div>
         </div>
 
+        <div class="page am-pagination-centered">
         <ul class="am-pagination am-pagination-centered">
           <li class="am-disabled"><a href="#">&laquo;</a></li>
           <li class="am-active"><a href="#">1</a></li>
@@ -38,6 +39,9 @@
           <li><a href="#">5</a></li>
           <li><a href="#">&raquo;</a></li>
         </ul>
+        </div>
+
+        <?php echo $output['paginate'];?>
 
     </div>
 </div>
