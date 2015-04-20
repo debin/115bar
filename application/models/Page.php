@@ -28,7 +28,7 @@ class PageModel{
        return $this->$_key;
     }
 
-    //数字目录   
+    //数字目录
     private function pageList() {
         $_pagelist = '';
         for ($i=$this->bothnum;$i>=1;$i--) {
@@ -46,48 +46,52 @@ class PageModel{
            $url = $this->url.$this->sep.$_page;
            $pagestr = "<li><a href=\"{$url}\">{$_page}</a></li>";
            $_pagelist .= $pagestr;
-        }   
+        }
         return $_pagelist;
     }
 
-    //首页   
+    //首页
     private function first() {
         if ($this->page > $this->bothnum+1) {
-          $pagestr = "<li><a href=\"{$this->url}\">1...</a></li>";
+          $pagestr = "<li><a href=\"{$this->url}\">1</a></li>";
+          $skip = "<li class=\"am-disabled\"><span>...</span></li>";
+          $pagestr = $pagestr . $skip;
           return $pagestr;
         }
     }
 
-    //上一页   
-    private function prev() {   
+    //上一页
+    private function prev() {
         if ($this->page == 1) {
-          
-          $pagestr = "<li class=\"am-disabled\"><a href=\"#\">prev</a></li>";
-           
+
+          $pagestr = "<li class=\"am-disabled\"><a href=\"#\">«</a></li>";
+
         }else{
           $url = $this->url.$this->sep.($this->page-1);
-          $pagestr = "<li><a href=\"{$url}\">prev</a></li>";
+          $pagestr = "<li><a href=\"{$url}\">«</a></li>";
         }
         return $pagestr;
     }
 
-    private function next() {   
+    private function next() {
       if ($this->page == $this->pagenum) {
-        $pagestr = "<li class=\"am-disabled\"><a href=\"#\">next</a></li>";      
+        $pagestr = "<li class=\"am-disabled\"><a href=\"#\">»</a></li>";
       }else{
         $url = $this->url.$this->sep.($this->page+1);
-        $pagestr = "<li><a href=\"{$url}\">next</a></li>";
+        $pagestr = "<li><a href=\"{$url}\">»</a></li>";
       }
-      return $pagestr;   
+      return $pagestr;
     }
 
     //尾页
     private function last() {
-        if ($this->pagenum - $this->page > $this->bothnum) {   
+        if ($this->pagenum - $this->page > $this->bothnum) {
             // return ' ...<a href="'.$this->url.$this->sep.$this->pagenum.'">'.$this->pagenum.'</a> ';
             $url = $this->url.$this->sep.($this->pagenum);
-            $pagestr = "<li><a href=\"{$url}\">...{$this->pagenum}</a></li>";
-            return $pagestr; 
+            $pagestr = "<li><a href=\"{$url}\">{$this->pagenum}</a></li>";
+            $skip = "<li class=\"am-disabled\"><span>...</span></li>";
+            $pagestr = $skip . $pagestr;
+            return $pagestr;
         }
     }
 

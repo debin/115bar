@@ -11,7 +11,7 @@
     <article class="am-article">
       <div class="am-article-hd">
         <h1 class="am-article-title"><?php echo $output['detail']['subject'];?></h1>
-        <p class="am-article-meta"><a href="<?php echo Yaf_Registry::get("config")->webroot;?>"><?php echo Yaf_Registry::get("config")->webroot;?></a></p>
+        <p class="am-article-meta"><a href="<?php echo Yaf_Registry::get("config")->webroot;?>"><?php echo Yaf_Registry::get("config")->webroot;?></a> posted on <?php echo date("Y-m-d",$output['detail']['post_time']);?></p>
       </div>
 
       <div class="am-article-bd">
@@ -27,6 +27,16 @@
       </div>
     </article>
 
+    <div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
+      <a href="#top" title="回到顶部">
+        <span class="am-gotop-title">回到顶部</span>
+        <i class="am-gotop-icon am-icon-chevron-up"></i>
+      </a>
+    </div>
 
     </div>
 </div>
+<script type="text/javascript">
+$('.am-article-bd a').attr('target', '_blank');
+</script>
+<script type="text/javascript" src="http://q.115.com/static/wap/version3.0/js/con_q.js?v=20150401230"></script>

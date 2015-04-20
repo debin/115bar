@@ -24,8 +24,7 @@ class TController extends BasicController {
         $data = array('status'=>0);
         $total = TopicModel::getInfoCount($data);
         $list_arr = TopicModel::getInfoByPage($data,$page,$pagesize);
-        $page_count = ($total<$pagesize)?1:intval($total/$pagesize);
-        $page_count = ($total%$pagesize>0)?$page_count+1:$page_count;
+        $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
 
         // 分页
         $url = Yaf_Registry::get("config")->webroot . "/t";

@@ -22,7 +22,8 @@
               <?php foreach ($output['list'] as $key => $value): ?>
               <li class="am-g am-list-item-desced">
                 <a href="/info/<?php echo $value['id'];?>" class="am-list-item-hd "><?php echo $value['subject'];?></a>
-                <div class="am-list-item-text"><?php echo $value['abstract'];?></div>
+                <div class="am-list-item-text"><p><?php echo $value['abstract'];?></p>
+                <span class="am-list-date"> post:<?php echo date("Y-m-d",$value['post_time']);?> </span></div>
               </li>
               <?php endforeach;?>
             </ul>
