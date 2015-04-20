@@ -28,7 +28,8 @@ class TController extends BasicController {
         $page_count = ($total%$pagesize>0)?$page_count+1:$page_count;
 
         // 分页
-        $getpage = new PageModel("http://dev.115bar.com/t",$total, $page,$pagesize,'/');
+        $url = Yaf_Registry::get("config")->webroot . "/t";
+        $getpage = new PageModel($url,$total, $page,$pagesize,'/');
         $paginate = $getpage->showpage();
         // echo $page->showpage();
 
