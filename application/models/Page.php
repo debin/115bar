@@ -53,7 +53,7 @@ class PageModel{
     //首页   
     private function first() {
         if ($this->page > $this->bothnum+1) {
-          $pagestr = "<li><a href=\"{$this->url}\">1</a></li>";
+          $pagestr = "<li><a href=\"{$this->url}\">1...</a></li>";
           return $pagestr;
         }
     }
@@ -86,7 +86,7 @@ class PageModel{
         if ($this->pagenum - $this->page > $this->bothnum) {   
             // return ' ...<a href="'.$this->url.$this->sep.$this->pagenum.'">'.$this->pagenum.'</a> ';
             $url = $this->url.$this->sep.($this->pagenum);
-            $pagestr = "<li><a href=\"{$url}\">{$this->pagenum}</a></li>";
+            $pagestr = "<li><a href=\"{$url}\">...{$this->pagenum}</a></li>";
             return $pagestr; 
         }
     }
