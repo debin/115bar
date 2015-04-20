@@ -34,13 +34,18 @@ class PageModel{
         for ($i=$this->bothnum;$i>=1;$i--) {
            $_page = $this->page-$i;
            if ($_page < 1) continue;
-           $_pagelist .= ' <a href="'.$this->url.$this->sep.$_page.'">'.$_page.'</a> ';
+           $url = $this->url.$this->sep.$_page;
+           $pagestr = "<li><a href=\"{$url}\">{$_page}</a></li>";
+           $_pagelist .= $pagestr;
         }
-        $_pagelist .= ' <span class="me">'.$this->page.'</span> ';
+        $pagestr = "<li class=\"am-active\"><a href=\"#\">{$this->page}</a></li>";
+        $_pagelist .= $pagestr;
         for ($i=1;$i<=$this->bothnum;$i++) {
            $_page = $this->page+$i;
            if ($_page > $this->pagenum) break;
-           $_pagelist .= ' <a href="'.$this->url.$this->sep.$_page.'">'.$_page.'</a> ';
+           $url = $this->url.$this->sep.$_page;
+           $pagestr = "<li><a href=\"{$url}\">{$_page}</a></li>";
+           $_pagelist .= $pagestr;
         }   
         return $_pagelist;
     }
@@ -48,29 +53,41 @@ class PageModel{
     //首页   
     private function first() {
         if ($this->page > $this->bothnum+1) {
-               return ' <a href="'.$this->url.'">1</a> ...';
+          $pagestr = "<li><a href=\"{$this->url}\">1</a></li>";
+          return $pagestr;
         }
     }
 
     //上一页   
     private function prev() {   
-        if ($this->page == 1) {   
-            return '<span class="disabled">prev</span>';
-        }   
-        return ' <a href="'.$this->url.$this->sep.($this->page-1).'">prev</a> ';
+        if ($this->page == 1) {
+          
+          $pagestr = "<li class=\"am-disabled\"><a href=\"#\">prev</a></li>";
+           
+        }else{
+          $url = $this->url.$this->sep.($this->page-1);
+          $pagestr = "<li><a href=\"{$url}\">prev</a></li>";
+        }
+        return $pagestr;
     }
 
     private function next() {   
-      if ($this->page == $this->pagenum) {   
-        return '<span class="disabled">next</span>';   
-      }   
-      return ' <a href="'.$this->url.$this->sep.($this->page+1).'">next</a> ';   
+      if ($this->page == $this->pagenum) {
+        $pagestr = "<li class=\"am-disabled\"><a href=\"#\">next</a></li>";      
+      }else{
+        $url = $this->url.$this->sep.($this->page+1);
+        $pagestr = "<li><a href=\"{$url}\">next</a></li>";
+      }
+      return $pagestr;   
     }
 
     //尾页
     private function last() {
         if ($this->pagenum - $this->page > $this->bothnum) {   
-            return ' ...<a href="'.$this->url.$this->sep.$this->pagenum.'">'.$this->pagenum.'</a> ';   
+            // return ' ...<a href="'.$this->url.$this->sep.$this->pagenum.'">'.$this->pagenum.'</a> ';
+            $url = $this->url.$this->sep.($this->pagenum);
+            $pagestr = "<li><a href=\"{$url}\">{$this->pagenum}</a></li>";
+            return $pagestr; 
         }
     }
 
