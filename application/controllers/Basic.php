@@ -7,7 +7,9 @@
  */
 class BasicController extends Yaf_Controller_Abstract {
 
-    public $layout='layout.html';
+    public $layout = 'layout.html';
+    public $title  = '';
+
     /**
      * 如果定义了控制器的init的方法, 会在__construct以后被调用
      */

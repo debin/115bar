@@ -35,6 +35,7 @@ class TController extends BasicController {
         // echo $page->showpage();
 
         // var_dump($total);exit;
+        $this->title = _("la_103")."_"._("la_102");
         $output                       = array();
         $output['total']              = $total;
         $output['list']               = $list_arr;

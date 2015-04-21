@@ -42,6 +42,7 @@ class LayoutPlugin extends Yaf_Plugin_Abstract {
 
         /* wrap it in the layout */
         $layout = new Yaf_View_Simple($this->_layoutDir);
+        $layout->title = Yaf_Dispatcher::getInstance()->c->title;
         $layout->content = $body;
         $layout->assign('layout', $this->_layoutVars);
 

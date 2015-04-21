@@ -18,6 +18,11 @@ class InfoController extends BasicController {
         $id = $this->getRequest()->getParam("id", 0);
         $id = intval($id);
         $detail = TopicModel::getInfoById($id);
+        $subject = !empty($detail['subject'])?$detail['subject']:$detail['abstract'];
+        $search = array(" ","|","!","»");
+        $subject = str_replace($search,'',$subject);
+
+        $this->title = $subject."_"._("la_103")."_"._("la_102");
         $output           = array();
         $output['id']     = $id;
         $output['detail'] = $detail;
