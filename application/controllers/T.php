@@ -28,6 +28,8 @@ class TController extends BasicController {
 
         // 分页
         $url = Yaf_Registry::get("config")->webroot . "/t";
+        // echo json_encode( get_defined_vars() );
+        // $SERVER = $this->getRequest()->getServer();
         $getpage = new PageModel($url,$total, $page,$pagesize,'/');
         $paginate = $getpage->showpage();
         // echo $page->showpage();
