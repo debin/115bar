@@ -61,16 +61,27 @@ class IndexController extends BasicController {
         require APPLICATION_PATH.'/vendor/xunsearch/php/lib/XS.php';
         $xs = new XS('demo'); // 建立 XS 对象，项目名称为：demo
         $search = $xs->search; // 获取 搜索对象
-        $query = '7'; // 这里的搜索语句很简单，就一个短语
+        $query = '测试文档的标题'; // 这里的搜索语句很简单，就一个短语
          
         $search->setQuery($query); // 设置搜索语句
-        $search->addWeight('subject', 'xunsearch'); // 增加附加条件：提升标题中包含 'xunsearch' 的记录的权重
-        $search->setLimit(5, 10); // 设置返回结果最多为 5 条，并跳过前 10 条
+        $search->setCollapse('pid',3);
+        // $search->addWeight('subject', 'xunsearch'); // 增加附加条件：提升标题中包含 'xunsearch' 的记录的权重
+        // $search->setLimit(5, 10); // 设置返回结果最多为 5 条，并跳过前 10 条
          
         $docs = $search->search(); // 执行搜索，将搜索结果文档保存在 $docs 数组中
         $count = $search->count(); // 获取搜索结果的匹配总数估算值
 
-        var_dump($docs);exit;
+        foreach ($docs as $doc)
+        {
+           $subject = $search->highlight($doc->subject); // 高亮处理 subject 字段
+           $message = $search->highlight($doc->message); // 高亮处理 message 字段
+           echo $doc->rank() . '. ' . $subject . " [" . $doc->percent() . "%] - ";
+           echo date("Y-m-d", $doc->chrono) . "\n" . $message . "\n";
+           var_dump($subject);
+        }
+
+        // var_dump($docs);
+        exit;
     }
 
 
@@ -84,13 +95,22 @@ class IndexController extends BasicController {
             'message' => '测试文档的内容部分',
             'chrono' => time()
         );
+
+        $data = array(
+            'pid' => 100, // 此字段为主键，必须指定
+            'subject' => '99',
+            'message' => '494fwefewf',
+            'chrono' => time()
+        );
          
         // 创建文档对象
         $doc = new XSDocument;
         $doc->setFields($data);
          
         // 添加到索引数据库中
-        $index->add($doc);
+        $res = $index->add($doc);
+        var_dump($res);
+        exit;
     }
 
 }
