@@ -38,7 +38,7 @@ class PageModel{
            $pagestr = "<li><a href=\"{$url}\">{$_page}</a></li>";
            $_pagelist .= $pagestr;
         }
-        $pagestr = "<li class=\"am-active\"><a href=\"#\">{$this->page}</a></li>";
+        $pagestr = "<li class=\"active\"><a href=\"#\">{$this->page}</a></li>";
         $_pagelist .= $pagestr;
         for ($i=1;$i<=$this->bothnum;$i++) {
            $_page = $this->page+$i;
@@ -54,7 +54,7 @@ class PageModel{
     private function first() {
         if ($this->page > $this->bothnum+1) {
           $pagestr = "<li><a href=\"{$this->url}\">1</a></li>";
-          $skip = "<li class=\"am-disabled\"><span>...</span></li>";
+          $skip = "<li class=\"disabled\"><span>...</span></li>";
           $pagestr = $pagestr . $skip;
           return $pagestr;
         }
@@ -64,7 +64,7 @@ class PageModel{
     private function prev() {
         if ($this->page == 1) {
 
-          $pagestr = "<li class=\"am-disabled\"><a href=\"#\">«</a></li>";
+          $pagestr = "<li class=\"disabled\"><a href=\"#\">«</a></li>";
 
         }else{
           $url = $this->url.$this->sep.($this->page-1);
@@ -75,7 +75,7 @@ class PageModel{
 
     private function next() {
       if ($this->page == $this->pagenum) {
-        $pagestr = "<li class=\"am-disabled\"><a href=\"#\">»</a></li>";
+        $pagestr = "<li class=\"disabled\"><a href=\"#\">»</a></li>";
       }else{
         $url = $this->url.$this->sep.($this->page+1);
         $pagestr = "<li><a href=\"{$url}\">»</a></li>";
@@ -89,7 +89,7 @@ class PageModel{
             // return ' ...<a href="'.$this->url.$this->sep.$this->pagenum.'">'.$this->pagenum.'</a> ';
             $url = $this->url.$this->sep.($this->pagenum);
             $pagestr = "<li><a href=\"{$url}\">{$this->pagenum}</a></li>";
-            $skip = "<li class=\"am-disabled\"><span>...</span></li>";
+            $skip = "<li class=\"disabled\"><span>...</span></li>";
             $pagestr = $skip . $pagestr;
             return $pagestr;
         }
