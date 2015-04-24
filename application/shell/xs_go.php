@@ -7,14 +7,14 @@ include_once __DIR__."./../library/PgsqlHelper.php";
 include_once __DIR__."./../models/Topic.php";
 
 // $page = 1;
-$pagesize = 20;
+$pagesize = 200;
 $data = array('status'=>0);
 $total = TopicModel::getInfoCount($data);
 $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
 
 for ($i=1; $i <= $page_count; $i++) { 
     $list_arr = TopicModel::getInfoByPage($data,$i,$pagesize);
-    $index->openBuffer(); // 开启缓冲区，默认 4MB，如 $index->openBuffer(8) 则表示 8MB
+    $index->openBuffer(8); // 开启缓冲区，默认 4MB，如 $index->openBuffer(8) 则表示 8MB
     if ($list_arr) {
         foreach ($list_arr as $key => $value) {
             $data = array(
