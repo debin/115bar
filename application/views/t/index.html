@@ -15,6 +15,9 @@
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <form class="navbar-form navbar-right" action="/t">
+        <input type="text" id="index_search" class="form-control" placeholder="Search...">
+      </form>
     </div><!--/.nav-collapse -->
   </div>
 </nav>
@@ -43,3 +46,17 @@
   <?php echo $output['paginate'];?>
   </nav>
 </div><!-- /.container -->
+
+<script type="text/javascript">
+
+document.forms[0].onsubmit = function (e) {
+  e.preventDefault();
+  var query = document.getElementById("index_search").value;
+  if (!query) {
+    document.getElementById("index_search").focus(); return false; 
+  }
+  var url = '/s/' + encodeURIComponent(query) + '/1';
+  window.location= url;
+  return false;
+}
+</script>
