@@ -2,6 +2,7 @@
 
 ini_set('memory_limit','256M');
 
+include_once __DIR__."./../library/func_common.php";
 include_once __DIR__."./../library/Environment.php";
 include_once __DIR__."./../library/Singleton.php";
 include_once __DIR__."./../library/Otable.php";
@@ -28,11 +29,15 @@ for ($i=1; $i <= $page_count; $i++) {
     $index->openBuffer(8); // 开启缓冲区，默认 4MB，如 $index->openBuffer(8) 则表示 8MB
     if ($list_arr) {
         foreach ($list_arr as $key => $value) {
+            $subject = $value['subject'];
+            $deal_content = strip_tags($value['deal_content']);
+            $subject = trim_string($subject);
+            $deal_content = trim_string($deal_content);
             $data = array(
                 'id'           => $value['id'], // 此字段为主键，必须指定
-                'subject'      => $value['subject'],
+                'subject'      => $subject,
                 'deal_content' => strip_tags($value['deal_content']),
-                'post_time'    => $value['post_time'],
+                'post_time'    => $deal_content,
             );
             // 创建文档对象
             $doc = new XSDocument;

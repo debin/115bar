@@ -66,7 +66,7 @@ class TestController extends BasicController {
         $search->setQuery($query); // 设置搜索语句
         $search->setCollapse('id',3);
         // $search->addWeight('subject', 'xunsearch'); // 增加附加条件：提升标题中包含 'xunsearch' 的记录的权重
-        // $search->setLimit(5, 10); // 设置返回结果最多为 5 条，并跳过前 10 条
+        $search->setLimit(5, 20); // 设置返回结果最多为 5 条，并跳过前 10 条
         // $search->setFuzzy();
         $docs = $search->search(); // 执行搜索，将搜索结果文档保存在 $docs 数组中
         $count = $search->count(); // 获取搜索结果的匹配总数估算值
