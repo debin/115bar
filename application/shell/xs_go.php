@@ -36,7 +36,7 @@ for ($i=1; $i <= $page_count; $i++) {
             $data = array(
                 'id'           => $value['id'], // 此字段为主键，必须指定
                 'subject'      => $subject,
-                'deal_content' => strip_tags($value['deal_content']),
+                'deal_content' => $deal_content,
                 'post_time'    => $deal_content,
             );
             // 创建文档对象
