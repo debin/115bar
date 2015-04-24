@@ -1,0 +1,72 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">115礼包资源</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">礼包圈</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<div class="container">
+  <ol class="breadcrumb">
+    <li><a href="/">首页</a></li>
+    <li class="active">搜索</li>
+  </ol>
+  <div class="starter-template">
+    <form class="form-inline" action="/s/">
+      <div class="form-group">
+        <label for="search" class="sr-only">Name</label>
+        <input type="text" class="form-control search_btn" id="search" placeholder="输入关键字" value="<?echo $output['key']?>" />
+      </div>
+      <button type="submit" class="btn btn-default">搜索一下</button>
+    </form>
+
+
+    <!-- 搜索结果列表 -->
+    <ul class="list-group">
+    <?php foreach ($output['list'] as $key => $value): ?>
+      <li class="list-group-item">
+      <a href="/info/<?php echo $value['id'];?>" target="_black"><p class="text-justify"><?php echo $value['subject'];?></p></a>
+      <span class="badge"><?php echo date("Y-m-d",$value['post_time']);?></span>
+      <div class=""><p class="text-justify"><?php echo $value['deal_content'];?></p></div>
+      </li>
+      <?php endforeach;?>
+    </ul>
+
+
+  </div>
+
+  <nav>
+  <?php echo $output['paginate'];?>
+  </nav>
+</div><!-- /.container -->
+
+
+
+
+
+<script type="text/javascript">
+document.getElementById("search").focus();
+document.forms[0].onsubmit = function (e) {
+  e.preventDefault();
+  var query = document.getElementById("search").value;
+  if (!query) {
+    document.getElementById("search").focus(); return false; 
+  }
+  var url = '/s/' + encodeURIComponent(query) + '/1';
+  window.location= url;
+  return false;
+}
+</script>
