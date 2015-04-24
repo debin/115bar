@@ -16,7 +16,7 @@ class TopicModel{
         $db = PgsqlHelper::getInstance();
         $servers = ConfigPg::getDBMaster($dbname);
         $db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
-        $sql = 'SELECT "id","subject","abstract","deal_content","image_thumbs","post_time" FROM '.Otable::TABLE_115_TOPIC." WHERE id=?";
+        $sql = 'SELECT "id","subject","abstract","deal_content","image_thumbs","post_time","deal_content" FROM '.Otable::TABLE_115_TOPIC." WHERE id=?";
         $vars = array(intval($id));
         $result = $db->getOne($sql,$vars);
         return $result;
@@ -65,7 +65,7 @@ class TopicModel{
         $servers = ConfigPg::getDBMaster($dbname);
         $db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
 
-        $sql = 'SELECT "id","subject","abstract","image_thumbs","post_time"  FROM '.Otable::TABLE_115_TOPIC;
+        $sql = 'SELECT "id","subject","abstract","image_thumbs","post_time","deal_content"  FROM '.Otable::TABLE_115_TOPIC;
         $sql = $sql . " WHERE 1=1 ";
         $vars = array();
         if (isset($data['valid'])&&!is_null($data['valid'])) {
