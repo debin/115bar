@@ -1,4 +1,7 @@
 <?php
+
+ini_set('memory_limit','256M');
+
 include_once __DIR__."./../library/Environment.php";
 include_once __DIR__."./../library/Singleton.php";
 include_once __DIR__."./../library/Otable.php";
@@ -9,6 +12,9 @@ include_once __DIR__."./../vendor/xunsearch/php/lib/XS.php";
 
 $xs = new XS('115zone'); // 建立 XS 对象，项目名称为：demo
 $index = $xs->index; // 获取 索引对象
+
+// 执行清空操作
+$index->clean();
 
 // $page = 1;
 $pagesize = 200;
@@ -25,14 +31,14 @@ for ($i=1; $i <= $page_count; $i++) {
             $data = array(
                 'id'           => $value['id'], // 此字段为主键，必须指定
                 'subject'      => $value['subject'],
-                'deal_content' => $value['deal_content'],
+                'deal_content' => strip_tags($value['deal_content']),
                 'post_time'    => $value['post_time'],
             );
             // 创建文档对象
             $doc = new XSDocument;
             $doc->setFields($data);
             // 添加到索引数据库中
-            $res = $index->update($doc);
+            $res = $index->add($doc);//add update
             $count++;
         }
     }
