@@ -18,7 +18,7 @@ $index = $xs->index; // 获取 索引对象
 $index->clean();
 
 // $page = 1;
-$pagesize = 400;
+$pagesize = 1000;
 $data = array('status'=>0);
 $total = TopicModel::getInfoCount($data);
 $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
@@ -37,7 +37,7 @@ for ($i=1; $i <= $page_count; $i++) {
                 'id'           => $value['id'], // 此字段为主键，必须指定
                 'subject'      => $subject,
                 'deal_content' => $deal_content,
-                'post_time'    => $deal_content,
+                'post_time'    => $value['post_time'],
             );
             // 创建文档对象
             $doc = new XSDocument;

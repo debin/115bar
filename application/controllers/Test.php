@@ -27,33 +27,9 @@ class TestController extends BasicController {
     }
 
     public function testAction() {
-        $dbname = "dht";
-        $db = PgsqlHelper::getInstance();
-        $servers = ConfigPg::getDBMaster($dbname);
-        // $a ->connect("203.195.196.161","root","123456","test");
-        $db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
-
-        $sql = "SELECT * FROM test WHERE id IN(?,?) LIMIT ?;";
-        $sql = "SELECT * FROM test WHERE id <? AND id>? LIMIT ?;";
-
-        $vars = array(3,1,10);
-        // 查询
-        $res  = $db->getAll($sql,$vars);
-        foreach ($res as $key => $value) {
-            // var_dump($value);
-            // echo '<br/>';
-        }
-
-        // 插入
-        $js = json_encode(array("aa"=>456,"bb"=>999));
-        $insert_data = array("a"=>8,"b"=>4,"c"=>$js,"d"=>9);
-        // $db->insert("test",$insert_data);
-
-        // 更新
-        $condition = array("id"=>6);
-        $update_data = array("b"=>99,"d"=>999);
-        // $db->update("test",$update_data,$condition);
-        // echo 222;//exit;
+        $key = "5";
+        $res = SearchModel::getZoneInfo($key,1,20);
+        var_dump($res);exit;
         $this->getView()->display("index/index.html");
     }
 
