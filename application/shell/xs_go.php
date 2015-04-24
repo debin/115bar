@@ -12,6 +12,7 @@ $data = array('status'=>0);
 $total = TopicModel::getInfoCount($data);
 $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
 
+$count = 0;
 for ($i=1; $i <= $page_count; $i++) { 
     $list_arr = TopicModel::getInfoByPage($data,$i,$pagesize);
     $index->openBuffer(8); // 开启缓冲区，默认 4MB，如 $index->openBuffer(8) 则表示 8MB
@@ -28,10 +29,13 @@ for ($i=1; $i <= $page_count; $i++) {
             $doc->setFields($data);
             // 添加到索引数据库中
             $res = $index->update($doc);
+            $count++;
         }
     }
     $index->closeBuffer(); // 关闭缓冲区，必须和 openBuffer 成对使用
 }
+
+echo "over:",$count;
 
 
 
