@@ -5,6 +5,10 @@ include_once __DIR__."./../library/Otable.php";
 include_once __DIR__."./../library/ConfigPg.php";
 include_once __DIR__."./../library/PgsqlHelper.php";
 include_once __DIR__."./../models/Topic.php";
+include_once __DIR__."./../vendor/xunsearch/php/lib/XS.php";
+
+$xs = new XS('115zone'); // 建立 XS 对象，项目名称为：demo
+$index = $xs->index; // 获取 索引对象
 
 // $page = 1;
 $pagesize = 200;
