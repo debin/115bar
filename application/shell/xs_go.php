@@ -17,7 +17,7 @@ $index = $xs->index; // 获取 索引对象
 $index->clean();
 
 // $page = 1;
-$pagesize = 200;
+$pagesize = 400;
 $data = array('status'=>0);
 $total = TopicModel::getInfoCount($data);
 $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
