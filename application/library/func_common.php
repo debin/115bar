@@ -116,10 +116,14 @@ function cat_escape($mixed) {
  * @return mixed
  */
 function trim_string($string) {
-    $string = str_replace("<br>",'',$string);
-    $string = str_replace("<br />",'',$string);
-    $string = str_replace("&nbsp;",'',$string);
+    $string = trim($string);
+    $string = str_replace("<br>",' ',$string);
+    $string = str_replace("<br />",' ',$string);
+    $string = str_replace("&nbsp;",' ',$string);
     $string = str_replace("  ",' ',$string);
+    if (strpos($string, '  ')!==false) {
+        $string = trim_string($string);
+    }
     return $string;
 }
 
