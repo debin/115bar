@@ -1,4 +1,22 @@
 a:visited { 
-color: #600090; 
-text-decoration: none; 
+    color: #600090; 
+    text-decoration: none; 
+}
+
+em {
+    color: #c00;
+    font-weight: normal;
+}
+
+body {
+    padding-top: 50px;
+}
+
+.starter-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.search_btn {
+    width:68%;
 }

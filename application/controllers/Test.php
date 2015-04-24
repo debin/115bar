@@ -27,9 +27,14 @@ class TestController extends BasicController {
     }
 
     public function testAction() {
-        $key = "5";
+        $key = "2";
         $res = SearchModel::getZoneInfo($key,1,20);
-        var_dump($res);exit;
+        $data = $res['data'];
+        foreach ($data as $key => $value) {
+            echo $value['id'],$value['deal_content'],'<br/>';
+        }
+        // var_dump($res);
+        exit;
         $this->getView()->display("index/index.html");
     }
 
@@ -69,7 +74,7 @@ class TestController extends BasicController {
         $index = $xs->index; // 获取 索引对象
 
         
-
+return 1;
         $page = 1;
         $pagesize = 20;
         $data = array('status'=>0);

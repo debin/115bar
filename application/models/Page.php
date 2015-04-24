@@ -97,7 +97,7 @@ class PageModel{
 
     //分页信息
     public function showpage() {
-        $_page = '<ul class="am-pagination am-pagination-centered">';
+        $_page = '<ul class="pagination">';
         $_page .= $this->prev();
         $_page .= $this->first();
         $_page .= $this->pageList();
