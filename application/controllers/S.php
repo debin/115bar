@@ -27,6 +27,9 @@ class SController extends BasicController {
         $res = SearchModel::getZoneInfo($key,$page,$pagesize);
         $list_data = $res['list_data'];
         $total = $res['total'];
+        if (empty($key)) {
+            $total = $pagesize;
+        }
         // 分页
         $url = Yaf_Registry::get("config")->webroot . "/s/$key";
         // echo json_encode( get_defined_vars() );
@@ -36,7 +39,6 @@ class SController extends BasicController {
         // echo $paginate;
         // exit;
 
-        // var_dump($total);exit;
         $this->title = _("la_103")."_"._("la_102");
         $output                       = array();
         $output['total']              = $total;
