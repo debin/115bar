@@ -21,12 +21,6 @@
 
 <div class="container">
   <div class="col-xs-12 col-sm-8">
-  <ol class="breadcrumb">
-    <li><a href="/">首页</a></li>
-    <li><a href="/t">礼包圈</a></li>
-    <li class="active">详情</li>
-  </ol>
-  <div class="starter-template">
 
   <div class="ggad" style="width:728px;height:90px">
     <!-- <h1>Example page header <small>Subtext for header</small></h1> -->
@@ -40,6 +34,15 @@
     (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
   </div>
+
+  <ol class="breadcrumb">
+    <li><a href="/">首页</a></li>
+    <li><a href="/t">礼包圈</a></li>
+    <li class="active">详情</li>
+  </ol>
+  <div class="starter-template">
+
+
     <!-- 搜索结果列表 -->
     <div class="wrap-col">
       <article class="am-article">
@@ -76,8 +79,14 @@
       <div class="panel-heading">
         <h3 class="panel-title">最近更新</h3>
       </div>
-      <div class="panel-body">
-        Panel content
+      <div class="panel-body list-group">
+        <!-- <ul class=""> -->
+        <?php foreach ($output['latest_list'] as $key => $value): ?>
+          <li class="list-group-item">
+          <a href="/info/<?php echo $value['id'];?>" ><p class="text-justify"><?php echo $value['subject'];?></p></a>
+          </li>
+          <?php endforeach;?>
+        <!-- </ul> -->
       </div>
     </div>
 
@@ -92,7 +101,7 @@
 
     <div id="sidebar_latest" class="panel panel-default" style="">
       <div class="panel-heading">
-        <h3 class="panel-title">随机精选</h3>
+        <h3 class="panel-title">热门标签</h3>
       </div>
       <div class="panel-body">
         Panel content
@@ -117,19 +126,8 @@
   </div><!--/.sidebar-offcanvas-->
 
 
-
-
-
 </div><!-- /.container -->
 
-<div class="container">
-  <div data-am-widget="gotop" class="back-to-top pull-right">
-    <a href="#top" title="回到顶部">
-      <span class="am-gotop-title">回到顶部</span>
-      <i class="am-gotop-icon am-icon-chevron-up"></i>
-    </a>
-  </div>
-</div>
 
 <script type="text/javascript">
 $('.content a').attr('target', '_blank');

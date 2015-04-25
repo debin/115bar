@@ -22,10 +22,20 @@ class InfoController extends BasicController {
         $search = array(" ","|","!","»");
         $subject = str_replace($search,'',$subject);
 
+        // 随机推荐
+        // $total = TopicModel::getInfoCount($data);
+        // $rand_id = mt_rand(10,$total-10);
+        // $list_arr = TopicModel::getInfoByPage($data,$page,$pagesize);
+
+        // 最近更新
+        $data = array('status'=>0);
+        $latest_list_arr = TopicModel::getInfoByPage($data,1,5);
+
         $this->title = $subject."_"._("la_103")."_"._("la_102");
-        $output           = array();
-        $output['id']     = $id;
-        $output['detail'] = $detail;
+        $output                = array();
+        $output['id']          = $id;
+        $output['detail']      = $detail;
+        $output['latest_list'] = $latest_list_arr;
         $this->getView()->assign("output", $output);
         // $this->getView()->display("sign/login.html");
     }
