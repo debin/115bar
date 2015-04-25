@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-default navbar-static-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -71,7 +71,7 @@ document.forms[0].onsubmit = function (e) {
   e.preventDefault();
   var query = document.getElementById("index_search").value;
   if (!query) {
-    document.getElementById("index_search").focus(); return false; 
+    document.getElementById("index_search").focus(); return false;
   }
   var url = '/s/' + encodeURIComponent(query) + '/1';
   window.location= url;

@@ -1,6 +1,6 @@
-a:visited { 
-    color: #600090; 
-    text-decoration: none; 
+a:visited {
+    color: #600090;
+    text-decoration: none;
 }
 
 em {
@@ -8,9 +8,9 @@ em {
     font-weight: normal;
 }
 
-body {
+/*body {
     padding-top: 50px;
-}
+}*/
 
 .starter-template {
     padding: 40px 15px;

@@ -1,43 +1,100 @@
-<div class="am-container col-sm-centered" style="am-vertical-align">
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">115礼包资源</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">礼包圈</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
 
-    <div class="col-sm-10 padding-t15 col-sm-centered">
-    <ol class="am-breadcrumb">
-      <li><a href="/" class="am-icon-home">首页</a></li>
-      <li><a href="/t">礼包圈</a></li>
-      <li class="am-active">详情</li>
-    </ol>
+<div class="container">
+  <div class="col-xs-12 col-sm-9">
+  <ol class="breadcrumb">
+    <li><a href="/">首页</a></li>
+    <li><a href="/t">礼包圈</a></li>
+    <li class="active">详情</li>
+  </ol>
+  <div class="starter-template">
 
-
-    <article class="am-article">
-      <div class="am-article-hd">
-        <h1 class="am-article-title"><?php echo $output['detail']['subject'];?></h1>
-        <p class="am-article-meta"><a href="<?php echo Yaf_Registry::get("config")->webroot;?>"><?php echo Yaf_Registry::get("config")->webroot;?></a> posted on <?php echo date("Y-m-d",$output['detail']['post_time']);?></p>
-      </div>
-
-      <div class="am-article-bd">
-        <p class="am-article-lead"><?php echo $output['detail']['abstract'];?></p>
-        <hr class="am-article-divider"/>
-        <div class="am-u-sm-11 am-u-sm-centered">
-        <div class="am-align-left" id="ad1">
-          <img src="http://global.bing.com/az/hprichbg/rb/UchisarCastle_EN-US10838608428_1920x1080.jpg" alt="" width="240">
+    <!-- 搜索结果列表 -->
+    <div class="wrap-col">
+      <article class="am-article">
+        <div class="heading">
+          <h2 class="text-justify"><?php echo $output['detail']['subject'];?></h2>
+          <p class="text-justify"><a href="<?php echo Yaf_Registry::get("config")->webroot;?>"><?php echo Yaf_Registry::get("config")->webroot;?></a> posted on <?php echo date("Y-m-d",$output['detail']['post_time']);?></p>
         </div>
-        <?php echo $output['detail']['deal_content'];?>
-        <div class="am-align-right"><img src="http://global.bing.com/az/hprichbg/rb/UchisarCastle_EN-US10838608428_1920x1080.jpg" alt="" width="240"></div>
-        </div>
-      </div>
-    </article>
 
-    <div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
-      <a href="#top" title="回到顶部">
-        <span class="am-gotop-title">回到顶部</span>
-        <i class="am-gotop-icon am-icon-chevron-up"></i>
-      </a>
+        <div class="info">
+          <p class="lead text-justify"><?php echo $output['detail']['abstract'];?></p>
+        </div>
+
+        <div class="content">
+
+          <!-- <hr class="am-article-divider"/> -->
+<!--           <div class="am-align-left" id="ad1">
+            <img src="http://global.bing.com/az/hprichbg/rb/UchisarCastle_EN-US10838608428_1920x1080.jpg" alt="" width="240">
+          </div> -->
+          <div class="text-left"><?php echo $output['detail']['deal_content'];?></div>
+<!--           <div class="am-align-right"><img src="http://global.bing.com/az/hprichbg/rb/UchisarCastle_EN-US10838608428_1920x1080.jpg" alt="" width="240"></div>
+          </div> -->
+        </div>
+      </article>
     </div>
 
+  </div>
+
+  </div>
+
+
+  <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+    <div class="panel panel-default">
+      <!-- <div class="panel-heading">Panel heading without title</div> -->
+      <div class="panel-body" id="ggad-sidebar">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- 115app sitebar -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:300px;height:250px"
+             data-ad-client="ca-pub-3026112168181544"
+             data-ad-slot="5119706197"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
     </div>
 
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Panel title</h3>
+      </div>
+      <div class="panel-body">
+        Panel content
+      </div>
+    </div>
+  </div><!--/.sidebar-offcanvas-->
 
-</div>
+
+
+  <div data-am-widget="gotop" class="back-to-top pull-right">
+    <a href="#top" title="回到顶部">
+      <span class="am-gotop-title">回到顶部</span>
+      <i class="am-gotop-icon am-icon-chevron-up"></i>
+    </a>
+  </div>
+
+</div><!-- /.container -->
+
 <script type="text/javascript">
-$('.am-article-bd a').attr('target', '_blank');
+$('.content a').attr('target', '_blank');
 </script>
