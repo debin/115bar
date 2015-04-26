@@ -37,6 +37,37 @@
     <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <body>
         <?php
+            $yaf_request        = Yaf_Dispatcher::getInstance()->getRequest();
+            $current_controller = strtolower($yaf_request->getControllerName());
+        ?>
+        <nav class="navbar navbar-default navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">115礼包资源</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li <?php if(in_array($current_controller,array('t','info'))):?> class="active" <?php endif;?> >
+                  <a href="/t">礼包圈</a>
+                </li>
+<!--                 <li <?php if($current_controller=='gift'):?> class="active" <?php endif;?> >
+                  <a href="/gift">礼包大全</a>
+                </li> -->
+                <li <?php if($current_controller=='contact'):?> class="active" <?php endif;?> >
+                  <a href="/contact">Contact</a>
+                </li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+
+        <?php
         echo $this->content;
         ?>
 
