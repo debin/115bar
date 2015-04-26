@@ -1,54 +1,45 @@
 <div class="container">
   <div class="col-xs-12 col-sm-8">
 
-  <div class="ggad" >
-    <!-- <h1>Example page header <small>Subtext for header</small></h1> -->
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- 115app auto -->
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-3026112168181544"
-         data-ad-slot="6559413394"
-         data-ad-format="auto"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
-
-  <ol class="breadcrumb">
-    <li><a href="/">首页</a></li>
-    <li><a href="/t">礼包圈</a></li>
-    <li class="active">详情</li>
-  </ol>
-  <div class="starter-template">
-
-
-    <!-- 搜索结果列表 -->
-    <div class="wrap-col">
-      <article class="am-article">
-        <div class="heading">
-          <h2 class="text-justify"><?php echo $output['detail']['subject'];?></h2>
-          <p class="text-justify"><a href="<?php echo Yaf_Registry::get("config")->webroot;?>"><?php echo Yaf_Registry::get("config")->webroot;?></a> posted on <?php echo date("Y-m-d",$output['detail']['post_time']);?></p>
-        </div>
-
-        <div class="info">
-          <p class="lead text-justify"><?php echo $output['detail']['abstract'];?></p>
-        </div>
-
-        <div class="content">
-
-          <!-- <hr class="am-article-divider"/> -->
-<!--           <div class="am-align-left" id="ad1">
-            <img src="http://global.bing.com/az/hprichbg/rb/UchisarCastle_EN-US10838608428_1920x1080.jpg" alt="" width="240">
-          </div> -->
-          <div class="text-left"><?php echo $output['detail']['deal_content'];?></div>
-<!--           <div class="am-align-right"><img src="http://global.bing.com/az/hprichbg/rb/UchisarCastle_EN-US10838608428_1920x1080.jpg" alt="" width="240"></div>
-          </div> -->
-        </div>
-      </article>
+    <div class="ggad" >
+      <!-- <h1>Example page header <small>Subtext for header</small></h1> -->
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- 115app auto -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3026112168181544"
+           data-ad-slot="6559413394"
+           data-ad-format="auto"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </div>
 
-  </div>
+    <ol class="breadcrumb">
+      <li><a href="/">首页</a></li>
+      <li><a href="/t">礼包圈</a></li>
+      <li class="active">详情</li>
+    </ol>
+
+    <div class="starter-template">
+      <!-- 搜索结果列表 -->
+      <div class="wrap-col">
+        <article class="am-article">
+          <div class="heading">
+            <h2 class="text-justify"><?php echo $output['detail']['subject'];?></h2>
+            <p class="text-justify"><a href="<?php echo Yaf_Registry::get("config")->webroot;?>"><?php echo Yaf_Registry::get("config")->webroot;?></a> posted on <?php echo date("Y-m-d",$output['detail']['post_time']);?></p>
+          </div>
+
+          <div class="info">
+            <p class="lead text-justify"><?php echo $output['detail']['abstract'];?></p>
+          </div>
+
+          <div class="content">
+            <div class="text-left"><?php echo $output['detail']['deal_content'];?></div>
+          </div>
+        </article>
+      </div>
+    </div>
 
   </div>
 
@@ -97,8 +88,6 @@
         </script>
       </div>
     </div>
-
-
 
   </div><!--/.sidebar-offcanvas-->
 
