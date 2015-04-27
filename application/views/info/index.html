@@ -1,99 +1,98 @@
 <div class="container">
-  <div class="col-xs-12 col-sm-8">
+    <div class="col-xs-12 col-sm-8 main">
+        <div class="ggad" >
+            <!-- <h1>Example page header <small>Subtext for header</small></h1> -->
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- 115app auto -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-3026112168181544"
+                 data-ad-slot="6559413394"
+                 data-ad-format="auto"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
 
-    <div class="ggad" >
-      <!-- <h1>Example page header <small>Subtext for header</small></h1> -->
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- 115app auto -->
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-3026112168181544"
-           data-ad-slot="6559413394"
-           data-ad-format="auto"></ins>
-      <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </div>
+        <ol class="breadcrumb">
+            <li><a href="/">首页</a></li>
+            <li><a href="/t">礼包圈</a></li>
+            <li class="active">详情</li>
+        </ol>
 
-    <ol class="breadcrumb">
-      <li><a href="/">首页</a></li>
-      <li><a href="/t">礼包圈</a></li>
-      <li class="active">详情</li>
-    </ol>
+        <div class="starter-template">
+            <!-- 内容 -->
+            <div class="wrap-col">
+                <article class="am-article">
+                    <div class="heading">
+                        <h2 class="text-left title"><?php echo $output['detail']['subject'];?></h2>
+                        <blockquote>
+                        <p class="text-justify"><a href="<?php echo Yaf_Registry::get("config")->webroot;?>"><?php echo Yaf_Registry::get("config")->webroot;?></a> posted on <?php echo date("Y-m-d",$output['detail']['post_time']);?></p>
+                        </blockquote>
+                    </div>
 
-    <div class="starter-template">
-      <!-- 搜索结果列表 -->
-      <div class="wrap-col">
-        <article class="am-article">
-          <div class="heading">
-            <h2 class="text-justify"><?php echo $output['detail']['subject'];?></h2>
-            <p class="text-justify"><a href="<?php echo Yaf_Registry::get("config")->webroot;?>"><?php echo Yaf_Registry::get("config")->webroot;?></a> posted on <?php echo date("Y-m-d",$output['detail']['post_time']);?></p>
-          </div>
+                    <div class="well well-lg">
+                        <p class="text-justify"><span>摘要: </span><?php echo $output['detail']['abstract'];?></p>
+                    </div>
 
-          <div class="info">
-            <p class="lead text-justify"><span>摘要: </span><?php echo $output['detail']['abstract'];?></p>
-          </div>
+                    <div class="content">
+                      <div class="text-justify"><?php echo $output['detail']['deal_content'];?></div>
+                    </div>
+                </article>
+                <div class="well well-lg"></div>
+            </div><!-- 内容 -->
+        </div><!-- .starter-template -->
+    </div> <!-- .main -->
 
-          <div class="content">
-            <div class="text-justify"><?php echo $output['detail']['deal_content'];?></div>
-          </div>
-        </article>
-      </div>
-    </div>
+    <!-- sidebar -->
+    <div class="col-xs-12 col-sm-4 sidebar-offcanvas" id="sidebar" style="width:330px;">
 
-  </div>
+        <div id="sidebar_latest" class="panel panel-default" style="">
+            <div class="panel-heading">
+                <h3 class="panel-title">最近更新</h3>
+            </div>
+            <div class="panel-body list-unstyled">
+                <!-- <ul class=""> -->
+                <?php foreach ($output['latest_list'] as $key => $value): ?>
+                <li class="list-style">
+                    <a href="/info/<?php echo $value['id'];?>" ><p class="text-justify"><?php echo $value['subject'];?></p></a>
+                </li>
+                <?php endforeach;?>
+                <!-- </ul> -->
+            </div>
+        </div>
 
+        <div id="sidebar_recommend" class="panel panel-default" style="">
+            <div class="panel-heading">
+                <h3 class="panel-title">猜你喜欢</h3>
+            </div>
+            <div class="panel-body list-group list-unstyled">
+                <?php foreach ($output['latest_list'] as $key => $value): ?>
+                <li class="list-style">
+                    <a href="/info/<?php echo $value['id'];?>" ><p class="text-justify"><?php echo $value['subject'];?></p></a>
+                </li>
+                <?php endforeach;?>
+            </div>
+        </div>
 
-  <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" style="width:350px;">
+        <div class="ggad">
+            <!-- <div class="panel-heading">Panel heading without title</div> -->
+            <div class="panel-body1" id="ggad-sidebar">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- 115app sitebar -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:250px"
+                     data-ad-client="ca-pub-3026112168181544"
+                     data-ad-slot="5119706197"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
 
-    <div id="sidebar_latest" class="panel panel-default" style="">
-      <div class="panel-heading">
-        <h3 class="panel-title">最近更新</h3>
-      </div>
-      <div class="panel-body list-group">
-        <!-- <ul class=""> -->
-        <?php foreach ($output['latest_list'] as $key => $value): ?>
-          <li class="list-style">
-          <a href="/info/<?php echo $value['id'];?>" ><p class="text-justify"><?php echo $value['subject'];?></p></a>
-          </li>
-          <?php endforeach;?>
-        <!-- </ul> -->
-      </div>
-    </div>
-
-    <div id="sidebar_recommend" class="panel panel-default" style="">
-      <div class="panel-heading">
-        <h3 class="panel-title">猜你喜欢</h3>
-      </div>
-      <div class="panel-body list-group">
-        <?php foreach ($output['latest_list'] as $key => $value): ?>
-          <li class="list-group-item">
-          <a href="/info/<?php echo $value['id'];?>" ><p class="text-justify"><?php echo $value['subject'];?></p></a>
-          </li>
-          <?php endforeach;?>
-      </div>
-    </div>
-
-    <div class="ggad" style="width:300px;height:250px">
-      <!-- <div class="panel-heading">Panel heading without title</div> -->
-      <div class="panel-body" id="ggad-sidebar">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- 115app sitebar -->
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:300px;height:250px"
-             data-ad-client="ca-pub-3026112168181544"
-             data-ad-slot="5119706197"></ins>
-        <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>
-    </div>
-
-  </div><!--/.sidebar-offcanvas-->
-
+    </div><!--/.sidebar-offcanvas-->
 
 </div><!-- /.container -->
-
 
 <script type="text/javascript">
 $('.content a').attr('target', '_blank');
