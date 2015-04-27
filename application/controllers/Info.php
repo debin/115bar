@@ -26,12 +26,18 @@ class InfoController extends BasicController {
         // $total = TopicModel::getInfoCount($data);
         // $rand_id = mt_rand(10,$total-10);
         // $list_arr = TopicModel::getInfoByPage($data,$page,$pagesize);
-        
+
         // 推荐
         $tags = isset($detail['tags'])?$detail['tags']:array();
         $tags = trim($tags,"{}");
-        $maylike_res = SearchModel::getZoneInfo($tags,1,5);
+        $tags = str_replace(",", " OR ", $tags);
+        $maylike_res = SearchModel::getMayLikeInfo($tags,1,8);
         $maylike_list = $maylike_res['list_data'];
+        foreach ($maylike_list as $key => $value) {
+            if ($value['id'] == $id) {
+                unset($maylike_list[$key]);
+            }
+        }
         // var_dump($tags,$maylive);exit;
 
 
