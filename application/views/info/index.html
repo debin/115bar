@@ -27,7 +27,7 @@
                     <div class="heading">
                         <h2 class="text-left title"><?php echo $output['detail']['subject'];?></h2>
                         <blockquote>
-                        <p class="text-justify"><a href="<?php echo Yaf_Registry::get("config")->webroot;?>"><?php echo Yaf_Registry::get("config")->webroot;?></a> posted on <?php echo date("Y-m-d",$output['detail']['post_time']);?></p>
+                        <p class="text-justify"><a href="<?php echo Yaf_Registry::get("config")->webroot.$_SERVER["REQUEST_URI"];?>"><?php echo Yaf_Registry::get("config")->webroot;?></a> posted on <?php echo date("Y-m-d",$output['detail']['post_time']);?></p>
                         </blockquote>
                     </div>
 
@@ -39,7 +39,7 @@
                       <div class="text-justify"><?php echo $output['detail']['deal_content'];?></div>
                     </div>
                 </article>
-                <div class="well well-lg">
+                <div class="well well-sm">
                 <p class="text-justify">tags:
                 <?php foreach ($output['tag_arr'] as $value):?>
                     <a href="/s/<?php echo $value;?>/1"><?php echo $value;?></a>

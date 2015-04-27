@@ -59,9 +59,13 @@ routes.rewrite2.match='/info/:id'
 routes.rewrite2.route.controller=info
 routes.rewrite2.route.action=index
 routes.rewrite3.type="rewrite"
-routes.rewrite3.match='/s/:key/:page'
+routes.rewrite3.match='/s/:key'
 routes.rewrite3.route.controller=s
 routes.rewrite3.route.action=index
+routes.rewrite4.type="rewrite"
+routes.rewrite4.match='/s/:key/:page'
+routes.rewrite4.route.controller=s
+routes.rewrite4.route.action=index
 webroot=http://dev.115bar.com
 
 [iknow:product]

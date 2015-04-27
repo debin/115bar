@@ -20,3 +20,7 @@ em {
 .search_btn {
     width:68%;
 }
+
+.content {
+    word-break: break-all;
+}
