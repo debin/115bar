@@ -26,16 +26,25 @@ class InfoController extends BasicController {
         // $total = TopicModel::getInfoCount($data);
         // $rand_id = mt_rand(10,$total-10);
         // $list_arr = TopicModel::getInfoByPage($data,$page,$pagesize);
+        
+        // 推荐
+        $tags = isset($detail['tags'])?$detail['tags']:array();
+        $tags = trim($tags,"{}");
+        $maylike_res = SearchModel::getZoneInfo($tags,1,5);
+        $maylike_list = $maylike_res['list_data'];
+        // var_dump($tags,$maylive);exit;
+
 
         // 最近更新
         $data = array('status'=>0);
         $latest_list_arr = TopicModel::getInfoByPage($data,1,5);
 
         $this->title = $subject."_"._("la_103")."_"._("la_102");
-        $output                = array();
-        $output['id']          = $id;
-        $output['detail']      = $detail;
-        $output['latest_list'] = $latest_list_arr;
+        $output                 = array();
+        $output['id']           = $id;
+        $output['detail']       = $detail;
+        $output['latest_list']  = $latest_list_arr;
+        $output['maylike_list'] = $maylike_list;
         $this->getView()->assign("output", $output);
         // $this->getView()->display("sign/login.html");
     }
