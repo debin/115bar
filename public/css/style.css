@@ -24,3 +24,7 @@ em {
 .content {
     word-break: break-all;
 }
+
+.sidebar {
+    word-break: break-all;
+}
