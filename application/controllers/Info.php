@@ -30,6 +30,9 @@ class InfoController extends BasicController {
         // 推荐
         $tags = isset($detail['tags'])?$detail['tags']:array();
         $tags = trim($tags,"{}");
+        $tag_arr = explode (',',$tags);
+
+
         $tags = str_replace(",", " OR ", $tags);
         $maylike_res = SearchModel::getMayLikeInfo($tags,1,8);
         $maylike_list = $maylike_res['list_data'];
@@ -51,6 +54,7 @@ class InfoController extends BasicController {
         $output['detail']       = $detail;
         $output['latest_list']  = $latest_list_arr;
         $output['maylike_list'] = $maylike_list;
+        $output['tag_arr']      = $tag_arr;
         $this->getView()->assign("output", $output);
         // $this->getView()->display("sign/login.html");
     }

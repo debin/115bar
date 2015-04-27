@@ -39,7 +39,13 @@
                       <div class="text-justify"><?php echo $output['detail']['deal_content'];?></div>
                     </div>
                 </article>
-                <div class="well well-lg"><p class="text-justify">tag: <?php echo trim($output['detail']['tags'],"{}");?></p></div>
+                <div class="well well-lg">
+                <p class="text-justify">tags:
+                <?php foreach ($output['tag_arr'] as $value):?>
+                    <a href="/s/<?php echo $value;?>/1"><?php echo $value;?></a>
+                <?php endforeach;?>
+                </p>
+                </div>
             </div><!-- 内容 -->
         </div><!-- .starter-template -->
     </div> <!-- .main -->
