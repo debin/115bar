@@ -28,7 +28,7 @@ class InfoController extends BasicController {
         // $list_arr = TopicModel::getInfoByPage($data,$page,$pagesize);
 
         // 推荐
-        $tags = isset($detail['tags'])?$detail['tags']:array();
+        $tags = isset($detail['tags'])?$detail['tags']:'';
         $tags = trim($tags,"{}");
         $tag_arr = explode (',',$tags);
 
