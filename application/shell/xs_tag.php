@@ -37,7 +37,7 @@ while ( $list_arr ) {
         $deal_content = strip_tags($value['deal_content']);
         $deal_content = trim_string($deal_content);
 
-        $tops = $tokenizer->getTops($deal_content, $max_num, 'n,v,vn,nr,ns,nt,nz,nz,s,l');//http://www.cnblogs.com/martinzhang/p/3209727.html
+        $tops = $tokenizer->getTops($deal_content, $max_num, 'n,v,vn,nr,ns,nt,nz,nz,s,l,i');//http://www.xunsearch.com/scws/docs.php#attr
         $num = count($tops);
         if ($num<$max_num) {
             $tops_en = $tokenizer->getTops($deal_content, $max_num-$num, 'en');
