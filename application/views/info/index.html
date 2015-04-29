@@ -52,13 +52,22 @@
     </div> <!-- .main -->
 
     <!-- sidebar -->
-    <div class="col-xs-12 col-sm-4 sidebar-offcanvas sidebar" id="sidebar" style="width:330px;">
+    <div class="col-xs-12 col-sm-3 sidebar-offcanvas sidebar" id="sidebar" style="width:330px;">
 
-        <div id="sidebar_latest" class="panel panel-default rec-spe" style="">
+        <div class="form-group has-active search-col search-in">
+            <form id="hpsform-new" class="navbar-search navbar-form">
+                <div class="form-group">
+                    <input id="sidebar_q" class="input form-control" type="text" placeholder="关键字查找" autocomplete="off" title="关键字查找" name="q">
+                    <button id="sidebar_search" class="submit" value="Search" type="submit"></button>
+                </div>
+            </form>
+        </div>
+
+        <div id="sidebar_latest" class="read panel panel-default rec-spe" style="">
             <div class="panel-heading">
                 <h3 class="panel-title">最近更新</h3>
             </div>
-            <div class="panel-body list-unstyled">
+            <ul class="panel-body list-group list-unstyled">
                 <!-- <ul class=""> -->
                 <?php foreach ($output['latest_list'] as $key => $value): ?>
                 <li class="list-style">
@@ -66,7 +75,7 @@
                 </li>
                 <?php endforeach;?>
                 <!-- </ul> -->
-            </div>
+            </ul>
         </div>
 
         <div id="sidebar_recommend" class="read panel-default rec-spe" style="">
