@@ -30,6 +30,7 @@
   <div class="starter-template">
 
     <!-- 结果列表 -->
+    <div class="topic_list">
     <ul class="list-group">
     <?php foreach ($output['list'] as $key => $value): ?>
       <li class="list-group-item">
@@ -39,6 +40,7 @@
       </li>
       <?php endforeach;?>
     </ul>
+    </div>
 
   </div>
   </div>
@@ -67,19 +69,3 @@
   <?php echo $output['paginate'];?>
   </nav>
 </div><!-- /.container -->
-
-
-
-<script type="text/javascript">
-
-document.forms[0].onsubmit = function (e) {
-  e.preventDefault();
-  var query = document.getElementById("index_search").value;
-  if (!query) {
-    document.getElementById("index_search").focus(); return false;
-  }
-  var url = '/s/' + encodeURIComponent(query) + '/1';
-  window.location= url;
-  return false;
-}
-</script>
