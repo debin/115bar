@@ -50,7 +50,7 @@ for ($i=1; $i <= $page_count; $i++) {
     $index->closeBuffer(); // 关闭缓冲区，必须和 openBuffer 成对使用
 }
 
-// 更新索引
+//更新索引
 $dbname = Otable::DB_115;
 $db = PgsqlHelper::getInstance();
 $servers = ConfigPg::getDBMaster($dbname);
@@ -72,9 +72,4 @@ if ($xun_index) {
     $db->insert("xun_index",$insert_data);
 }
 
-
 echo "over:",$count;
-
-
-
-
