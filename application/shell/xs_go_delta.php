@@ -31,9 +31,6 @@ if (isset($xun_index['update_time'])) {
 $xs = new XS('115zone'); // 建立 XS 对象，项目名称为：demo
 $index = $xs->index; // 获取 索引对象
 
-// 执行清空操作
-$index->clean();
-
 // $page = 1;
 $pagesize = 1000;
 $data = array('status'=>0,'update_time'=>$update_time);
