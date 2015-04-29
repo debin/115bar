@@ -74,7 +74,7 @@ if (isset($value['update_time'])&&$value['update_time']) {
 }
 
 
-echo "over:",$count;
+echo "update xs delta:",$count;
 
 
 
