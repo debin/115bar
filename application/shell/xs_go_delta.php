@@ -71,7 +71,6 @@ if (isset($value['update_time'])&&$value['update_time']) {
     $conditon = array('upload_id'=>CONFIG_ENV);
     $update_data = array('update_time'=>$value['update_time']);
     $db->update("xun_index",$update_data,$conditon);
-    echo 'update ';
 }
 
 
