@@ -35,7 +35,7 @@ $index = $xs->index; // 获取 索引对象
 $index->clean();
 
 // $page = 1;
-$pagesize = 2;
+$pagesize = 1000;
 $data = array('status'=>0,'update_time'=>$update_time);
 $total = TopicModel::xs_getInfoCount($data);
 $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
