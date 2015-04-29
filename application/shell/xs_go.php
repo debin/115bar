@@ -24,12 +24,12 @@ $index->clean();
 // $page = 1;
 $pagesize = 1000;
 $data = array('status'=>0);
-$total = TopicModel::getInfoCount($data);
+$total = TopicModel::xs_getInfoCount($data);
 $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
 $update_time = time();
 $count = 0;
 for ($i=1; $i <= $page_count; $i++) { 
-    $list_arr = TopicModel::getInfoByPage($data,$i,$pagesize);
+    $list_arr = TopicModel::xs_getInfoByPage($data,$i,$pagesize,"ASC");
     $index->openBuffer(8); // 开启缓冲区，默认 4MB，如 $index->openBuffer(8) 则表示 8MB
     if ($list_arr) {
         foreach ($list_arr as $key => $value) {
