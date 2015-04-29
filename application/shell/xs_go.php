@@ -11,10 +11,10 @@ include_once __DIR__."./../library/PgsqlHelper.php";
 include_once __DIR__."./../models/Topic.php";
 include_once __DIR__."./../vendor/xunsearch/php/lib/XS.php";
 
-$xs = new XS('115zone'); // ½¨Á¢ XS ¶ÔÏó£¬ÏîÄ¿Ãû³ÆÎª£ºdemo
-$index = $xs->index; // »ñÈ¡ Ë÷Òı¶ÔÏó
+$xs = new XS('115zone'); // å»ºç«‹ XS å¯¹è±¡ï¼Œé¡¹ç›®åç§°ä¸ºï¼šdemo
+$index = $xs->index; // è·å– ç´¢å¼•å¯¹è±¡
 
-// Ö´ĞĞÇå¿Õ²Ù×÷
+// æ‰§è¡Œæ¸…ç©ºæ“ä½œ
 $index->clean();
 
 // $page = 1;
@@ -26,7 +26,7 @@ $update_time = time();
 $count = 0;
 for ($i=1; $i <= $page_count; $i++) { 
     $list_arr = TopicModel::getInfoByPage($data,$i,$pagesize);
-    $index->openBuffer(8); // ¿ªÆô»º³åÇø£¬Ä¬ÈÏ 4MB£¬Èç $index->openBuffer(8) Ôò±íÊ¾ 8MB
+    $index->openBuffer(8); // å¼€å¯ç¼“å†²åŒºï¼Œé»˜è®¤ 4MBï¼Œå¦‚ $index->openBuffer(8) åˆ™è¡¨ç¤º 8MB
     if ($list_arr) {
         foreach ($list_arr as $key => $value) {
             $subject = $value['subject'];
@@ -34,23 +34,23 @@ for ($i=1; $i <= $page_count; $i++) {
             $subject = trim_string($subject);
             $deal_content = trim_string($deal_content);
             $data = array(
-                'id'           => $value['id'], // ´Ë×Ö¶ÎÎªÖ÷¼ü£¬±ØĞëÖ¸¶¨
+                'id'           => $value['id'], // æ­¤å­—æ®µä¸ºä¸»é”®ï¼Œå¿…é¡»æŒ‡å®š
                 'subject'      => $subject,
                 'deal_content' => $deal_content,
                 'post_time'    => $value['post_time'],
             );
-            // ´´½¨ÎÄµµ¶ÔÏó
+            // åˆ›å»ºæ–‡æ¡£å¯¹è±¡
             $doc = new XSDocument;
             $doc->setFields($data);
-            // Ìí¼Óµ½Ë÷ÒıÊı¾İ¿âÖĞ
+            // æ·»åŠ åˆ°ç´¢å¼•æ•°æ®åº“ä¸­
             $res = $index->add($doc);//add update
             $count++;
         }
     }
-    $index->closeBuffer(); // ¹Ø±Õ»º³åÇø£¬±ØĞëºÍ openBuffer ³É¶ÔÊ¹ÓÃ
+    $index->closeBuffer(); // å…³é—­ç¼“å†²åŒºï¼Œå¿…é¡»å’Œ openBuffer æˆå¯¹ä½¿ç”¨
 }
 
-// ¸üĞÂË÷Òı
+// æ›´æ–°ç´¢å¼•
 $dbname = Otable::DB_115;
 $db = PgsqlHelper::getInstance();
 $servers = ConfigPg::getDBMaster($dbname);
