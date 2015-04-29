@@ -54,7 +54,7 @@
     <!-- sidebar -->
     <div class="col-xs-12 col-sm-4 sidebar-offcanvas sidebar" id="sidebar" style="width:330px;">
 
-        <div id="sidebar_latest" class="panel panel-default" style="">
+        <div id="sidebar_latest" class="panel panel-default rec-spe" style="">
             <div class="panel-heading">
                 <h3 class="panel-title">最近更新</h3>
             </div>
@@ -69,17 +69,17 @@
             </div>
         </div>
 
-        <div id="sidebar_recommend" class="panel panel-default" style="">
+        <div id="sidebar_recommend" class="read panel-default rec-spe" style="">
             <div class="panel-heading">
                 <h3 class="panel-title">猜你喜欢</h3>
             </div>
-            <div class="panel-body list-group list-unstyled">
+            <ul class="panel-body list-group list-unstyled">
                 <?php foreach ($output['maylike_list'] as $key => $value): ?>
                 <li class="list-style">
                     <a href="/info/<?php echo $value['id'];?>" ><p class="text-justify"><?php echo $value['subject'];?></p></a>
                 </li>
                 <?php endforeach;?>
-            </div>
+            </ul>
         </div>
 
         <div class="ggad">
