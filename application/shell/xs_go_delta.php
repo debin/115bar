@@ -41,7 +41,7 @@ $total = TopicModel::xs_getInfoCount($data);
 $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
 $count = 0;
 for ($i=1; $i <= $page_count; $i++) { 
-    $list_arr = TopicModel::xs_getInfoByPage($data,$i,$pagesize);
+    $list_arr = TopicModel::xs_getInfoByPage($data,$i,$pagesize,"ASC");
     $index->openBuffer(8); // 开启缓冲区，默认 4MB，如 $index->openBuffer(8) 则表示 8MB
     if ($list_arr) {
         foreach ($list_arr as $key => $value) {
