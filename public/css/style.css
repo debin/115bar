@@ -32,7 +32,7 @@ body {
 
 
 /**********header**********/
-body, html { font-family: "微软雅黑"; font-size: 12px; }
+body, html { font-family: "微软雅黑"; font-size: 12px;padding-top: 50px; }
 ol, ul, li { list-style: none outside none; }
 .none { display: none; }
 a:focus { outline: none; -moz-outline: none }
