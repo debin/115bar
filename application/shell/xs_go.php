@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * 更新所有索引
+ */
+
 ini_set('memory_limit','256M');
 
 include_once __DIR__."./../library/func_common.php";
