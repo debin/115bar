@@ -21,7 +21,7 @@ body {
     width:68%;
 }
 
-.content .topic_list{
+.content {
     word-break: break-all;
 }
 
@@ -37,6 +37,7 @@ body {
     font-size: 18px; 
     color: #3c3c3c; 
     font-weight: bold; 
+    word-break: break-all;
 }
 
 
