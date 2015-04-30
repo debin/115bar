@@ -29,15 +29,17 @@
 
 
     <!-- 搜索结果列表 -->
-    <ul class="list-group">
-    <?php foreach ($output['list'] as $key => $value): ?>
-      <li class="list-group-item">
-      <a href="/info/<?php echo $value['id'];?>" target="_blank"><p class="text-justify"><?php echo $value['subject'];?></p></a>
-      <span class="badge"><?php echo date("Y-m-d",$value['post_time']);?></span>
-      <div class=""><p class="text-justify"><?php echo $value['deal_content'];?></p></div>
-      </li>
-      <?php endforeach;?>
-    </ul>
+    <div class="topic_list">
+      <ul class="list-group">
+      <?php foreach ($output['list'] as $key => $value): ?>
+        <li class="list-group-item">
+        <a href="/info/<?php echo $value['id'];?>" target="_blank"><p class="text-justify"><?php echo $value['subject'];?></p></a>
+        <span class="badge"><?php echo date("Y-m-d",$value['post_time']);?></span>
+        <div class=""><p class="text-justify"><?php echo $value['deal_content'];?></p></div>
+        </li>
+        <?php endforeach;?>
+      </ul>
+    </div>
 
 
   </div>
