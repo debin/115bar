@@ -11,7 +11,7 @@
     <ul class="list-group">
     <?php foreach ($output['list'] as $key => $value): ?>
       <li class="list-group-item">
-      <a href="/info/<?php echo $value['id'];?>" ><p class="text-justify"><?php echo isset($value['subject'])?$value['subject']:'无题';?></p></a>
+      <a href="/info/<?php echo $value['id'];?>" ><p class="text-justify"><strong><?php echo isset($value['subject'])?$value['subject']:'无题';?></strong></p></a>
       <span class="badge"><?php echo date("Y-m-d",$value['post_time']);?></span>
       <div class="abstract"><p class="text-justify"><?php echo $value['abstract'];?></p></div>
       </li>
