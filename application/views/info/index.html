@@ -23,36 +23,73 @@
 
         <div class="starter-template">
             <!-- 内容 -->
-            <div class="wrap-col">
-                <article class="am-article">
-                    <div class="heading">
-                        <h2 class="text-left title"><?php echo $output['detail']['subject'];?></h2>
-                        <blockquote>
-                        <p class="text-justify"><a href="<?php echo Yaf_Registry::get("config")->webroot.$_SERVER["REQUEST_URI"];?>"><?php echo Yaf_Registry::get("config")->webroot;?></a> posted on <?php echo date("Y-m-d",$output['detail']['post_time']);?></p>
-                        </blockquote>
+            <div class="wrap-col articlecontent">
+                <div class="title">
+                    <h2 class="text-left"><?php echo $output['detail']['subject'];?></h2>
+                    <div class="property">
+                        <span class="name"><a href="<?php echo Yaf_Registry::get("config")->webroot.$_SERVER["REQUEST_URI"];?>" title="由 Conermx 发布" rel="author"><?php echo Yaf_Registry::get("config")->webroot;?></a></span>
+                        <span class="icon-f"></span>
+                        <span class="time"><?php echo date("Y-m-d",$output['detail']['post_time']);?></span>
+                        <!-- <img style="float: left;margin-top:2px;" title="金币奖励" src="http://image.3001.net/images/other/gold.png">  -->
+                        <!-- <span class="coin"><strong>+5</strong></span>      -->
+                        <!-- <span class="look">共<strong>12218</strong>人围观，发现<strong>5</strong>个不明物体</span> -->
+                        <span class="tags"> 
+                            <?php foreach ($output['tag_arr'] as $value):?>
+                            <a href="/s/<?php echo $value;?>/1"><?php echo $value;?></a>
+                            <?php endforeach;?>
+                        </span>
+                        <span class="tags_01"></span>             
+                    </div><!-- .property -->
+                </div><!-- .title -->
+
+                <div id="contenttxt">
+                    <div class="text-justify content"><?php echo $output['detail']['deal_content'];?>
                     </div>
+                    <div class="share float-l">
+                        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+                    </div>
+
+                    <div class="article-pager">
+                        <ul>
+                            <li class="previous">
+                            <?php if(isset($output['prev_info'])):?>
+                                <span>上一篇：</span><a href="/info/<?php echo $output['prev_info']['id'];?>" rel="prev"><?php echo $output['prev_info']['subject'];?></a>
+                            <?php endif;?>
+                            </li>
+
+                            <li class="next">
+                            <?php if(isset($output['next_info'])):?>
+                                <span>下一篇：</span><a href="/info/<?php echo $output['next_info']['id'];?>" rel="next"><?php echo $output['next_info']['subject'];?></a>
+                            <?php endif;?>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="">
+<!--                     <span class="tags"> 
+                        <?php foreach ($output['tag_arr'] as $value):?>
+                        <a href="/s/<?php echo $value;?>/1"><?php echo $value;?></a>
+                        <?php endforeach;?>
+                    </span> -->
+                </div>
+
+
+
+<!--                 <article class="am-article">
 
                     <div class="well well-lg">
                         <p class="text-justify"><span>摘要: </span><?php echo $output['detail']['abstract'];?></p>
                     </div>
-
-                    <div class="content">
-                      <div class="text-justify"><?php echo $output['detail']['deal_content'];?></div>
                     </div>
-                </article>
-                <div class="well well-sm">
-                <p class="text-justify">tags:
-                <?php foreach ($output['tag_arr'] as $value):?>
-                    <a href="/s/<?php echo $value;?>/1"><?php echo $value;?></a>
-                <?php endforeach;?>
-                </p>
-                </div>
+                </article> -->
+
             </div><!-- 内容 -->
         </div><!-- .starter-template -->
     </div> <!-- .main -->
 
     <!-- sidebar -->
-    <div class="col-xs-12 col-sm-3 sidebar-offcanvas sidebar" id="sidebar" style="width:330px;">
+    <div class="col-xs-12 col-sm-4 sidebar_right sidebar-offcanvas" id="sidebar">
 
         <div class="form-group has-active search-col search-in">
             <form id="hpsform-new" class="navbar-search navbar-form">
@@ -65,9 +102,10 @@
 
         <div id="sidebar_latest" class="read panel-default rec-spe">
             <div class="panel-heading">
-                <h3 class="panel-title">最近更新</h3>
+                <h3 class="panel-title text-center">最近更新</h3>
             </div>
-            <ul class="panel-body list-group list-unstyled">
+            <div class="panel-body">
+            <ul class="list-group list-unstyled">
                 <!-- <ul class=""> -->
                 <?php foreach ($output['latest_list'] as $key => $value): ?>
                 <li class="list-style">
@@ -76,30 +114,33 @@
                 <?php endforeach;?>
                 <!-- </ul> -->
             </ul>
+            </div>
         </div>
 
         <div id="sidebar_recommend" class="read panel-default rec-spe" style="">
             <div class="panel-heading">
-                <h3 class="panel-title">猜你喜欢</h3>
+                <h3 class="panel-title text-center">猜你喜欢</h3>
             </div>
-            <ul class="panel-body list-group list-unstyled">
+            <div class="panel-body">
+            <ul class="list-group list-unstyled">
                 <?php foreach ($output['maylike_list'] as $key => $value): ?>
                 <li class="list-style">
                     <a href="/info/<?php echo $value['id'];?>" ><p class="text-justify"><?php echo $value['subject'];?></p></a>
                 </li>
                 <?php endforeach;?>
             </ul>
+            </div>
         </div>
 
-        <div class="ggad">
+        <div class="ggad panel-default">
             <!-- <div class="panel-heading">Panel heading without title</div> -->
-            <div class="panel-body1" id="ggad-sidebar">
+            <div class="panel-body" id="ggad-sidebar">
                 <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
                 <!-- 115app sitebar -->
 <!--                 <ins class="adsbygoogle"
-                     style="display:inline-block;width:300px;height:250px"
-                     data-ad-client="ca-pub-3026112168181544"
-                     data-ad-slot="5119706197"></ins>
+                    style="display:inline-block;width:300px;height:250px"
+                    data-ad-client="ca-pub-3026112168181544"
+                    data-ad-slot="5119706197"></ins>
                 <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
                 </script> -->
@@ -112,4 +153,8 @@
 
 <script type="text/javascript">
 $('.content a').attr('target', '_blank');
+</script>
+
+<!-- 百度分享 -->
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script>

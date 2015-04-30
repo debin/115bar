@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="col-xs-12 col-sm-9">
+  <div class="col-xs-12 col-sm-8">
   <ol class="breadcrumb">
     <li><a href="/">首页</a></li>
     <li class="am-active">礼包圈</li>
@@ -11,7 +11,7 @@
     <ul class="list-group">
     <?php foreach ($output['list'] as $key => $value): ?>
       <li class="list-group-item">
-      <a href="/info/<?php echo $value['id'];?>" ><p class="text-justify"><?php echo $value['subject'];?></p></a>
+      <a href="/info/<?php echo $value['id'];?>" ><p class="text-justify"><?php echo isset($value['subject'])?$value['subject']:'无题';?></p></a>
       <span class="badge"><?php echo date("Y-m-d",$value['post_time']);?></span>
       <div class="abstract"><p class="text-justify"><?php echo $value['abstract'];?></p></div>
       </li>
@@ -21,7 +21,7 @@
 
   </div>
   </div>
-  <div class="col-xs-12 col-sm-3 sidebar-offcanvas" id="sidebar">
+  <div class="col-xs-12 col-sm-4 sidebar_right sidebar-offcanvas" id="sidebar">
     <div class="form-group has-active search-col search-in">
         <form id="hpsform-new" class="navbar-search navbar-form">
             <div class="form-group">
@@ -31,18 +31,27 @@
         </form>
     </div>
 
+    <div class="ggad panel-default">
+        <!-- <div class="panel-heading">Panel heading without title</div> -->
+        <div class="panel-body" id="ggad-sidebar">
+             <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+            <!-- 115app sitebar -->
+<!--             <ins class="adsbygoogle"
+                style="display:inline-block;width:300px;height:250px"
+                data-ad-client="ca-pub-3026112168181544"
+                data-ad-slot="5119706197"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script> -->
+        </div>
+    </div>
+
+
   </div><!--/.sidebar-offcanvas-->
 
-  <div class="col-xs-12 col-sm-3 sidebar-offcanvas" id="sidebar">
-    <!-- /41507130/115app-300250 -->
-    <div id='div-gpt-ad-1429984565340-0' style='height:250px; width:300px;'>
-<!--     <script type='text/javascript'>
-    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429984565340-0'); });
-    </script> -->
-    </div>
-  </div>
 
-  <nav>
+
+  <nav class="col-xs-12 col-sm-8">
   <?php echo $output['paginate'];?>
   </nav>
 </div><!-- /.container -->

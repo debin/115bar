@@ -22,11 +22,6 @@ class InfoController extends BasicController {
         $search = array(" ","|","!","»");
         $subject = str_replace($search,'',$subject);
 
-        // 随机推荐
-        // $total = TopicModel::getInfoCount($data);
-        // $rand_id = mt_rand(10,$total-10);
-        // $list_arr = TopicModel::getInfoByPage($data,$page,$pagesize);
-
         // 推荐
         $tags = isset($detail['tags'])?$detail['tags']:'';
         $tags = trim($tags,"{}");
@@ -42,6 +37,11 @@ class InfoController extends BasicController {
             }
         }
         // var_dump($tags,$maylive);exit;
+        
+
+        // 上一篇
+        $prev_info = TopicModel::getNearInfoById($id,'>',"ASC");
+        $next_info = TopicModel::getNearInfoById($id,'<');
 
 
         // 最近更新
@@ -55,6 +55,8 @@ class InfoController extends BasicController {
         $output['latest_list']  = $latest_list_arr;
         $output['maylike_list'] = $maylike_list;
         $output['tag_arr']      = $tag_arr;
+        $output['prev_info']    = $prev_info;
+        $output['next_info']    = $next_info;
         $this->getView()->assign("output", $output);
         // $this->getView()->display("sign/login.html");
     }

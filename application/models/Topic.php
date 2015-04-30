@@ -8,7 +8,7 @@ class TopicModel{
 
 
     /**
-     * 获取用户信息
+     * 获取信息
      * @param  string $id mongo id
      */
     public static function getInfoById($id){
@@ -16,7 +16,23 @@ class TopicModel{
         $db = PgsqlHelper::getInstance();
         $servers = ConfigPg::getDBMaster($dbname);
         $db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
-        $sql = 'SELECT "id","subject","abstract","deal_content","image_thumbs","post_time","deal_content","tags" FROM '.Otable::TABLE_115_TOPIC." WHERE id=?";
+        $sql = 'SELECT "id","subject","abstract","deal_content","image_thumbs","post_time","deal_content","tags" FROM '.Otable::TABLE_115_TOPIC." WHERE status=0 AND id=?";
+        $vars = array(intval($id));
+        $result = $db->getOne($sql,$vars);
+        return $result;
+    }
+
+    /**
+     * 获取上下一篇信息
+     * @param  int $id  id
+     * @param  string $oper    >上一篇 <下一篇
+     */
+    public static function getNearInfoById($id,$oper="<",$sort="DESC"){
+        $dbname = Otable::DB_115;
+        $db = PgsqlHelper::getInstance();
+        $servers = ConfigPg::getDBMaster($dbname);
+        $db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
+        $sql = 'SELECT "id","subject" FROM '.Otable::TABLE_115_TOPIC." WHERE status=0 AND id {$oper} ? ORDER BY id {$sort}";
         $vars = array(intval($id));
         $result = $db->getOne($sql,$vars);
         return $result;
