@@ -21,7 +21,7 @@ body {
     width:68%;
 }
 
-.content .abstract{
+.content, .abstract{
     word-break: break-all;
 }
 
