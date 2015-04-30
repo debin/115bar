@@ -18,7 +18,7 @@
     <form class="form-horizontal">
       <div class="form-group">
         <label for="inputEmail3" class="sr-only control-label">keyword</label>
-        <div class="col-xs-12 col-sm-10">
+        <div class="col-xs-9 col-sm-10">
           <input type="text" class="form-control search_btn" id="search" placeholder="输入关键字" value="<?php echo $output['key']?>" />
         </div>
         <div class="col-sm-2">
@@ -35,7 +35,7 @@
         <li class="list-group-item">
         <a href="/info/<?php echo $value['id'];?>" target="_blank"><p class="text-justify"><?php echo $value['subject'];?></p></a>
         <span class="badge"><?php echo date("Y-m-d",$value['post_time']);?></span>
-        <div class=""><p class="text-justify"><?php echo $value['deal_content'];?></p></div>
+        <div class="abstract"><p class="text-justify"><?php echo $value['deal_content'];?></p></div>
         </li>
         <?php endforeach;?>
       </ul>
