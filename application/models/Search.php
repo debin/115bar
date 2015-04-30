@@ -36,7 +36,7 @@ class SearchModel{
             $corrected_arr = $corrected;
         }
         $words = array();
-        // $words = $search->getRelatedQuery(null, 6);//最后调用 相关搜索
+        $words = $search->getRelatedQuery(null, 6);//最后调用 相关搜索
 
         $list_data = array();
         foreach ($docs as $key => $doc) {
@@ -55,10 +55,10 @@ class SearchModel{
         }
 
         $res = array(
-            'total'          =>$count,
-            'list_data'      =>$list_data,
-            'relation_words' =>$words,
-            'corrected_arr'  =>$corrected_arr,
+            'total'         =>$count,
+            'list_data'     =>$list_data,
+            'relation_arr'  =>$words,
+            'corrected_arr' =>$corrected_arr,
             );
         return $res;
     }

@@ -24,7 +24,7 @@ class SController extends BasicController {
             $page = 1;
         }
         $pagesize = 20;
-        $res = SearchModel::getZoneInfo($key,$page,$pagesize);
+        $res = SearchModel::getZoneInfo($key,$page,$pagesize);//var_dump($res);exit;
         $list_data = $res['list_data'];
         $total = $res['total'];
         if (empty($key)) {
@@ -48,6 +48,8 @@ class SController extends BasicController {
         $output['data']['page_count'] = 0;
         $output['paginate']           = $paginate;
         $output['key']           = $key;
+        $output['relation_arr']           = $res['relation_arr'];
+        $output['corrected_arr']           = $res['corrected_arr'];
         // $output                       = cat_html($output);
         $this->getView()->assign("output", $output);
         // $this->getView()->display("topics/index.html");
