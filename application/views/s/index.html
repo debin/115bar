@@ -72,7 +72,7 @@
       <ul class="list-group list-unstyled">
           <?php foreach ($output['relation_arr'] as $key => $value): ?>
           <li class="list-style">
-              <a href="/s/<?php echo $value;?>" ><p class="text-justify"><?php echo $value;?></p></a>
+              <a href="/s/<?php echo $value;?>" ><p class="text-justify"><strong><?php echo $value;?></strong></p></a>
           </li>
           <?php endforeach;?>
           <?php if(empty($output['relation_arr'])):?>
@@ -85,16 +85,17 @@
     <!-- 热门搜索 -->
     <div class="panel panel-default">
       <div class="panel-heading">
-          <h3 class="panel-title text-center">热门搜索</h3>
+          <h3 class="panel-title text-center">本周热门搜索</h3>
       </div>
       <div class="panel-body">
       <ul class="list-group list-unstyled">
-          <?php foreach ($output['relation_arr'] as $key => $value): ?>
+          <?php foreach ($output['hot_arr'] as $key => $value): ?>
           <li class="list-style">
-              <a href="/s/<?php echo $value;?>" ><p class="text-justify"><strong><?php echo $value;?></strong></p></a>
+              <a href="/s/<?php echo $key;?>" ><p class="text-justify"><strong><?php echo $key;?></strong></p></a>
+              <!-- <span class="badge"><?php echo $value;?></span> -->
           </li>
           <?php endforeach;?>
-          <?php if(empty($output['relation_arr'])):?>
+          <?php if(empty($output['hot_arr'])):?>
             <li class="list-style">暂无</li>
           <?php endif;?>
       </ul>

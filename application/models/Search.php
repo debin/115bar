@@ -38,6 +38,8 @@ class SearchModel{
         $words = array();
         $words = $search->getRelatedQuery(null, 6);//最后调用 相关搜索
 
+        $hot_arr = $search->getHotQuery(10, 'currnum'); // 获取前 10 个本周热门词
+
         $list_data = array();
         foreach ($docs as $key => $doc) {
             $subject      = $search->highlight($doc->subject); // 高亮处理 subject 字段
@@ -59,6 +61,7 @@ class SearchModel{
             'list_data'     =>$list_data,
             'relation_arr'  =>$words,
             'corrected_arr' =>$corrected_arr,
+            'hot_arr'       =>$hot_arr,
             );
         return $res;
     }

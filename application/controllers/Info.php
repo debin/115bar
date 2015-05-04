@@ -27,13 +27,15 @@ class InfoController extends BasicController {
         $tags = trim($tags,"{}");
         $tag_arr = explode (',',$tags);
 
-
-        $tags = str_replace(",", " OR ", $tags);
-        $maylike_res = SearchModel::getMayLikeInfo($tags,1,8);
-        $maylike_list = $maylike_res['list_data'];
-        foreach ($maylike_list as $key => $value) {
-            if ($value['id'] == $id) {
-                unset($maylike_list[$key]);
+        $maylike_list = array();
+        if (!empty($tags)) {
+            $tags = str_replace(",", " OR ", $tags);
+            $maylike_res = SearchModel::getMayLikeInfo($tags,1,8);
+            $maylike_list = $maylike_res['list_data'];
+            foreach ($maylike_list as $key => $value) {
+                if ($value['id'] == $id) {
+                    unset($maylike_list[$key]);
+                }
             }
         }
         // var_dump($tags,$maylive);exit;

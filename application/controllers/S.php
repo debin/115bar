@@ -47,9 +47,10 @@ class SController extends BasicController {
         $output['data']['pagesize']   = $pagesize;
         $output['data']['page_count'] = 0;
         $output['paginate']           = $paginate;
-        $output['key']           = $key;
-        $output['relation_arr']           = $res['relation_arr'];
-        $output['corrected_arr']           = $res['corrected_arr'];
+        $output['key']                = $key;
+        $output['relation_arr']       = $res['relation_arr'];
+        $output['corrected_arr']      = $res['corrected_arr'];
+        $output['hot_arr']            = $res['hot_arr'];
         // $output                       = cat_html($output);
         $this->getView()->assign("output", $output);
         // $this->getView()->display("topics/index.html");
