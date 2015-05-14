@@ -25,7 +25,7 @@ class InfoController extends BasicController {
         // 推荐
         $tags = isset($detail['tags'])?$detail['tags']:'';
         $tags = trim($tags,"{}");
-        $tag_arr = explode (',',$tags);
+        $tag_arr = ($tags)?explode (',',$tags):array();
 
         $maylike_list = array();
         if (!empty($tags)) {
