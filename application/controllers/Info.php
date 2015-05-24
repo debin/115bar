@@ -19,7 +19,7 @@ class InfoController extends BasicController {
         $id = intval($id);
 
         $redis = RedisHelper::getInstance();
-        $redis_key = "info:".$id;
+        $redis_key = "115:info:".$id;
         $timeout = 300;
         $output = $redis->get($redis_key);
 

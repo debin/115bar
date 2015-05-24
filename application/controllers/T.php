@@ -23,7 +23,7 @@ class TController extends BasicController {
         $pagesize = 20;
 
         $redis = RedisHelper::getInstance();
-        $redis_key = "tlist:".$page;
+        $redis_key = "115:tlist:".$page;
         $timeout = 300;
         $output = $redis->get($redis_key);
 
