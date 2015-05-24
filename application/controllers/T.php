@@ -21,28 +21,40 @@ class TController extends BasicController {
             $page = 1;
         }
         $pagesize = 20;
-        $data = array('status'=>0);
-        $total = TopicModel::getInfoCount($data);
-        $list_arr = TopicModel::getInfoByPage($data,$page,$pagesize);
-        $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
 
-        // 分页
-        $url = Yaf_Registry::get("config")->webroot . "/t";
-        // echo json_encode( get_defined_vars() );
-        // $SERVER = $this->getRequest()->getServer();
-        $getpage = new PageModel($url,$total, $page,$pagesize,'/');
-        $paginate = $getpage->showpage();
-        // echo $page->showpage();
+        $redis = RedisHelper::getInstance();
+        $redis_key = "tlist:".$page;
+        $timeout = 300;
+        $output = $redis->get($redis_key);
 
-        // var_dump($total);exit;
+        if (!$output){
+            $data = array('status'=>0);
+            $total = TopicModel::getInfoCount($data);
+            $list_arr = TopicModel::getInfoByPage($data,$page,$pagesize);
+            $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
+
+            // 分页
+            $url = Yaf_Registry::get("config")->webroot . "/t";
+            // echo json_encode( get_defined_vars() );
+            // $SERVER = $this->getRequest()->getServer();
+            $getpage = new PageModel($url,$total, $page,$pagesize,'/');
+            $paginate = $getpage->showpage();
+            // echo $page->showpage();
+
+            // var_dump($total);exit;
+            
+            $output                       = array();
+            $output['total']              = $total;
+            $output['list']               = $list_arr;
+            $output['data']['page']       = $page;
+            $output['data']['pagesize']   = $pagesize;
+            $output['data']['page_count'] = $page_count;
+            $output['paginate']           = $paginate;
+            $redis->set($redis_key,$output,$timeout);
+        }
+
         $this->title = _("la_103")."_"._("la_102");
-        $output                       = array();
-        $output['total']              = $total;
-        $output['list']               = $list_arr;
-        $output['data']['page']       = $page;
-        $output['data']['pagesize']   = $pagesize;
-        $output['data']['page_count'] = $page_count;
-        $output['paginate']           = $paginate;
+
         // $output                       = cat_html($output);
         $this->getView()->assign("output", $output);
         // $this->getView()->display("topics/index.html");

@@ -17,48 +17,59 @@ class InfoController extends BasicController {
     public function indexAction() {
         $id = $this->getRequest()->getParam("id", 0);
         $id = intval($id);
-        $detail = TopicModel::getInfoById($id);
-        $subject = !empty($detail['subject'])?$detail['subject']:$detail['abstract'];
-        $search = array(" ","|","!","»");
-        $subject = str_replace($search,'',$subject);
 
-        // 推荐
-        $tags = isset($detail['tags'])?$detail['tags']:'';
-        $tags = trim($tags,"{}");
-        $tag_arr = explode (',',$tags);
+        $redis = RedisHelper::getInstance();
+        $redis_key = "info:".$id;
+        $timeout = 300;
+        $output = $redis->get($redis_key);
 
-        $maylike_list = array();
-        if (!empty($tags)) {
-            $tags = str_replace(",", " OR ", $tags);
-            $maylike_res = SearchModel::getMayLikeInfo($tags,1,8);
-            $maylike_list = $maylike_res['list_data'];
-            foreach ($maylike_list as $key => $value) {
-                if ($value['id'] == $id) {
-                    unset($maylike_list[$key]);
+        if (!$output) {
+            $detail = TopicModel::getInfoById($id);
+
+            // 推荐
+            $tags = isset($detail['tags'])?$detail['tags']:'';
+            $tags = trim($tags,"{}");
+            $tag_arr = explode (',',$tags);
+
+            $maylike_list = array();
+            if (!empty($tags)) {
+                $tags = str_replace(",", " OR ", $tags);
+                $maylike_res = SearchModel::getMayLikeInfo($tags,1,8);
+                $maylike_list = $maylike_res['list_data'];
+                foreach ($maylike_list as $key => $value) {
+                    if ($value['id'] == $id) {
+                        unset($maylike_list[$key]);
+                    }
                 }
             }
+
+            // 上一篇
+            $prev_info = TopicModel::getNearInfoById($id,'>',"ASC");
+            $next_info = TopicModel::getNearInfoById($id,'<');
+
+
+            // 最近更新
+            $data = array('status'=>0);
+            $latest_list_arr = TopicModel::getInfoByPage($data,1,5);
+            
+            $output                 = array();
+            $output['id']           = $id;
+            $output['detail']       = $detail;
+            $output['latest_list']  = $latest_list_arr;
+            $output['maylike_list'] = $maylike_list;
+            $output['tag_arr']      = $tag_arr;
+            $output['prev_info']    = $prev_info;
+            $output['next_info']    = $next_info;
+            $redis->set($redis_key,$output,$timeout);
+
         }
-        // var_dump($tags,$maylive);exit;
-        
 
-        // 上一篇
-        $prev_info = TopicModel::getNearInfoById($id,'>',"ASC");
-        $next_info = TopicModel::getNearInfoById($id,'<');
-
-
-        // 最近更新
-        $data = array('status'=>0);
-        $latest_list_arr = TopicModel::getInfoByPage($data,1,5);
-
+        // title
+        $subject = !empty($output['detail']['subject'])?$output['detail']['subject']:$output['detail']['abstract'];
+        $search = array(" ","|","!","»");
+        $subject = str_replace($search,'',$subject);
         $this->title = $subject."_"._("la_103")."_"._("la_102");
-        $output                 = array();
-        $output['id']           = $id;
-        $output['detail']       = $detail;
-        $output['latest_list']  = $latest_list_arr;
-        $output['maylike_list'] = $maylike_list;
-        $output['tag_arr']      = $tag_arr;
-        $output['prev_info']    = $prev_info;
-        $output['next_info']    = $next_info;
+
         $this->getView()->assign("output", $output);
         // $this->getView()->display("sign/login.html");
     }
