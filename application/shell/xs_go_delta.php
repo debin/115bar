@@ -33,30 +33,34 @@ $index = $xs->index; // 获取 索引对象
 
 // $page = 1;
 $pagesize = 1000;
-$data = array('status'=>0,'update_time'=>$update_time);
+$data = array('update_time'=>$update_time);
 $total = TopicModel::xs_getInfoCount($data);
 $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
 $count = 0;
-for ($i=1; $i <= $page_count; $i++) { 
+for ($i=1; $i <= $page_count; $i++) {
     $list_arr = TopicModel::xs_getInfoByPage($data,$i,$pagesize,"ASC");
     $index->openBuffer(8); // 开启缓冲区，默认 4MB，如 $index->openBuffer(8) 则表示 8MB
     if ($list_arr) {
         foreach ($list_arr as $key => $value) {
-            $subject = $value['subject'];
-            $deal_content = strip_tags($value['deal_content']);
-            $subject = trim_string($subject);
-            $deal_content = trim_string($deal_content);
-            $data = array(
-                'id'           => $value['id'], // 此字段为主键，必须指定
-                'subject'      => $subject,
-                'deal_content' => $deal_content,
-                'post_time'    => $value['post_time'],
-            );
-            // 创建文档对象
-            $doc = new XSDocument;
-            $doc->setFields($data);
-            // 添加到索引数据库中
-            $res = $index->update($doc);//add update
+            if (isset($value['status'])&&$value['status']==0) {
+                $subject = $value['subject'];
+                $deal_content = strip_tags($value['deal_content']);
+                $subject = trim_string($subject);
+                $deal_content = trim_string($deal_content);
+                $data = array(
+                    'id'           => $value['id'], // 此字段为主键，必须指定
+                    'subject'      => $subject,
+                    'deal_content' => $deal_content,
+                    'post_time'    => $value['post_time'],
+                );
+                // 创建文档对象
+                $doc = new XSDocument;
+                $doc->setFields($data);
+                // 添加到索引数据库中
+                $res = $index->update($doc);//add update
+            }else{
+                $index->del($value['id']);
+            }
             $count++;
         }
     }
