@@ -43,15 +43,20 @@ while ( $list_arr ) {
             $tops = array();
         }
 
-        
+
         $num = count($tops);
         if ($num<$max_num) {
             try {
                 $tops_en = $tokenizer->getTops($deal_content, $max_num-$num, 'en');
+                foreach ($tops_en as $key => $value) {
+                    if (strpos($v['word'], 'lb')!==false) {
+                        unset($tops_en[$key]);
+                    }
+                }
             } catch (Exception $e) {
                 $tops_en = array();
             }
-            
+
             $tops = array_merge($tops,$tops_en);
         }
 
