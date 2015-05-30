@@ -38,6 +38,14 @@ while ( $list_arr ) {
         $deal_content = trim_string($deal_content);
         try {
             $tops = $tokenizer->getTops($deal_content, $max_num, 'n,v,vn,nr,ns,nt,nz,nz,s,l,i');//http://www.xunsearch.com/scws/docs.php#attr
+            // 过滤
+            foreach ($tops as $key => $value){
+                if (strpos($v['word'], '礼包')!==false) {
+                    unset($tops[$key]);
+                }elseif (strpos($v['word'], 'baidu')!==false) {
+                    unset($tops[$key]);
+                }
+            }
         } catch (Exception $e) {
             echo $e->getMessage();
             $tops = array();
@@ -48,8 +56,23 @@ while ( $list_arr ) {
         if ($num<$max_num) {
             try {
                 $tops_en = $tokenizer->getTops($deal_content, $max_num-$num, 'en');
+                // 过滤
                 foreach ($tops_en as $key => $value) {
                     if (strpos($v['word'], 'lb')!==false) {
+                        unset($tops_en[$key]);
+                    }elseif (strpos($v['word'], 'baidu')!==false) {
+                        unset($tops_en[$key]);
+                    }elseif (strpos($v['word'], 'http')!==false) {
+                        unset($tops_en[$key]);
+                    }elseif (strpos($v['word'], 'com')!==false) {
+                        unset($tops_en[$key]);
+                    }elseif (strpos($v['word'], 'www')!==false) {
+                        unset($tops_en[$key]);
+                    }elseif (strpos($v['word'], 'baidu')!==false) {
+                        unset($tops_en[$key]);
+                    }elseif (strpos($v['word'], 'baidu')!==false) {
+                        unset($tops_en[$key]);
+                    }elseif (strpos($v['word'], '115')!==false) {
                         unset($tops_en[$key]);
                     }
                 }
