@@ -39,7 +39,7 @@ while ( $list_arr ) {
         try {
             $tops = $tokenizer->getTops($deal_content, $max_num, 'n,v,vn,nr,ns,nt,nz,nz,s,l,i');//http://www.xunsearch.com/scws/docs.php#attr
             // 过滤
-            foreach ($tops as $key => $value){
+            foreach ($tops as $k => $v){
                 if (strpos($v['word'], '礼包')!==false) {
                     unset($tops[$key]);
                 }elseif (strpos($v['word'], 'baidu')!==false) {
@@ -57,7 +57,7 @@ while ( $list_arr ) {
             try {
                 $tops_en = $tokenizer->getTops($deal_content, $max_num-$num, 'en');
                 // 过滤
-                foreach ($tops_en as $key => $value) {
+                foreach ($tops_en as $k => $v) {
                     if (strpos($v['word'], 'lb')!==false) {
                         unset($tops_en[$key]);
                     }elseif (strpos($v['word'], 'baidu')!==false) {
