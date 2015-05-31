@@ -41,9 +41,9 @@ while ( $list_arr ) {
             // 过滤
             foreach ($tops as $k => $v){
                 if (strpos($v['word'], '礼包')!==false) {
-                    unset($tops[$key]);
+                    unset($tops[$k]);
                 }elseif (strpos($v['word'], 'baidu')!==false) {
-                    unset($tops[$key]);
+                    unset($tops[$k]);
                 }
             }
         } catch (Exception $e) {
@@ -59,21 +59,21 @@ while ( $list_arr ) {
                 // 过滤
                 foreach ($tops_en as $k => $v) {
                     if (strpos($v['word'], 'lb')!==false) {
-                        unset($tops_en[$key]);
+                        unset($tops_en[$k]);
                     }elseif (strpos($v['word'], 'baidu')!==false) {
-                        unset($tops_en[$key]);
+                        unset($tops_en[$k]);
                     }elseif (strpos($v['word'], 'http')!==false) {
-                        unset($tops_en[$key]);
+                        unset($tops_en[$k]);
                     }elseif (strpos($v['word'], 'com')!==false) {
-                        unset($tops_en[$key]);
+                        unset($tops_en[$k]);
                     }elseif (strpos($v['word'], 'www')!==false) {
-                        unset($tops_en[$key]);
+                        unset($tops_en[$k]);
                     }elseif (strpos($v['word'], 'baidu')!==false) {
-                        unset($tops_en[$key]);
+                        unset($tops_en[$k]);
                     }elseif (strpos($v['word'], 'baidu')!==false) {
-                        unset($tops_en[$key]);
+                        unset($tops_en[$k]);
                     }elseif (strpos($v['word'], '115')!==false) {
-                        unset($tops_en[$key]);
+                        unset($tops_en[$k]);
                     }
                 }
             } catch (Exception $e) {
