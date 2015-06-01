@@ -75,7 +75,7 @@ if (isset($value['update_time'])&&$value['update_time']) {
 }
 
 
-echo "update xs delta:",$count;
+echo "xsgodelta update xs delta:",$count;
 
 
 
