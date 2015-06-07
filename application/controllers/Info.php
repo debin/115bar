@@ -23,7 +23,7 @@ class InfoController extends BasicController {
         $timeout = 300;
         $output = $redis->get($redis_key);
 
-        if (!$output) {
+        if (1) {
             $detail = TopicModel::getInfoById($id);
 
             // 推荐
@@ -51,7 +51,7 @@ class InfoController extends BasicController {
             // 最近更新
             $data = array('status'=>0);
             $latest_list_arr = TopicModel::getInfoByPage($data,1,5);
-            
+
             $output                 = array();
             $output['id']           = $id;
             $output['detail']       = $detail;

@@ -27,7 +27,7 @@ class TController extends BasicController {
         $timeout = 300;
         $output = $redis->get($redis_key);
 
-        if (!$output){
+        if (1){
             $data = array('status'=>0);
             $total = TopicModel::getInfoCount($data);
             $list_arr = TopicModel::getInfoByPage($data,$page,$pagesize);
@@ -42,7 +42,7 @@ class TController extends BasicController {
             // echo $page->showpage();
 
             // var_dump($total);exit;
-            
+
             $output                       = array();
             $output['total']              = $total;
             $output['list']               = $list_arr;
