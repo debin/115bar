@@ -26,6 +26,24 @@ class TestController extends BasicController {
         return;
     }
 
+    public function timeAction() {
+        Yaf_Dispatcher::getInstance()->autoRender(FALSE);
+
+        $t = !empty($_REQUEST['t'])?intval($_REQUEST['t']):0;
+        if ($t) {
+            echo $t;
+            echo ' : ';
+            echo date("Y-m-d H:i:s",$t);
+        }
+
+        echo '<br/><br/>';
+        $now = time();
+        echo $now;
+        echo ' : ';
+        echo date("Y-m-d H:i:s",$now);
+        return;
+    }
+
     public function testAction() {
         $key = "2";
         $res = SearchModel::getZoneInfo($key,1,20);
@@ -73,7 +91,7 @@ class TestController extends BasicController {
         $xs = new XS('115zone'); // 建立 XS 对象，项目名称为：demo
         $index = $xs->index; // 获取 索引对象
 
-        
+
 return 1;
         $page = 1;
         $pagesize = 20;
