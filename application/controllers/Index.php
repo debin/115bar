@@ -21,8 +21,8 @@ class IndexController extends BasicController {
     public function indexAction() {
         // echo 1;exit;
         // 跳转到首页
-        // $this->redirect("/t/index");
-        $this->forward("t", "index", array());
+        $this->redirect("/t/1");
+        // $this->forward("t", "index", array());
         return;
     }
 
