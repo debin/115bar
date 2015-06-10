@@ -18,30 +18,32 @@ class ErrorController extends Yaf_Controller_Abstract {
         case YAF_ERR_NOTFOUND_ACTION:
         case YAF_ERR_NOTFOUND_VIEW:
             //echo 404, ":", $exception->getMessage();
-            // $array = array();
-            // $array["result"] = false;
-            // $array["code"] = -99;
-            // $array["msg"] = $exception->getMessage();
-            // $array["data"] = $exception->getTrace();
-            // // $array["data"] = $exception->getTraceAsString();
+            $array           = array();
+            $array["result"] = false;
+            $array["code"]   = -99;
+            $array["msg"]    = $exception->getMessage();
+            $array["data"]   = $exception->getTrace();
+            // $array["data"]   = $exception->getTraceAsString();
             // echo json_encode($array);
             // break;
             $this->getView()->display("error/404.html");
             // exit;
             return;
         default :
-            $array = array();
+            $array           = array();
             $array["result"] = false;
-            $array["code"] = -98;
-            $array["msg"] = $exception->getMessage();
-            $array["data"] = $exception->getTrace();
+            $array["code"]   = -98;
+            $array["msg"]    = $exception->getMessage();
+            $array["data"]   = $exception->getTrace();
             // $array["data"] = $exception->getTraceAsString();
-            echo json_encode($array);
-            break;
+            // echo json_encode($array);
+            Log::addLog($array);
+            $this->getView()->display("error/error.html");
+            return;
         }
         return;
-        $ex = new Exception($exception->getMessage(), $exception->getCode());
-        $ex->getMessage();
+        // $ex = new Exception($exception->getMessage(), $exception->getCode());
+        // $ex->getMessage();
     }
 
     private function _pageNotFound(){
