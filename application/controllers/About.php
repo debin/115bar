@@ -6,7 +6,7 @@
  * @date(2015-04-26)
  */
 
-class ContactController extends BasicController {
+class AboutController extends BasicController {
 
     /**
      * 搜索
