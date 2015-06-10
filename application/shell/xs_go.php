@@ -18,6 +18,8 @@ include_once __DIR__."./../vendor/xunsearch/php/lib/XS.php";
 $xs = new XS('115zone'); // 建立 XS 对象，项目名称为：demo
 $index = $xs->index; // 获取 索引对象
 
+$search_type = "xunsearch";
+
 // 执行清空操作
 $index->clean();
 
@@ -28,7 +30,7 @@ $total = TopicModel::xs_getInfoCount($data);
 $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
 $update_time = time();
 $count = 0;
-for ($i=1; $i <= $page_count; $i++) { 
+for ($i=1; $i <= $page_count; $i++) {
     $list_arr = TopicModel::xs_getInfoByPage($data,$i,$pagesize,"ASC");
     $index->openBuffer(8); // 开启缓冲区，默认 4MB，如 $index->openBuffer(8) 则表示 8MB
     if ($list_arr) {
@@ -64,18 +66,19 @@ $db = PgsqlHelper::getInstance();
 $servers = ConfigPg::getDBMaster($dbname);
 $db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
 
-$sql = 'SELECT * FROM "xun_index" WHERE upload_id=?;';
-$vars = array(CONFIG_ENV);
+$sql = 'SELECT * FROM "xun_index" WHERE upload_id=? AND "type"=? ;';
+$vars = array(CONFIG_ENV,$search_type);
 $xun_index = $db->getOne($sql,$vars);
 if ($xun_index) {
-    $conditon = array('upload_id'=>CONFIG_ENV);
+    $conditon = array('upload_id'=>CONFIG_ENV,'type'=>$search_type);
     $update_data = array('update_time'=>$update_time);
     $db->update("xun_index",$update_data,$conditon);
 }else{
     $insert_data = array(
-        'upload_id'=>CONFIG_ENV,
-        'create_time'=>$update_time,
-        'update_time'=>$update_time,
+        'upload_id'   =>CONFIG_ENV,
+        'type'        =>$search_type,
+        'create_time' =>$update_time,
+        'update_time' =>$update_time,
         );
     $db->insert("xun_index",$insert_data);
 }

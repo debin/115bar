@@ -14,12 +14,13 @@ include_once __DIR__."./../library/PgsqlHelper.php";
 include_once __DIR__."./../models/Topic.php";
 include_once __DIR__."./../vendor/xunsearch/php/lib/XS.php";
 
+$search_type = "xunsearch";
 $dbname = Otable::DB_115;
 $db = PgsqlHelper::getInstance();
 $servers = ConfigPg::getDBMaster($dbname);
 $db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
-$sql = 'SELECT * FROM "xun_index" WHERE upload_id=?;';
-$vars = array(CONFIG_ENV);
+$sql = 'SELECT * FROM "xun_index" WHERE upload_id=? AND "type"=? ;';
+$vars = array(CONFIG_ENV,$search_type);
 $xun_index = $db->getOne($sql,$vars);
 if (isset($xun_index['update_time'])) {
     $update_time = (int)$xun_index['update_time'];
@@ -69,7 +70,7 @@ for ($i=1; $i <= $page_count; $i++) {
 
 // 更新索引
 if (isset($value['update_time'])&&$value['update_time']) {
-    $conditon = array('upload_id'=>CONFIG_ENV);
+    $conditon = array('upload_id'=>CONFIG_ENV,$search_type);
     $update_data = array('update_time'=>$value['update_time']);
     $db->update("xun_index",$update_data,$conditon);
 }

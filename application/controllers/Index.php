@@ -10,15 +10,21 @@ class IndexController extends BasicController {
     /**
      * 如果定义了控制器的init的方法, 会在__construct以后被调用
      */
-    public function init() {
-        //$array = array('result'=>ture);
-        //echo "controller init called<br/>";
-        //$config = Yaf_Application::app()->getConfig();
-        //$this->getView()->assign("title", "Agile Platform Demo");
-        //$this->getView()->assign("webroot", $config->webroot);
-    }
+    // public function init() {
+    //     //$array = array('result'=>ture);
+    //     //echo "controller init called<br/>";
+    //     //$config = Yaf_Application::app()->getConfig();
+    //     //$this->getView()->assign("title", "Agile Platform Demo");
+    //     //$this->getView()->assign("webroot", $config->webroot);
+    // }
 
     public function indexAction() {
+
+        $this->title = $subject."_"._("la_103")."_"._("la_102");
+
+        $this->getView()->assign("output", $output);
+
+
         // echo 1;exit;
         // 跳转到首页
         $this->redirect("/t/1");
