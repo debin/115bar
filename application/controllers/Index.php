@@ -20,14 +20,15 @@ class IndexController extends BasicController {
 
     public function indexAction() {
 
-        $this->title = $subject."_"._("la_103")."_"._("la_102");
+        $this->title = "礼包搜索"."_"._("la_103")."_"._("la_102");
 
+        $output = array();
         $this->getView()->assign("output", $output);
 
 
         // echo 1;exit;
         // 跳转到首页
-        $this->redirect("/t/1");
+        // $this->redirect("/t/1");
         // $this->forward("t", "index", array());
         return;
     }

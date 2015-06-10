@@ -1,12 +1,56 @@
-<?php include(HEADER);?>
-<body>
-<div class="container" style="padding-top: 80px;padding-bottom: 30px;">
-    <?php include(HEAD);?>
-    <?php include(MENU);?>
+<meta name="referrer" content="never">
+<div class="container">
+    <div class="col-xs-12 col-sm-8 main">
+        <div class="ggad" >
+            <!-- <h1>Example page header <small>Subtext for header</small></h1> -->
+            <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+            <!-- 115app auto -->
+<!--             <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-3026112168181544"
+                 data-ad-slot="6559413394"
+                 data-ad-format="auto"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script> -->
+        </div>
 
+        <ol class="breadcrumb">
+<!--             <li><a href="/">首页</a></li>
+            <li><a href="/t">礼包圈</a></li> -->
+            <li class="active">首页</li>
+        </ol>
 
-    <div class="col-sm-10 padding-t15">
-    </div>
-</div>
-</body>
-<?php include(FOOTER);?>
+        <div class="starter-template">
+            <!-- 内容 -->
+            <div class="searchd">
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label for="inputEmail3" class="sr-only control-label">keyword</label>
+                  <div class="col-xs-9 col-sm-10">
+                    <input type="text" class="form-control search_btn" id="search" placeholder="您想要的,尽在其中" value="" />
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="submit" id="btnSearch" value="搜 索" class="btn btn-info pull-left">
+                  </div>
+                </div>
+              </form>
+            </div><!-- /.searchd -->
+        </div><!-- .starter-template -->
+    </div> <!-- .main -->
+
+</div><!-- /.container -->
+
+<script type="text/javascript">
+document.getElementById("search").focus();
+document.forms[0].onsubmit = function (e) {
+  e.preventDefault();
+  var query = document.getElementById("search").value;
+  if (!query) {
+    document.getElementById("search").focus(); return false;
+  }
+  var url = '/s/' + encodeURIComponent(query) + '/1';
+  window.location= url;
+  return false;
+}
+</script>
