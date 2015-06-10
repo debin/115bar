@@ -28,6 +28,7 @@ class IndexController extends BasicController {
 
     public function testAction() {
         $dbname = "dht";
+        return ;
         $db = PgsqlHelper::getInstance();
         $servers = ConfigPg::getDBMaster($dbname);
         // $a ->connect("203.195.196.161","root","123456","test");
@@ -58,6 +59,7 @@ class IndexController extends BasicController {
     }
 
     public function xsAction() {
+        return;
         require APPLICATION_PATH.'/vendor/xunsearch/php/lib/XS.php';
         $xs = new XS('demo'); // 建立 XS 对象，项目名称为：demo
         $search = $xs->search; // 获取 搜索对象
@@ -86,6 +88,7 @@ class IndexController extends BasicController {
 
 
     public function xsaAction() {
+        return;
         require APPLICATION_PATH.'/vendor/xunsearch/php/lib/XS.php';
         $xs = new XS('demo'); // 建立 XS 对象，项目名称为：demo
         $index = $xs->index; // 获取 索引对象
