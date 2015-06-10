@@ -26,6 +26,10 @@ class InfoController extends BasicController {
         if (1) {
             $detail = TopicModel::getInfoById($id);
 
+            if (empty($detail)) {
+                throw new Exception('No this info:'.$id,YAF_ERR_NOTFOUND_ACTION); 
+            }
+
             // 推荐
             $tags = isset($detail['tags'])?$detail['tags']:'';
             $tags = trim($tags,"{}");
