@@ -6,6 +6,7 @@
 class ErrorController extends Yaf_Controller_Abstract {
 
     public function init() {
+        // Yaf_Dispatcher::getInstance()->c = $this;//保存当前控制器
         Yaf_Dispatcher::getInstance()->disableView();
     }
 
@@ -17,14 +18,17 @@ class ErrorController extends Yaf_Controller_Abstract {
         case YAF_ERR_NOTFOUND_ACTION:
         case YAF_ERR_NOTFOUND_VIEW:
             //echo 404, ":", $exception->getMessage();
-            $array = array();
-            $array["result"] = false;
-            $array["code"] = -99;
-            $array["msg"] = $exception->getMessage();
-            $array["data"] = $exception->getTrace();
-            // $array["data"] = $exception->getTraceAsString();
-            echo json_encode($array);
-            break;
+            // $array = array();
+            // $array["result"] = false;
+            // $array["code"] = -99;
+            // $array["msg"] = $exception->getMessage();
+            // $array["data"] = $exception->getTrace();
+            // // $array["data"] = $exception->getTraceAsString();
+            // echo json_encode($array);
+            // break;
+            $this->getView()->display("error/404.html");
+            // exit;
+            return;
         default :
             $array = array();
             $array["result"] = false;

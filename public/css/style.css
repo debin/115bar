@@ -64,8 +64,8 @@ a:focus { outline: none; -moz-outline: none }
 /**backtop 回到顶部**/
 .bottom_tools { position: fixed; z-index: 1070; right: 40px; bottom: 60px; display: block; width: 55px; height: 55px; }
 .bottom_tools>* { font: 0/0 a; display: block; margin-top: 5px; color: transparent; border: 0; background-color: transparent; text-shadow: none }
-.bottom_tools a { display: block; width: 55px; height: 55px; background: url(http://image.3001.net/images/new/back-top.png) no-repeat left top; }
-.bottom_tools a:hover { background: url(http://image.3001.net/images/new/back-top.png) no-repeat left bottom; }
+.bottom_tools a { display: block; width: 55px; height: 55px; background: url(/public/img/back-top.png) no-repeat left top; }
+.bottom_tools a:hover { background: url(/public/img/back-top.png) no-repeat left bottom; }
 
 #contenttxt img { max-width:100%; }
 
