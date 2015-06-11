@@ -53,7 +53,7 @@ class PageModel{
     //首页
     private function first() {
         if ($this->page > $this->bothnum+1) {
-          $pagestr = "<li><a href=\"{$this->url}\">1</a></li>";
+          $pagestr = "<li><a href=\"{$this->url}/1\">1</a></li>";
           $skip = "<li class=\"disabled\"><span>...</span></li>";
           $pagestr = $pagestr . $skip;
           return $pagestr;
