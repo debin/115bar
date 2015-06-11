@@ -30,6 +30,7 @@ class SController extends BasicController {
         if (empty($key)) {
             $total = $pagesize;
         }
+        $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
         // 分页
         $url = Yaf_Registry::get("config")->webroot . "/s/$key";
         // echo json_encode( get_defined_vars() );
@@ -39,13 +40,13 @@ class SController extends BasicController {
         // echo $paginate;
         // exit;
 
-        $this->title = _("la_103")."_"._("la_102");
+        $this->title = $page. "/" . $page_count. " ". $key. "_资源搜索_". _("la_103")."_"._("la_102");
         $output                       = array();
         $output['total']              = $total;
         $output['list']               = $list_data;
         $output['data']['page']       = $page;
         $output['data']['pagesize']   = $pagesize;
-        $output['data']['page_count'] = 0;
+        $output['data']['page_count'] = $page_count;
         $output['paginate']           = $paginate;
         $output['key']                = $key;
         $output['relation_arr']       = $res['relation_arr'];
