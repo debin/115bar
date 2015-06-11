@@ -127,6 +127,16 @@ function trim_string($string) {
     return $string;
 }
 
+
+// 添加 nofollow 的回调函数
+function addnofollow($matches) {
+
+    // var_dump($matches);
+    $string = $matches[0] . '  rel="nofollow" target="_blank" ';
+    return $string;
+}
+
+
 /**
  * 格式化
  */

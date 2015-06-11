@@ -68,6 +68,13 @@ class InfoController extends BasicController {
 
         }
 
+        // deal_content rel="nofollow"
+        $pattern = '/<a[^>]+(?>)/i';
+        $callback = 'addnofollow';
+        $deal_content = preg_replace_callback($pattern,$callback,$output['detail']['deal_content']);
+        // var_dump($deal_content);exit;
+        $output['detail']['deal_content'] = $deal_content;
+
         // title
         $subject = !empty($output['detail']['subject'])?$output['detail']['subject']:$output['detail']['abstract'];
         $search = array(" ","|","!","»");
