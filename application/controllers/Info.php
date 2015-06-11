@@ -34,6 +34,7 @@ class InfoController extends BasicController {
             $pattern                = '/<a[^>]+(?>)/i';
             $callback               = 'addnofollow';
             $deal_content           = preg_replace_callback($pattern,$callback,$detail['deal_content']);
+            $deal_content           = nl2br($deal_content);
             $detail['deal_content'] = $deal_content;
 
 
