@@ -22,8 +22,6 @@ em {
     word-break: break-all;
 }
 
-
-
 .topic_list a {
     /*float: left;*/
     width: 100%;
@@ -44,7 +42,11 @@ em {
     margin: 0 auto;
     text-align: center;
     vertical-align:middle;
-    margin-top: 200px;
+    margin-top: 150px;
+}
+
+.top150{
+    margin-top:150px;
 }
 
 
