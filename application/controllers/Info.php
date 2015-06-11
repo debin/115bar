@@ -30,15 +30,22 @@ class InfoController extends BasicController {
                 throw new Exception('No this info:'.$id,YAF_ERR_NOTFOUND_ACTION); 
             }
 
+            // deal_content rel="nofollow"
+            $pattern                = '/<a[^>]+(?>)/i';
+            $callback               = 'addnofollow';
+            $deal_content           = preg_replace_callback($pattern,$callback,$detail['deal_content']);
+            $detail['deal_content'] = $deal_content;
+
+
             // 推荐
-            $tags = isset($detail['tags'])?$detail['tags']:'';
-            $tags = trim($tags,"{}");
+            $tags    = isset($detail['tags'])?$detail['tags']:'';
+            $tags    = trim($tags,"{}");
             $tag_arr = ($tags)?explode (',',$tags):array();
 
             $maylike_list = array();
             if (!empty($tags)) {
-                $tags = str_replace(",", " OR ", $tags);
-                $maylike_res = SearchModel::getMayLikeInfo($tags,1,8);
+                $tags         = str_replace(",", " OR ", $tags);
+                $maylike_res  = SearchModel::getMayLikeInfo($tags,1,8);
                 $maylike_list = $maylike_res['list_data'];
                 foreach ($maylike_list as $key => $value) {
                     if ($value['id'] == $id) {
@@ -67,13 +74,6 @@ class InfoController extends BasicController {
             $redis->set($redis_key,$output,$timeout);
 
         }
-
-        // deal_content rel="nofollow"
-        $pattern = '/<a[^>]+(?>)/i';
-        $callback = 'addnofollow';
-        $deal_content = preg_replace_callback($pattern,$callback,$output['detail']['deal_content']);
-        // var_dump($deal_content);exit;
-        $output['detail']['deal_content'] = $deal_content;
 
         // title
         $subject = !empty($output['detail']['subject'])?$output['detail']['subject']:$output['detail']['abstract'];

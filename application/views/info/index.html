@@ -51,13 +51,13 @@
 
                     <div class="article-pager">
                         <ul>
-                            <li class="previous">
+                            <li class="previous text-justify">
                             <?php if(isset($output['prev_info'])):?>
                                 <span>上一篇：</span><a href="/info/<?php echo $output['prev_info']['id'];?>" rel="prev"><?php echo $output['prev_info']['subject'];?></a>
                             <?php endif;?>
                             </li>
 
-                            <li class="next">
+                            <li class="next text-justify">
                             <?php if(isset($output['next_info'])):?>
                                 <span>下一篇：</span><a href="/info/<?php echo $output['next_info']['id'];?>" rel="next"><?php echo $output['next_info']['subject'];?></a>
                             <?php endif;?>
