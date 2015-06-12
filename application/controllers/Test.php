@@ -44,6 +44,18 @@ class TestController extends BasicController {
         return;
     }
 
+    public function sendAction() {
+        Yaf_Dispatcher::getInstance()->autoRender(FALSE);
+        return;
+
+
+
+        $subject = "网站异常提醒:".date("Y-m-d H:i");
+        $text = "tesft";
+        MailHelper::getInstance()->sendTip($subject,$text);
+        return;
+    }
+
     public function testAction() {
         $key = "2";
         $res = SearchModel::getZoneInfo($key,1,20);
