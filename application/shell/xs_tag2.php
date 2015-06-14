@@ -25,7 +25,7 @@ $servers = ConfigPg::getDBMaster($dbname);
 $db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
 
 
-$sql = 'SELECT "id","subject","abstract","deal_content","image_thumbs","post_time","deal_content" FROM '.Otable::TABLE_115_TOPIC." WHERE need_format!=0 AND tags='{666666}'  LIMIT 20";
+$sql = 'SELECT "id","subject","abstract","deal_content","image_thumbs","post_time","deal_content" FROM '.Otable::TABLE_115_TOPIC." WHERE need_format!=0 AND tags='{66666}'  LIMIT 20";
 
 $sql_tmp = 'UPDATE ' . Otable::TABLE_115_TOPIC .' SET tags=? WHERE id=?;';
 
@@ -53,7 +53,7 @@ while ( $list_arr ) {
         }
 
         if (empty($tops)) {
-            $vars = array('{66666}',$id);//6个6
+            $vars = array('{666666}',$id);//6个6
             // continue;//继续下一条
         }else{
             $temp = array();
