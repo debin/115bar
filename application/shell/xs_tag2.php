@@ -53,7 +53,7 @@ while ( $list_arr ) {
         }
 
         if (empty($tops)) {
-            $vars = array('{666666}',$id);//6个6
+            $vars = array('{66666}',$id);//6个6
             // continue;//继续下一条
         }else{
             $temp = array();
