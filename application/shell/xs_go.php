@@ -66,13 +66,13 @@ $db = PgsqlHelper::getInstance();
 $servers = ConfigPg::getDBMaster($dbname);
 $db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
 
-$sql = 'SELECT * FROM "xun_index" WHERE upload_id=? AND "type"=? ;';
+$sql = 'SELECT * FROM "update_index" WHERE upload_id=? AND "type"=? ;';
 $vars = array(CONFIG_ENV,$search_type);
 $xun_index = $db->getOne($sql,$vars);
 if ($xun_index) {
     $conditon = array('upload_id'=>CONFIG_ENV,'type'=>$search_type);
     $update_data = array('update_time'=>$update_time);
-    $db->update("xun_index",$update_data,$conditon);
+    $db->update("update_index",$update_data,$conditon);
 }else{
     $insert_data = array(
         'upload_id'   =>CONFIG_ENV,
@@ -80,7 +80,7 @@ if ($xun_index) {
         'create_time' =>$update_time,
         'update_time' =>$update_time,
         );
-    $db->insert("xun_index",$insert_data);
+    $db->insert("update_index",$insert_data);
 }
 
 echo "over:",$count;
