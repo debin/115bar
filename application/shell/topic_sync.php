@@ -35,7 +35,6 @@ if (isset($result['count'])) {
 }
 $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
 
-
 // $page_count = 1;
 $count = 0;
 for ($page=1; $page <= $page_count; $page++) {
