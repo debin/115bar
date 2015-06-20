@@ -70,7 +70,7 @@ for ($i=1; $i <= $page_count; $i++) {
 
 // 更新索引
 if (isset($value['update_time'])&&$value['update_time']) {
-    $conditon = array('upload_id'=>CONFIG_ENV,$search_type);
+    $conditon = array('upload_id'=>CONFIG_ENV,'type'=>$search_type);
     $update_data = array('update_time'=>$value['update_time']);
     $db->update("update_index",$update_data,$conditon);
 }
