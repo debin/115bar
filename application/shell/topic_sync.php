@@ -41,7 +41,7 @@ $count = 0;
 for ($page=1; $page <= $page_count; $page++) {
 
     $offset   = ($page-1)*$pagesize;
-    $sql = 'SELECT "id","subject","abstract","post_time","deal_content","update_time","tags","status" FROM '.Otable::TABLE_115_TOPIC . ' ORDER BY "update_time" ASC LIMIT ? OFFSET ? ';
+    $sql = 'SELECT "id","subject","abstract","post_time","deal_content","update_time","tags","status" FROM '.Otable::TABLE_115_TOPIC . ' ORDER BY "update_time" ASC,"id" ASC LIMIT ? OFFSET ? ';
     $vars = array($pagesize,$offset);
     $list_arr = $db_old->getAll($sql,$vars);
     if ($list_arr) {
