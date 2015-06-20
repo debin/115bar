@@ -27,7 +27,7 @@ class InfoController extends BasicController {
             $detail = TopicModel::getInfoById($id);
 
             if (empty($detail)) {
-                throw new Exception('No this info:'.$id,YAF_ERR_NOTFOUND_ACTION); 
+                throw new Exception('No this info:'.$id,YAF_ERR_NOTFOUND_ACTION);
             }
 
             // deal_content rel="nofollow"
@@ -56,8 +56,8 @@ class InfoController extends BasicController {
             }
 
             // 上一篇
-            $prev_info = TopicModel::getNearInfoById($id,'>',"ASC");
-            $next_info = TopicModel::getNearInfoById($id,'<');
+            $prev_info = TopicModel::getNearInfoById($id,$detail['post_time'],'>',"ASC");
+            $next_info = TopicModel::getNearInfoById($id,$detail['post_time'],'<');
 
 
             // 最近更新

@@ -27,13 +27,13 @@ class TopicModel{
      * @param  int $id  id
      * @param  string $oper    >上一篇 <下一篇
      */
-    public static function getNearInfoById($id,$oper="<",$sort="DESC"){
+    public static function getNearInfoById($id,$post_time,$oper="<",$sort="DESC"){
         $dbname = Otable::DB_115;
         $db = PgsqlHelper::getInstance();
         $servers = ConfigPg::getDBMaster($dbname);
         $db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
-        $sql = 'SELECT "id","subject" FROM '.Otable::TABLE_115_TOPIC." WHERE status=0 AND id {$oper} ? ORDER BY id {$sort}";
-        $vars = array(intval($id));
+        $sql = 'SELECT "id","subject" FROM '.Otable::TABLE_115_TOPIC." WHERE status=0 AND post_time {$oper} ? ORDER BY post_time {$sort}";
+        $vars = array(intval($post_time));
         $result = $db->getOne($sql,$vars);
         return $result;
     }

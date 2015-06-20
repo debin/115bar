@@ -52,15 +52,16 @@
                     <div class="article-pager">
                         <ul>
                             <li class="previous text-justify">
-                            <?php if(isset($output['prev_info'])):?>
-                                <span>上一篇：</span><a href="/info/<?php echo $output['prev_info']['id'];?>" rel="prev"><?php echo $output['prev_info']['subject'];?></a>
-                            <?php endif;?>
+                                <span>上一篇：</span>
+                                <?php if(!empty($output['prev_info'])):?>
+                                    <a href="/info/<?php echo $output['prev_info']['id'];?>" rel="prev"><?php echo $output['prev_info']['subject'];?></a>
+                                <?php endif;?>
                             </li>
 
                             <li class="next text-justify">
-                            <?php if(isset($output['next_info'])):?>
-                                <span>下一篇：</span><a href="/info/<?php echo $output['next_info']['id'];?>" rel="next"><?php echo $output['next_info']['subject'];?></a>
-                            <?php endif;?>
+                                <span>下一篇：</span>
+                                <?php if(!empty($output['next_info'])):?><a href="/info/<?php echo $output['next_info']['id'];?>" rel="next"><?php echo $output['next_info']['subject'];?></a>
+                                <?php endif;?>
                             </li>
                         </ul>
                     </div>
