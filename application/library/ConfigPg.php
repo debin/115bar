@@ -7,14 +7,14 @@
  * @version  1.0.1
  */
 class ConfigPg{
-    private static $config = array(
+    public static $config = array(
         'dev' => array(
             "dht"=>array('203.195.196.161','blue','blue',3306),
             "115"=>array('203.195.196.161','blue','blue',3306),
             ),
         'ol' => array(
             "dht"=>array('203.195.196.161','blue','blue',3306),
-            "115"=>array('203.195.196.161','blue','blue',3306),
+            "115"=>array('106.184.1.128','blue','blue',3306),
             ),
     );
 

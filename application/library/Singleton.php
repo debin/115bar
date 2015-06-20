@@ -7,17 +7,17 @@
 
 /**
  * 单实例类
- * 
+ *
  * 如果想要其它类也为单实例的，则继承此类，然后通过getInstance方法获取实例
- * 
+ *
  * 要求php5.3以上
- * 
+ *
  * 示例：
- * 
+ *
  * 	class Foobar extends Singleton {};
- * 	
+ *
  * 	$foo = Foobar::getInstance();
- * 
+ *
  * 注意，在php中应慎用单实例模式
  * @author sh
  * @package mxcommon_lib
@@ -33,7 +33,7 @@ class Singleton {
     /**
      * construct
      */
-    protected function __construct() {
+    public function __construct() {
         //Thou shalt not construct that which is unconstructable!
     }
 
@@ -63,7 +63,7 @@ class Singleton {
      * init
      */
     public function init() {
-        
+
     }
 
 }
