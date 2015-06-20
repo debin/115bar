@@ -16,7 +16,7 @@ include_once __DIR__."./../vendor/xunsearch/php/lib/XS.php";
 
 $index_type = "topicsync";
 $dbname = Otable::DB_115;
-$pagesize = 10;
+$pagesize = 1000;
 
 $db_old = PgsqlHelper::getInstance();
 $servers = ConfigPg::$config['dev'][$dbname];
@@ -36,7 +36,7 @@ if (isset($result['count'])) {
 $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
 
 
-$page_count = 1;
+// $page_count = 1;
 $count = 0;
 for ($page=1; $page <= $page_count; $page++) {
 
@@ -50,19 +50,23 @@ for ($page=1; $page <= $page_count; $page++) {
             $count++;
         }
     }
-    exit;
 }
-exit;
 // 更新索引
-if (isset($value['update_time'])&&$value['update_time']) {
+$sql = 'SELECT * FROM "update_index" WHERE upload_id=? AND "type"=? ;';
+$vars = array(CONFIG_ENV,$search_type);
+$xun_index = $db->getOne($sql,$vars);
+if ($xun_index) {
     $conditon = array('upload_id'=>CONFIG_ENV,'type'=>$search_type);
-    $update_data = array('update_time'=>$value['update_time']);
+    $update_data = array('update_time'=>$update_time);
     $db->update("update_index",$update_data,$conditon);
+}else{
+    $insert_data = array(
+        'upload_id'   =>CONFIG_ENV,
+        'type'        =>$search_type,
+        'create_time' =>$update_time,
+        'update_time' =>$update_time,
+        );
+    $db->insert("update_index",$insert_data);
 }
 
-
-echo "xsgodelta update xs delta:",$count;
-
-
-
-
+echo "update topic sync  total:",$count;
