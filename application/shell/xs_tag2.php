@@ -27,7 +27,7 @@ $db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
 
 $sql = 'SELECT "id","subject","abstract","deal_content","image_thumbs","post_time","deal_content" FROM '.Otable::TABLE_115_TOPIC." WHERE need_format!=0 AND tags='{666666}'  LIMIT 200";
 
-$sql_tmp = 'UPDATE ' . Otable::TABLE_115_TOPIC .' SET tags=? WHERE id=?;';
+$sql_tmp = 'UPDATE ' . Otable::TABLE_115_TOPIC .' SET tags=?,update_time=? WHERE id=?;';
 
 $count = 0;
 $list_arr = $db->getAll($sql,array());
@@ -53,7 +53,7 @@ while ( $list_arr ) {
         }
 
         if (empty($tops)) {
-            $vars = array('{66666}',$id);//6个6
+            $vars = array('{66666}',$id,time());//6个6
             // continue;//继续下一条
         }else{
             $temp = array();
@@ -61,7 +61,7 @@ while ( $list_arr ) {
                 array_push($temp,$v['word']);
             }
             $temp_str = '{'. implode(',', $temp) .'}';
-            $vars = array($temp_str,$id);
+            $vars = array($temp_str,$id,time());
         }
         $db->query($sql_tmp,$vars);
         $count++;
