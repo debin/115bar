@@ -30,7 +30,7 @@ $sql = 'SELECT "id","subject","abstract","deal_content","image_thumbs","post_tim
 $sql_tmp = 'UPDATE ' . Otable::TABLE_115_TOPIC .' SET tags=?,update_time=? WHERE id=?;';
 
 $count = 0;
-$list_arr = $db->getAll($sql,array());var_dump($list_arr);exit;
+$list_arr = $db->getAll($sql,array());//var_dump($list_arr);exit;
 while ( $list_arr ) {
     foreach ($list_arr as $key => $value) {
         $id = $value['id'];
