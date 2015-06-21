@@ -75,7 +75,7 @@ for ($page=1; $page <= $page_count; $page++) {
 if (isset($value['update_time'])&&$value['update_time']) {
     $conditon = array('upload_id'=>CONFIG_ENV,'type'=>$index_type);
     $update_data = array('update_time'=>$value['update_time']);
-    $db->update("update_index",$update_data,$conditon);
+    $db_new->update("update_index",$update_data,$conditon);
 }
 
 echo "update topic sync delta total:",$count;
