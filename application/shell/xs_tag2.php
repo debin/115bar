@@ -53,7 +53,7 @@ while ( $list_arr ) {
         }
 
         if (empty($tops)) {
-            $vars = array('{66666}',$id,time());//6个6
+            $vars = array('{66666}',time(),$id);//6个6
             // continue;//继续下一条
         }else{
             $temp = array();
@@ -61,7 +61,7 @@ while ( $list_arr ) {
                 array_push($temp,$v['word']);
             }
             $temp_str = '{'. implode(',', $temp) .'}';
-            $vars = array($temp_str,$id,time());
+            $vars = array($temp_str,time(),$id);
         }
         $db->query($sql_tmp,$vars);
         $count++;

@@ -30,7 +30,7 @@ $sql = 'SELECT "id","subject","abstract","deal_content","image_thumbs","post_tim
 $sql_tmp = 'UPDATE ' . Otable::TABLE_115_TOPIC .' SET tags=?,update_time=? WHERE id=?;';
 
 $count = 0;
-$list_arr = $db->getAll($sql,array());
+$list_arr = $db->getAll($sql,array());var_dump($list_arr);exit;
 while ( $list_arr ) {
     foreach ($list_arr as $key => $value) {
         $id = $value['id'];
@@ -84,14 +84,14 @@ while ( $list_arr ) {
         }
 
         if (empty($tops)) {
-            $vars = array('{}',$id,time());
+            $vars = array('{}',time(),$id);
         }else{
             $temp = array();
             foreach ( $tops as  $v ) {
                 array_push($temp,$v['word']);
             }
             $temp_str = '{'. implode(',', $temp) .'}';
-            $vars = array($temp_str,$id,time());
+            $vars = array($temp_str,time(),$id);
         }
         $db->query($sql_tmp,$vars);
         $count++;
