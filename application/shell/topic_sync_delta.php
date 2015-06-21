@@ -63,7 +63,7 @@ for ($page=1; $page <= $page_count; $page++) {
             $has_id = $db_new->getOne($sql_tmp,$vars_tmp);
             if ($has_id) {
                 $conditon = array('id'=>$value['id']);
-                $db->update(Otable::TABLE_115_TOPIC,$value,$conditon);
+                $db_new->update(Otable::TABLE_115_TOPIC,$value,$conditon);
             }else{
                 $db_new->insert(Otable::TABLE_115_TOPIC,$value);
             }
