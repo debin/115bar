@@ -53,11 +53,11 @@ for ($page=1; $page <= $page_count; $page++) {
 // 更新索引
 $sql = 'SELECT * FROM "update_index" WHERE upload_id=? AND "type"=? ;';
 $vars = array(CONFIG_ENV,$search_type);
-$xun_index = $db->getOne($sql,$vars);
+$xun_index = $db_new->getOne($sql,$vars);
 if ($xun_index) {
     $conditon = array('upload_id'=>CONFIG_ENV,'type'=>$search_type);
     $update_data = array('update_time'=>$update_time);
-    $db->update("update_index",$update_data,$conditon);
+    $db_new->update("update_index",$update_data,$conditon);
 }else{
     $insert_data = array(
         'upload_id'   =>CONFIG_ENV,
@@ -65,7 +65,7 @@ if ($xun_index) {
         'create_time' =>$update_time,
         'update_time' =>$update_time,
         );
-    $db->insert("update_index",$insert_data);
+    $db_new->insert("update_index",$insert_data);
 }
 
 echo "update topic sync  total:",$count;
