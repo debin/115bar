@@ -59,7 +59,7 @@ class RedisHelper extends Singleton {
                     //记录 连不上redis
                 }
             } catch (Exception $e) {
-                throw new Exception($e);
+                // throw new Exception($e);
 
             }
         }
