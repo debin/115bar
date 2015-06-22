@@ -9,7 +9,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract {
 
     //语言包 设置当前用户的语言类型
     public function _initLang() {
-        Yaf_Session::getInstance()->start();
+        // Yaf_Session::getInstance()->start();
         I18nHelper::getInstance()->getUserLang();
     }
 
