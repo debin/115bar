@@ -93,7 +93,10 @@
 
         <script>
         $(function(){
-
+            var controller = "<?php echo $current_controller;?>";
+            if (controller=='index') {
+                return 0;
+            };
             var $bottomTools = $('.bottom_tools');
             var $qrTools = $('.coin');
             var qrImg = $('.qr_img');
