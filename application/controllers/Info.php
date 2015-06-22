@@ -23,7 +23,7 @@ class InfoController extends BasicController {
         $timeout = 300;
         $output = $redis->get($redis_key);
 
-        if (1) {
+        if (!$output) {
             $detail = TopicModel::getInfoById($id);
 
             if (empty($detail)) {
