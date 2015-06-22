@@ -57,9 +57,10 @@ class RedisHelper extends Singleton {
                 $status = $this->redis->pconnect($this->db_host, $this->port,$timeout=2.5);
                 if (!$status) {
                     //记录 连不上redis
+                    throw new Exception($e);
                 }
             } catch (Exception $e) {
-                // throw new Exception($e);
+                throw new Exception($e);
 
             }
         }
