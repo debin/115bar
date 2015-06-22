@@ -52,6 +52,7 @@ class RedisHelper extends Singleton {
             $servers = ConfigRedis::getDBMaster();
             $this->db_host = $servers[0];
             $this->port = $servers[1];
+            $this->redis = new Redis();
             try {
                 $status = $this->redis->pconnect($this->db_host, $this->port,$timeout=2.5);
                 if (!$status) {
