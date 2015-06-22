@@ -20,7 +20,7 @@ class IndexController extends BasicController {
 
     public function indexAction() {
 
-        $this->title = "礼包搜索"."_"._("la_103")."_"._("la_102");
+        $this->title = _("la_102")." › "._("la_103")." › "._("la_104");
 
         $output = array();
         $this->getView()->assign("output", $output);

@@ -40,7 +40,7 @@ class SController extends BasicController {
         // echo $paginate;
         // exit;
 
-        $this->title = $page. "/" . $page_count. " ". $key. "_资源搜索_". _("la_103")."_"._("la_102");
+        $this->title = _("la_102")." › "._("la_103"). " › "._("la_104").'_'. $key.' '. $page. "/" . $page_count;
         $output                       = array();
         $output['total']              = $total;
         $output['list']               = $list_data;

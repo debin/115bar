@@ -37,12 +37,12 @@ class ErrorController extends Yaf_Controller_Abstract {
             $array["data"]   = $exception->getTrace();
             // $array["data"] = $exception->getTraceAsString();
             // echo json_encode($array);
-            
+
             // 文件日志
             Log::addLog($array);
 
             // 邮件提醒  5分钟一次
-            $subject = "网站异常:".date("m-d H:i");
+            $subject = _("la_108").":".date("m-d H:i");
             $text = $exception->getTraceAsString();
             MailHelper::getInstance()->sendTip($subject,$text);
 

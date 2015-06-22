@@ -39,7 +39,7 @@ class AboutController extends BasicController {
         // echo $paginate;
         // exit;
 
-        $this->title = _("la_103")."_"._("la_102");
+        $this->title = _("la_102")." › " ._("la_105");
         $output                       = array();
         $output['total']              = $total;
         $output['list']               = $list_data;

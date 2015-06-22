@@ -80,7 +80,7 @@ class InfoController extends BasicController {
         $subject = !empty($output['detail']['subject'])?$output['detail']['subject']:$output['detail']['abstract'];
         $search = array(" ","|","!","»");
         $subject = str_replace($search,'',$subject);
-        $this->title = $subject."_"._("la_103")."_"._("la_102");
+        $this->title = _("la_102")." › "._("la_103")." › ".$subject;
 
         $this->getView()->assign("output", $output);
         // $this->getView()->display("sign/login.html");

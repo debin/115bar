@@ -53,7 +53,7 @@ class TController extends BasicController {
             $redis->set($redis_key,$output,$timeout);
         }
 
-        $this->title = $page. "/" . $output['data']['page_count']." " . _("la_103")."_"._("la_102");
+        $this->title = _("la_102")." › "._("la_103").' ' .$page. "/" . $output['data']['page_count'];
 
         // $output                       = cat_html($output);
         $this->getView()->assign("output", $output);
