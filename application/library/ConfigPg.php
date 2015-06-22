@@ -14,7 +14,7 @@ class ConfigPg{
             ),
         'ol' => array(
             "dht"=>array('203.195.196.161','blue','blue',3306),
-            "115"=>array('106.184.1.128','blue','blue',3306),
+            "115"=>array('192.168.189.6','blue','blue',3306),
             ),
     );
 
