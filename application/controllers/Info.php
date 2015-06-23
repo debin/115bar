@@ -18,6 +18,10 @@ class InfoController extends BasicController {
         $id = $this->getRequest()->getParam("id", 0);
         $id = intval($id);
 
+        if ($id>999999999) {
+            throw new Exception('Id is out of range for type integer:'.$id,YAF_ERR_NOTFOUND_ACTION);
+        }
+
         $redis = RedisHelper::getInstance();
         $redis_key = "115:info:".$id;
         $timeout = 600;
