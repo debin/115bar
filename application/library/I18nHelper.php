@@ -107,7 +107,8 @@ class I18nHelper extends Singleton{
                 $this->lang[$user_lang] = include $lang_file;
             }
         }
-        return $this->lang[$user_lang][$la];
+        $res = isset($this->lang[$user_lang][$la])?$this->lang[$user_lang][$la]:'';
+        return $res;
     }
 
 
