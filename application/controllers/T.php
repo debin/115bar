@@ -34,6 +34,7 @@ class TController extends BasicController {
             if ($page>$page_count) {
                 // $page = $page_count;
                 $this->redirect('/t/'.$page_count);
+                Yaf_Dispatcher::getInstance()->autoRender(FALSE);
                 return;
             }
             $list_arr = TopicModel::getInfoByPage($data,$page,$pagesize);

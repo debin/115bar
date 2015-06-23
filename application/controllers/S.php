@@ -34,6 +34,7 @@ class SController extends BasicController {
         if ($page>$page_count) {
             // $page = $page_count;
             $this->redirect('/s/'.$key.'/'.$page_count);
+            Yaf_Dispatcher::getInstance()->autoRender(FALSE);
             return;
         }
         // 分页
