@@ -26,8 +26,8 @@ class ErrorController extends Yaf_Controller_Abstract {
             // $array["data"]   = $exception->getTraceAsString();
             // echo json_encode($array);
             // break;
-            // $this->getResponse()->setHeader($this -> getRequest() -> getServer( 'SERVER_PROTOCOL' ), '404 Not Found');
-            // $this->getResponse()->response();
+            $this->getResponse()->setHeader($this -> getRequest() -> getServer( 'SERVER_PROTOCOL' ), '404 Not Found');
+            $this->getResponse()->response();
             $this->getView()->display("error/404.html");
             // exit;
             return;
@@ -48,8 +48,8 @@ class ErrorController extends Yaf_Controller_Abstract {
             $text = $exception->getTraceAsString();
             MailHelper::getInstance()->sendTip($subject,$text);
 
-            // $this->getResponse()->setHeader($this -> getRequest() -> getServer( 'SERVER_PROTOCOL' ), '500 Internal Server Error');
-            // $this->getResponse()->response();
+            $this->getResponse()->setHeader($this -> getRequest() -> getServer( 'SERVER_PROTOCOL' ), '500 Internal Server Error');
+            $this->getResponse()->response();
             $this->getView()->display("error/error.html");
             return;
         }
