@@ -31,6 +31,11 @@ class SController extends BasicController {
             $total = $pagesize;
         }
         $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
+        if ($page>$page_count) {
+            // $page = $page_count;
+            $this->redirect('/s/'.$key.'/'.$page_count);
+            return;
+        }
         // 分页
         $url = Yaf_Registry::get("config")->webroot . "/s/$key";
         // echo json_encode( get_defined_vars() );
