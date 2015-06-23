@@ -33,7 +33,7 @@ class TController extends BasicController {
             $list_arr = TopicModel::getInfoByPage($data,$page,$pagesize);
             $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
             if ($page>$page_count) {
-                $page = $page_count-1;
+                $page = $page_count;
             }
 
             // 分页
