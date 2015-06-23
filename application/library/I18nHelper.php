@@ -59,6 +59,7 @@ class I18nHelper extends Singleton{
      */
     public function getUserLang(){
 
+        $this->user_lang = 'cs';
         if(!empty($this->user_lang)){
             return $this->user_lang;
         }
