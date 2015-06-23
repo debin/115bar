@@ -128,15 +128,15 @@ class I18nHelper extends Singleton{
      * @param string $mx_lang
      */
     private function __setUserLang2Cookie($mx_lang){
-        setcookie('km_lang', $mx_lang, time()+86400*365,'/');
+        setcookie('lang', $mx_lang, time()+86400*365,'/');
     }
 
     /**
      * 从cookie信息里面拿用户语言
      */
     private function __getUserLangFromCookie(){
-        if(isset($_COOKIE['km_lang']) && in_array($_COOKIE['km_lang'], array('cs','en','my','id','ct'))){
-            return $_COOKIE['km_lang'];
+        if(isset($_COOKIE['lang']) && in_array($_COOKIE['lang'], array('cs','en','my','id','ct'))){
+            return $_COOKIE['lang'];
         }
         return null;
     }
