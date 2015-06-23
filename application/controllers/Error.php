@@ -10,7 +10,10 @@ class ErrorController extends Yaf_Controller_Abstract {
         Yaf_Dispatcher::getInstance()->disableView();
     }
 
-    public function errorAction($exception) {
+    public function errorAction($exception=null ) {
+        if (empty($exception)) {
+            throw new Exception('Exception is empty',YAF_ERR_NOTFOUND_ACTION);
+        }
         /* error occurs */
         switch ($exception->getCode()) {
         case YAF_ERR_NOTFOUND_MODULE:
