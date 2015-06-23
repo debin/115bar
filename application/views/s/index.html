@@ -62,7 +62,7 @@
       <ul class="list-group list-unstyled">
           <?php foreach ($output['relation_arr'] as $key => $value): ?>
           <li class="list-style">
-              <a href="/s/<?php echo $value;?>" ><p class="text-justify"><strong><?php echo $value;?></strong></p></a>
+              <a href="/s/<?php echo $value;?>/1" ><p class="text-justify"><strong><?php echo $value;?></strong></p></a>
           </li>
           <?php endforeach;?>
           <?php if(empty($output['relation_arr'])):?>
@@ -81,7 +81,7 @@
       <ul class="list-group list-unstyled">
           <?php foreach ($output['hot_arr'] as $key => $value): ?>
           <li class="list-style">
-              <a href="/s/<?php echo $key;?>" ><p class="text-justify"><strong><?php echo $key;?></strong></p></a>
+              <a href="/s/<?php echo $key;?>/1" ><p class="text-justify"><strong><?php echo $key;?></strong></p></a>
               <!-- <span class="badge"><?php echo $value;?></span> -->
           </li>
           <?php endforeach;?>
