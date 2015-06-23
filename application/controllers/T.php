@@ -32,7 +32,8 @@ class TController extends BasicController {
             $total = TopicModel::getInfoCount($data);
             $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
             if ($page>$page_count) {
-                $page = $page_count;
+                // $page = $page_count;
+                $this->redirect('/t/'.$page_count);
             }
             $list_arr = TopicModel::getInfoByPage($data,$page,$pagesize);
 
