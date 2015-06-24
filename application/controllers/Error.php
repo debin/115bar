@@ -40,6 +40,7 @@ class ErrorController extends Yaf_Controller_Abstract {
             $array["code"]   = -98;
             $array["msg"]    = $exception->getMessage();
             $array["data"]   = $exception->getTrace();
+            $array["time"]   = date("Y-m-d H:i:s");
             // $array["data"] = $exception->getTraceAsString();
             // echo json_encode($array);
 
