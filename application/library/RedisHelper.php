@@ -245,4 +245,13 @@ class RedisHelper extends Singleton {
         }
     }
 
+    public function close() {
+        try {
+            $this->redis->close();
+        } catch (Exception $e) {
+            
+        }
+        
+    }
+
 }
