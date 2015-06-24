@@ -36,12 +36,12 @@ class RedisHelper extends Singleton {
      * 构造
      */
     function __construct() {
-        if(!class_exists('ConfigRedis')){
-            throw new Exception("Can not find class ConfigRedis.");
-        }
-        if(!class_exists('Redis')){
-            throw new Exception("Can not find class Redis.");
-        }
+        // if(!class_exists('ConfigRedis')){
+        //     throw new Exception("Can not find class ConfigRedis.");
+        // }
+        // if(!class_exists('Redis')){
+        //     throw new Exception("Can not find class Redis.");
+        // }
     }
 
     /**
