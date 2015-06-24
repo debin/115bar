@@ -47,8 +47,8 @@ class ErrorController extends Yaf_Controller_Abstract {
             Log::addLog($array);
 
             // 邮件提醒  5分钟一次
-            $subject = _("la_108").":".date("m-d H:i");
-            $text = $exception->getTraceAsString();
+            $subject = _("la_108").":".date("m-d H:i").' '.CONFIG_ENV;
+            $text = $exception->getMessage()."\n".$exception->getTraceAsString();
             MailHelper::getInstance()->sendTip($subject,$text);
 
             $this->getResponse()->setHeader($this -> getRequest() -> getServer( 'SERVER_PROTOCOL' ), '500 Internal Server Error');
