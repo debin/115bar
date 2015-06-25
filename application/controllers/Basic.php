@@ -19,6 +19,10 @@ class BasicController extends Yaf_Controller_Abstract {
         // if (!$session->user) {
         //     $this->redirect("/sign/index");
         // }
+        $REQUEST_URI = $this->getRequest()->getServer('REQUEST_URI','');
+        if (strpos($REQUEST_URI, '/index.php')===0) {
+            throw new Exception('index.php not allow',YAF_ERR_NOTFOUND_ACTION);
+        }
 
         Yaf_Dispatcher::getInstance()->c = $this;//保存当前控制器
         if ($this->getRequest()->isXmlHttpRequest()) {
