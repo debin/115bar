@@ -31,6 +31,11 @@ class ErrorController extends Yaf_Controller_Abstract {
             // break;
             $this->getResponse()->setHeader($this -> getRequest() -> getServer( 'SERVER_PROTOCOL' ), '404 Not Found');
             $this->getResponse()->response();
+
+            $output            = array();
+            $output['referer'] = $this->getRequest()->getServer('HTTP_REFERER','');
+            $output['title']   =  _("la_102").' › '. _("la_106");
+            $this->getView()->assign("output", $output);
             $this->getView()->display("error/404.html");
             // exit;
             return;
@@ -54,6 +59,11 @@ class ErrorController extends Yaf_Controller_Abstract {
 
             $this->getResponse()->setHeader($this -> getRequest() -> getServer( 'SERVER_PROTOCOL' ), '500 Internal Server Error');
             $this->getResponse()->response();
+
+            $output            = array();
+            $output['referer'] = $this->getRequest()->getServer('HTTP_REFERER','');
+            $output['title']   =  _("la_102").' › '. _("la_107");
+            $this->getView()->assign("output", $output);
             $this->getView()->display("error/error.html");
             return;
         }
