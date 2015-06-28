@@ -46,10 +46,10 @@ class SController extends BasicController {
         // echo $paginate;
         // exit;
 
-        if (empty($key)) {
-            $this->title = _("la_102")." › "._("la_103"). " › "._("la_104");
-        }else{
+        if (!empty($key)) {
             $this->title = _("la_102")." › "._("la_103"). " › "._("la_104").'_'. $key.' '. $page. "/" . $page_count;
+        }else{
+            $this->title = _("la_102")." › "._("la_103"). " › "._("la_104");
         }
         $output                       = array();
         $output['total']              = $total;
