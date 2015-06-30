@@ -32,14 +32,14 @@ class TestController extends BasicController {
         $t = !empty($_REQUEST['t'])?intval($_REQUEST['t']):0;
         if ($t) {
             echo $t;
-            echo '#';
+            echo '# ';
             echo date("Y-m-d H:i:s",$t);
         }
 
         echo '<br/><br/>';
         $now = time();
         echo $now;
-        echo '#';
+        echo '# ';
         echo date("Y-m-d H:i:s",$now);
         return;
     }
