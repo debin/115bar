@@ -39,7 +39,7 @@ class TestController extends BasicController {
         echo '<br/><br/>';
         $now = time();
         echo $now;
-        echo ' : ';
+        echo '#';
         echo date("Y-m-d H:i:s",$now);
         return;
     }
