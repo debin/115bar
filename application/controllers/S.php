@@ -49,7 +49,7 @@ class SController extends BasicController {
         if (!empty($key)) {
             $this->title = _("la_102")." › "._("la_103"). " › "._("la_104").'_'. $key.' '. $page. "/" . $page_count;
         }else{
-            $this->title = _("la_102")." › "._("la_103"). " › "._("la_104");
+            $this->title = _("la_102")." › "._("la_103"). " › "._("la_104")._("la_109");
         }
         $output                       = array();
         $output['total']              = $total;
