@@ -32,7 +32,7 @@ class TestController extends BasicController {
         $t = !empty($_REQUEST['t'])?intval($_REQUEST['t']):0;
         if ($t) {
             echo $t;
-            echo ' : ';
+            echo '#';
             echo date("Y-m-d H:i:s",$t);
         }
 
@@ -105,8 +105,6 @@ class TestController extends BasicController {
         $xs = new XS('115zone'); // 建立 XS 对象，项目名称为：demo
         $index = $xs->index; // 获取 索引对象
 
-
-return 1;
         $page = 1;
         $pagesize = 20;
         $data = array('status'=>0);
