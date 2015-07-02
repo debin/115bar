@@ -24,14 +24,14 @@ class SmController extends BasicController {
     public function indexAction() {
         $page = $this->getRequest()->getParam("page", 0);
         $page = intval($page);
-        $pagesize = 20;
+        $pagesize = 200;
         $data = array('status'=>0);
         $output  = array();
 
         if (empty($page)) {
             $total = TopicModel::getInfoCount($data);
             $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
-            $page_count = 20;
+            $page_count = 200;
             $output['page_count']  = $page_count;
             // var_dump($output);exit;
             $this->getView()->assign("output", $output);
