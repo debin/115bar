@@ -1,9 +1,9 @@
-<?php echo '<?xml version="1.0" encoding="utf-8"?>';?> 
+<?php echo '<?xml version="1.0" encoding="utf-8"?>';?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <?php foreach ($output['list'] as $key => $value): ?>
     <url>
         <loc><?php echo Yaf_Registry::get("config")->webroot.'/info/'.$value['id'];?></loc>
-        <lastmod><?php echo date("Y-m-d",$value['update_time']);?></lastmod>
+        <lastmod><?php echo gmdate("Y-m-d",$value['update_time']);?></lastmod>
     </url>
 <?php endforeach;?>
 </urlset>
