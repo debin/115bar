@@ -3,7 +3,6 @@
 <?php for ($i=1; $i <= $output['page_count']; $i++): ?>
     <sitemap>
         <loc><?php echo Yaf_Registry::get("config")->webroot.'/sm/'.$i;?></loc>
-        <lastmod></lastmod>
     </sitemap>
 <?php endfor;?>
 </sitemapindex>
