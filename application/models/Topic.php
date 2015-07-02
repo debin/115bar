@@ -100,6 +100,37 @@ class TopicModel{
         return $result;
     }
 
+    /**
+     * 分页查询用户信息2 之获取部分字段
+     * @param [array] $data [description]
+     * @author ldb
+     * @date(2014-12-15)
+     */
+    public static function getInfoByPage2(array $data,$page=1,$pagesize=20,$sort = "DESC"){
+        $dbname = Otable::DB_115;
+        $db = PgsqlHelper::getInstance();
+        $servers = ConfigPg::getDBMaster($dbname);
+        $db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
+
+        $sql = 'SELECT "id","subject","post_time","update_time"  FROM '.Otable::TABLE_115_TOPIC;
+        $sql = $sql . " WHERE 1=1 ";
+        $vars = array();
+        if (isset($data['status'])&&!is_null($data['status'])) {
+            $sql = $sql . " AND \"status\" = ? ";
+            $vars[] = intval($data['status']);
+        }
+
+        $sql = $sql . " ORDER BY \"post_time\" " . $sort;
+        if ($page && $pagesize) {
+            $offset   = ($page-1)*$pagesize;
+            $sql = $sql ." LIMIT ? OFFSET ?";
+            $vars[] = $pagesize;
+            $vars[] = $offset;
+        }
+        $result = $db->getAll($sql,$vars);
+        return $result;
+    }
+
 
 
     /**

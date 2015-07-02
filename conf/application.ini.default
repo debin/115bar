@@ -66,6 +66,10 @@ routes.rewrite4.type="rewrite"
 routes.rewrite4.match='/s/:key/:page'
 routes.rewrite4.route.controller=s
 routes.rewrite4.route.action=index
+routes.rewrite5.type="rewrite"
+routes.rewrite5.match='/sm/:page'
+routes.rewrite5.route.controller=sm
+routes.rewrite5.route.action=index
 webroot=http://www.115bar.com
 
 [iknow:product]

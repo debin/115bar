@@ -1,0 +1,11 @@
+<?php echo '<?xml version="1.0" encoding="utf-8"?>';?> 
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?php foreach ($output['list'] as $key => $value): ?>
+    <url>
+        <loc><?php echo Yaf_Registry::get("config")->webroot.'/info/'.$value['id'];?></loc>
+        <lastmod><?php echo date("Y-m-d H:i:s",$value['update_time']);?></lastmod>
+        <changefreq></changefreq>
+        <priority></priority>
+    </url>
+<?php endforeach;?>
+</urlset>
