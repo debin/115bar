@@ -3,7 +3,7 @@
 <?php foreach ($output['list'] as $key => $value): ?>
     <url>
         <loc><?php echo Yaf_Registry::get("config")->webroot.'/info/'.$value['id'];?></loc>
-        <lastmod><?php echo date("Y-m-d H:i:s",$value['update_time']);?></lastmod>
+        <lastmod><?php echo date("Y-m-d\TH:i:s",$value['update_time']);?></lastmod>
     </url>
 <?php endforeach;?>
 </urlset>
