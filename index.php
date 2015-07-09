@@ -28,5 +28,5 @@ try {
             ->bootstrap()/* bootstrap是可选的调用 */
             ->run()/* 执行 */;
 } catch (Exception $exc) {
-    $exc->getMessage();
+    echo $exc->getMessage();
 }
