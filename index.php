@@ -7,12 +7,6 @@
 define("ROOT", dirname(__FILE__));
 define("APPLICATION_PATH", ROOT . "/application");
 
-
-/*配置debug，开发环境为1，正式环境去掉*/
-
-// define("DEBUGS", isset($_REQUEST['debugs'])?$_REQUEST['debugs']:1);
-define("DEBUGS", 1);
-
 /**
  * 默认的, Yaf_Application将会读取配置文件中在php.ini中设置的ap.environ的配置节
  * 另外在配置文件中, 可以替换PHP的常量, 比如此处的APPLICATION_PATH
