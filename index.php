@@ -12,11 +12,6 @@ define("APPLICATION_PATH", ROOT . "/application");
 
 // define("DEBUGS", isset($_REQUEST['debugs'])?$_REQUEST['debugs']:1);
 define("DEBUGS", 1);
-//header和footer文件
-define("HEADER", APPLICATION_PATH . "/views/layout/header.html");
-define("FOOTER", APPLICATION_PATH . "/views/layout/footer.html");
-define("HEAD", APPLICATION_PATH . "/views/layout/head.html");
-define("MENU", APPLICATION_PATH . "/views/layout/menu.html");
 
 /**
  * 默认的, Yaf_Application将会读取配置文件中在php.ini中设置的ap.environ的配置节
