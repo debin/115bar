@@ -7,7 +7,7 @@
  * Date: 13-12-5
  * Time: 上午11:43
  *
- * use: php indexc.php "request_uri=/test/time"
+ * use: php indexc.php "request_uri=/test/time" 
  */
 define("ROOT", dirname(__FILE__));
 define("APPLICATION_PATH", ROOT . "/application");
