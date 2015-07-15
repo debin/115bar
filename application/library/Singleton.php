@@ -1,11 +1,6 @@
 <?php
 
 /**
- * singleton
- * @package mxcommon
- */
-
-/**
  * 单实例类
  *
  * 如果想要其它类也为单实例的，则继承此类，然后通过getInstance方法获取实例
@@ -19,8 +14,8 @@
  * 	$foo = Foobar::getInstance();
  *
  * 注意，在php中应慎用单实例模式
- * @author sh
- * @package mxcommon_lib
+ * @author ldb
+ * @package library
  */
 class Singleton {
 
