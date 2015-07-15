@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * 日志记录类
+ * @author ldb
+ * @package library
+ */
 class Log {    
 
     /**

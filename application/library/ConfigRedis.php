@@ -1,7 +1,7 @@
 <?php
 /**
  * Redis连接配置
- * @package mxcommon_config
+ * @package library
  */
 class ConfigRedis {
 

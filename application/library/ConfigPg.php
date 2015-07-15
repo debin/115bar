@@ -3,8 +3,7 @@
 /**
  * postgres 配置
  * @author ldb
- * @package config
- * @version  1.0.1
+ * @package lirbray
  */
 class ConfigPg{
     public static $config = array(
