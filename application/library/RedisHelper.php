@@ -2,15 +2,8 @@
 
 /**
  * redis 操作类
- * call mechon:RedisHelper->getInstance()
- * @author shh
- * @package mxcommon
- */
-
-/**
- * redis 操作类
- * @author shh
- * @package mxcommon_lib
+ * @author ldb
+ * @package library
  */
 class RedisHelper extends Singleton {
 
