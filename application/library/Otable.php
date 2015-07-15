@@ -11,7 +11,6 @@
  */
 class Otable {
 
-    const DB_115                  = "115";
-
-    const TABLE_115_TOPIC          = "topic";
+    const DB_115          = "115";
+    const TABLE_115_TOPIC = "topic";
 }
