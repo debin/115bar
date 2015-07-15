@@ -1,13 +1,9 @@
 <?php
 
-/**
- * @author chenming
- * @package mxcommon
- */
 
 /**
- * Mongo数据库名与表名配置
- * @package mxcommon_config
+ * postgres 数据库名与表名配置
+ * @package 
  */
 class Otable {
 
