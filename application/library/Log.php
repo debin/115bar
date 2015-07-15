@@ -2,7 +2,7 @@
 class Log {    
 
     /**
-     * 记录手机登录运行时间
+     * 记录日志
      * @param array $data [description]
      */
     public static function addLog( array $data){
