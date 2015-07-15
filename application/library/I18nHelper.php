@@ -2,15 +2,8 @@
 
 /**
  * 获取用户语言版本
- * @author chenming
- * @package mxcommon
- */
-
-
-/**
- * 获取用户语言版本
- * @author chenming
- * @package mxcommon_model
+ * @author ldb
+ * @package library
  */
 class I18nHelper extends Singleton{
 
