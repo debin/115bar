@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 获取和修改用户相关信息
  *
@@ -16,19 +15,19 @@ class PageModel
     //构造方法初始化
     public function __construct($_url,$_total, $_page,$_pagesize,$_sep='?page=')
     {
-       $this->total    = $_total ? $_total : 1;
-       $this->pagesize = $_pagesize;
-       $this->pagenum  = ceil($this->total / $this->pagesize);
-       $this->page     = $_page;
-       $this->url      = $_url;
-       $this->bothnum  = 3;
-       $this->sep      = $_sep;
+        $this->total    = $_total ? $_total : 1;
+        $this->pagesize = $_pagesize;
+        $this->pagenum  = ceil($this->total / $this->pagesize);
+        $this->page     = $_page;
+        $this->url      = $_url;
+        $this->bothnum  = 3;
+        $this->sep      = $_sep;
     }
 
     //拦截器
     public function __get($_key)
     {
-       return $this->$_key;
+        return $this->$_key;
     }
 
     //数字目录
@@ -45,11 +44,11 @@ class PageModel
         $pagestr = "<li class=\"active\"><a href=\"#\">{$this->page}</a></li>";
         $_pagelist .= $pagestr;
         for ($i=1;$i<=$this->bothnum;$i++) {
-           $_page = $this->page+$i;
-           if ($_page > $this->pagenum) break;
-           $url = $this->url.$this->sep.$_page;
-           $pagestr = "<li><a href=\"{$url}\">{$_page}</a></li>";
-           $_pagelist .= $pagestr;
+            $_page = $this->page+$i;
+            if ($_page > $this->pagenum) break;
+            $url = $this->url.$this->sep.$_page;
+            $pagestr = "<li><a href=\"{$url}\">{$_page}</a></li>";
+            $_pagelist .= $pagestr;
         }
         return $_pagelist;
     }
@@ -58,10 +57,10 @@ class PageModel
     private function first()
     {
         if ($this->page > $this->bothnum+1) {
-          $pagestr = "<li><a href=\"{$this->url}/1\">1</a></li>";
-          $skip = "<li class=\"disabled\"><span>...</span></li>";
-          $pagestr = $pagestr . $skip;
-          return $pagestr;
+            $pagestr = "<li><a href=\"{$this->url}/1\">1</a></li>";
+            $skip = "<li class=\"disabled\"><span>...</span></li>";
+            $pagestr = $pagestr . $skip;
+            return $pagestr;
         }
     }
 
@@ -69,23 +68,23 @@ class PageModel
     private function prev()
     {
         if ($this->page == 1) {
-          $pagestr = "<li class=\"disabled\"><a href=\"#\">«</a></li>";
+            $pagestr = "<li class=\"disabled\"><a href=\"#\">«</a></li>";
         } else {
-          $url = $this->url.$this->sep.($this->page-1);
-          $pagestr = "<li><a href=\"{$url}\">«</a></li>";
+            $url = $this->url.$this->sep.($this->page-1);
+            $pagestr = "<li><a href=\"{$url}\">«</a></li>";
         }
         return $pagestr;
     }
 
     private function next()
     {
-      if ($this->page == $this->pagenum) {
-        $pagestr = "<li class=\"disabled\"><a href=\"#\">»</a></li>";
-      } else {
-        $url = $this->url.$this->sep.($this->page+1);
-        $pagestr = "<li><a href=\"{$url}\">»</a></li>";
-      }
-      return $pagestr;
+        if ($this->page == $this->pagenum) {
+            $pagestr = "<li class=\"disabled\"><a href=\"#\">»</a></li>";
+        } else {
+            $url = $this->url.$this->sep.($this->page+1);
+            $pagestr = "<li><a href=\"{$url}\">»</a></li>";
+        }
+        return $pagestr;
     }
 
     //尾页
@@ -113,4 +112,5 @@ class PageModel
         $_page .= '</ul>';
         return $_page;
     }
+
 }
