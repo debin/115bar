@@ -4,7 +4,8 @@ Yaf_Loader::import(APPLICATION_PATH.'/vendor/xunsearch/php/lib/XS.php');
  * 搜索相关
  *
  */
-class SearchModel{
+class SearchModel
+{
 
     /**
      * 获取圈子贴
@@ -12,7 +13,8 @@ class SearchModel{
      * @author ldb
      * @date(2015-04-25)
      */
-    public static function getZoneInfo($keyword,$page,$pagesize){
+    public static function getZoneInfo($keyword, $page, $pagesize)
+    {
 
         $offset   = ($page-1)*$pagesize;
         $index_app = '115zone';
@@ -72,8 +74,8 @@ class SearchModel{
      * @author ldb
      * @date(2015-04-27)
      */
-    public static function getMayLikeInfo($keyword,$page,$pagesize) {
-
+    public static function getMayLikeInfo($keyword,$page,$pagesize)
+    {
         $offset   = ($page-1)*$pagesize;
         $index_app = '115zone';
         $xs = new XS($index_app); // 建立 XS 对象，项目名称为：demo

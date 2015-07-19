@@ -4,18 +4,19 @@
  * 获取和修改用户相关信息
  *
  */
-class TopicModel{
-
+class TopicModel
+{
 
     /**
      * 获取信息
      * @param  string $id mongo id
      */
-    public static function getInfoById($id){
+    public static function getInfoById($id)
+    {
         $dbname = Otable::DB_115;
         $db = PgsqlHelper::getInstance();
         $servers = ConfigPg::getDBMaster($dbname);
-        $db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
+        $db->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
         $sql = 'SELECT "id","subject","abstract","deal_content","post_time","deal_content","tags" FROM '.Otable::TABLE_115_TOPIC." WHERE status=0 AND id=?";
         $vars = array(intval($id));
         $result = $db->getOne($sql,$vars);
@@ -27,11 +28,12 @@ class TopicModel{
      * @param  int $id  id
      * @param  string $oper    >上一篇 <下一篇
      */
-    public static function getNearInfoById($id,$post_time,$oper="<",$sort="DESC"){
+    public static function getNearInfoById($id,$post_time,$oper="<",$sort="DESC")
+    {
         $dbname = Otable::DB_115;
         $db = PgsqlHelper::getInstance();
         $servers = ConfigPg::getDBMaster($dbname);
-        $db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
+        $db->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
         $sql = 'SELECT "id","subject" FROM '.Otable::TABLE_115_TOPIC." WHERE status=0 AND post_time {$oper} ? ORDER BY post_time {$sort}";
         $vars = array(intval($post_time));
         $result = $db->getOne($sql,$vars);
@@ -45,12 +47,12 @@ class TopicModel{
      * @author ldb
      * @date(2014-12-15)
      */
-    public static function getInfoCount(array $data){
+    public static function getInfoCount(array $data)
+    {
         $dbname = Otable::DB_115;
         $db = PgsqlHelper::getInstance();
         $servers = ConfigPg::getDBMaster($dbname);
         $db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
-
 
         $sql = "SELECT  COUNT(*) AS count FROM ".Otable::TABLE_115_TOPIC;
         $sql = $sql . " WHERE 1=1 ";
@@ -75,7 +77,8 @@ class TopicModel{
      * @author ldb
      * @date(2014-12-15)
      */
-    public static function getInfoByPage(array $data,$page=1,$pagesize=20,$sort = "DESC"){
+    public static function getInfoByPage(array $data, $page=1, $pagesize=20, $sort = "DESC")
+    {
         $dbname = Otable::DB_115;
         $db = PgsqlHelper::getInstance();
         $servers = ConfigPg::getDBMaster($dbname);
@@ -106,7 +109,8 @@ class TopicModel{
      * @author ldb
      * @date(2014-12-15)
      */
-    public static function getInfoByPage2(array $data,$page=1,$pagesize=20,$sort = "DESC"){
+    public static function getInfoByPage2(array $data,$page=1,$pagesize=20,$sort = "DESC")
+    {
         $dbname = Otable::DB_115;
         $db = PgsqlHelper::getInstance();
         $servers = ConfigPg::getDBMaster($dbname);
@@ -132,19 +136,18 @@ class TopicModel{
     }
 
 
-
     /**
      * 获取总数 xun_seach
      * @param [array] $data [description]
      * @author ldb
      * @date(2014-12-15)
      */
-    public static function xs_getInfoCount(array $data){
+    public static function xs_getInfoCount(array $data)
+    {
         $dbname = Otable::DB_115;
         $db = PgsqlHelper::getInstance();
         $servers = ConfigPg::getDBMaster($dbname);
         $db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
-
 
         $sql = "SELECT  COUNT(*) AS count FROM ".Otable::TABLE_115_TOPIC;
         $sql = $sql . " WHERE 1=1 ";
@@ -175,7 +178,8 @@ class TopicModel{
      * @author ldb
      * @date(2014-12-15)
      */
-    public static function xs_getInfoByPage(array $data,$page=1,$pagesize=20,$sort = "DESC"){
+    public static function xs_getInfoByPage(array $data, $page=1, $pagesize=20, $sort = "DESC")
+    {
         $dbname = Otable::DB_115;
         $db = PgsqlHelper::getInstance();
         $servers = ConfigPg::getDBMaster($dbname);
