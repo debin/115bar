@@ -28,7 +28,7 @@ $pagesize = 1000;
 $data = array('status'=>0);
 $total = TopicModel::xs_getInfoCount($data);
 $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
-$update_time = time();
+
 $count = 0;
 for ($i=1; $i <= $page_count; $i++) {
     $list_arr = TopicModel::xs_getInfoByPage($data,$i,$pagesize,"ASC");
@@ -65,6 +65,9 @@ $dbname = Otable::DB_115;
 $db = PgsqlHelper::getInstance();
 $servers = ConfigPg::getDBMaster($dbname);
 $db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
+
+$update_time = isset($value['update_time'])?intval($value['update_time']):time();
+
 
 $sql = 'SELECT * FROM "update_index" WHERE upload_id=? AND "type"=? ;';
 $vars = array(CONFIG_ENV,$search_type);
