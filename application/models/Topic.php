@@ -194,7 +194,7 @@ class TopicModel{
             $vars[] = intval($data['update_time']);
         }
 
-        $sql = $sql . " ORDER BY \"update_time\" " . $sort;
+        $sql = $sql . " ORDER BY \"update_time\" " . $sort . " ,\"id\" ".$sort;
         if ($page && $pagesize) {
             $offset   = ($page-1)*$pagesize;
             $sql = $sql ." LIMIT ? OFFSET ?";
