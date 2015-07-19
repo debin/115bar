@@ -7,7 +7,8 @@
  * and open the template in the editor.
  */
 
-function sample() {
+function sample()
+{
     echo "this is a common function test";
 }
 
@@ -15,7 +16,8 @@ function sample() {
  * 处理接受的数据
  * @Params string $value
  */
-function returnParam($value){
+function returnParam($value)
+{
     $value = trim($value);
     return $value;
     //return strip_tags(htmlspecialchars($data,ENT_QUOTES));
@@ -31,7 +33,8 @@ function returnParam($value){
  * @Param $code int
  *
  */
-function callback($code=0, $msg='', $data=array(),$result=true){
+function callback($code=0, $msg='', $data = array(), $result = true)
+{
     echo json_encode(array(
         "msg"    => $msg,
         "data"   => $data,
@@ -39,7 +42,7 @@ function callback($code=0, $msg='', $data=array(),$result=true){
         "code"   => $code,
     ));
     exit;
-    return;
+    // return;
 }
 
 /**
@@ -49,7 +52,8 @@ function callback($code=0, $msg='', $data=array(),$result=true){
  * @param int $leng 长度
  * @return string
  */
-function randStr($leng = 6) {
+function randStr($leng = 6)
+{
     $string_s = "qwertyuipkjhgfdsazxcvbnm123456789";
     $new_str = "";
     for ($i = 0; $i < $leng; $i++) {
@@ -66,7 +70,8 @@ function randStr($leng = 6) {
  * @param string $lang_type 语言包类型，默认为当前用户语言
  * @return string
  */
-function _($la,$lang_type='') {
+function _($la, $lang_type = '')
+{
     return I18nHelper::getInstance()->getLang($la,$lang_type);
 }
 
@@ -79,7 +84,8 @@ function _($la,$lang_type='') {
  * @return mixed
  */
 
-function cat_html($mixed, $quote_style = ENT_QUOTES, $charset = 'UTF-8') {
+function cat_html($mixed, $quote_style = ENT_QUOTES, $charset = 'UTF-8')
+{
     if (is_array($mixed)) {
         foreach ($mixed as $key => $value) {
             $mixed[$key] = cat_html($value, $quote_style, $charset);
@@ -97,7 +103,8 @@ function cat_html($mixed, $quote_style = ENT_QUOTES, $charset = 'UTF-8') {
  * @param mixed $mixed 要处理的数据
  * @return mixed
  */
-function cat_escape($mixed) {
+function cat_escape($mixed)
+{
     if (is_array($mixed)) {
         foreach ($mixed as $key => $value) {
             $mixed[$key] = cat_escape($value);
@@ -115,12 +122,13 @@ function cat_escape($mixed) {
  * @param mixed $mixed 要处理的数据
  * @return mixed
  */
-function trim_string($string) {
+function trim_string($string)
+{
     $string = trim($string);
-    $string = str_replace("<br>",' ',$string);
-    $string = str_replace("<br />",' ',$string);
-    $string = str_replace("&nbsp;",' ',$string);
-    $string = str_replace("  ",' ',$string);
+    $string = str_replace("<br>", ' ', $string);
+    $string = str_replace("<br />", ' ', $string);
+    $string = str_replace("&nbsp;", ' ', $string);
+    $string = str_replace("  ", ' ', $string);
     if (strpos($string, '  ')!==false) {
         $string = trim_string($string);
     }
@@ -129,8 +137,8 @@ function trim_string($string) {
 
 
 // 添加 nofollow 的回调函数
-function addnofollow($matches) {
-
+function addnofollow($matches)
+{
     // var_dump($matches);
     $string = $matches[0] . '  rel="nofollow" target="_blank" ';
     return $string;
@@ -140,7 +148,8 @@ function addnofollow($matches) {
 /**
  * 格式化
  */
-function print_rr($data){
+function print_rr($data)
+{
     echo "<pre>";
     print_r($data);
     echo "</pre>";

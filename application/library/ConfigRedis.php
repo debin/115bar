@@ -3,7 +3,8 @@
  * Redis连接配置
  * @package library
  */
-class ConfigRedis {
+class ConfigRedis
+{
 
     /**
      * dbmaster Redis
@@ -20,7 +21,8 @@ class ConfigRedis {
      * get Percona master
      * @return [type] [description]
      */
-    public static function getDBMaster() {
+    public static function getDBMaster()
+    {
         return self::$dbmaster[CONFIG_ENV];
     }
 

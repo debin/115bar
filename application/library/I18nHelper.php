@@ -5,7 +5,8 @@
  * @author ldb
  * @package library
  */
-class I18nHelper extends Singleton{
+class I18nHelper extends Singleton
+{
 
     /**
      * 用户语言版本
@@ -50,27 +51,27 @@ class I18nHelper extends Singleton{
      * 初始化用户语言设置
      * @return string
      */
-    public function getUserLang(){
-
+    public function getUserLang()
+    {
         $this->user_lang = 'cs';
-        if(!empty($this->user_lang)){
+        if (!empty($this->user_lang)) {
             return $this->user_lang;
         }
 
         // 先中文
         // $lang = 'cs';
         $lang = $this->__getUserLangFromCookie();
-        if(empty($lang)){  // cookie拿不到
+        if (empty($lang)) {  // cookie拿不到
             $lang = $this->__getUserLangFromHeader();
         }
         $get_lang = $this->__getUserLangFromUrl();
-        if(!empty($get_lang) && $get_lang != $lang){   //　需要设置语言
+        if (!empty($get_lang) && $get_lang != $lang) {   //　需要设置语言
             $this->__setUserLang2Cookie($get_lang);
             $this->user_lang = $get_lang;
             return $get_lang;
         }
 
-        if(empty($lang)){
+        if (empty($lang)) {
             $lang = $this->default_lang;
         }
         // var_dump($this->user_lang,$lang);
@@ -85,13 +86,12 @@ class I18nHelper extends Singleton{
      * @param string $lang_type 语言包类型，默认为当前用户语言
      * @return string
      */
-
-
-    public function getLang($la,$lang_type=''){
+    public function getLang($la, $lang_type = '')
+    {
 
         // 默认是当前用户语言
         $user_lang = $lang_type;
-        if(empty($user_lang)){
+        if (empty($user_lang)) {
             $user_lang =  $this->user_lang;
         }
         // 加载语言
@@ -109,8 +109,9 @@ class I18nHelper extends Singleton{
     /**
      * 从url请求中的get参数拿语言设置
      */
-    private function __getUserLangFromUrl(){
-        if(isset($_REQUEST['_lang_']) && in_array($_REQUEST['_lang_'], array('cs','en','my','id','ct'))){
+    private function __getUserLangFromUrl()
+    {
+        if (isset($_REQUEST['_lang_']) && in_array($_REQUEST['_lang_'], array('cs','en','my','id','ct'))) {
             return $_REQUEST['_lang_'];
         }
         return null;
@@ -120,15 +121,17 @@ class I18nHelper extends Singleton{
      * 将语言写入cookie
      * @param string $mx_lang
      */
-    private function __setUserLang2Cookie($mx_lang){
+    private function __setUserLang2Cookie($mx_lang)
+    {
         setcookie('lang', $mx_lang, time()+86400*365,'/');
     }
 
     /**
      * 从cookie信息里面拿用户语言
      */
-    private function __getUserLangFromCookie(){
-        if(isset($_COOKIE['lang']) && in_array($_COOKIE['lang'], array('cs','en','my','id','ct'))){
+    private function __getUserLangFromCookie()
+    {
+        if (isset($_COOKIE['lang']) && in_array($_COOKIE['lang'], array('cs','en','my','id','ct'))) {
             return $_COOKIE['lang'];
         }
         return null;
@@ -137,20 +140,20 @@ class I18nHelper extends Singleton{
     /**
      * 从浏览器的 header 头信息 accept language  拿用户语言设置
      */
-    private function __getUserLangFromHeader(){
-        if(!isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])){
+    private function __getUserLangFromHeader()
+    {
+        if (!isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
             return $this->default_lang;
         }
         $accept_language = strtolower($_SERVER['HTTP_ACCEPT_LANGUAGE']);
 
         $result = null;
-        foreach (self::$accept_language_map as $key=>$value){
-            if(preg_match('/'.$key.'/', $accept_language)){
+        foreach (self::$accept_language_map as $key=>$value) {
+            if (preg_match('/'.$key.'/', $accept_language)) {
                 $result = $value;
                 break;
             }
         }
         return $result;
     }
-
 }
