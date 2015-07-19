@@ -17,7 +17,8 @@
  * @author ldb
  * @package library
  */
-class Singleton {
+class Singleton
+{
 
     /**
      * instance
@@ -28,7 +29,8 @@ class Singleton {
     /**
      * construct
      */
-    public function __construct() {
+    public function __construct()
+    {
         //Thou shalt not construct that which is unconstructable!
     }
 
@@ -36,7 +38,8 @@ class Singleton {
      * clone
      * @return [type] [description]
      */
-    protected function __clone() {
+    protected function __clone()
+    {
         //Me not like clones! Me smash clones!
     }
 
@@ -44,7 +47,8 @@ class Singleton {
      * get instance
      * @return object return instance
      */
-    public static function getInstance() {
+    public static function getInstance()
+    {
         $called_class_name = get_called_class();
         if (!isset(self::$_instance[$called_class_name])) {
             self::$_instance[$called_class_name] = new $called_class_name();
@@ -57,10 +61,9 @@ class Singleton {
     /**
      * init
      */
-    public function init() {
+    public function init()
+    {
 
     }
 
 }
-
-?>
