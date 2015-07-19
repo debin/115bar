@@ -40,7 +40,7 @@ for ($i=1; $i <= $page_count; $i++) {
                 $deal_content = strip_tags($value['deal_content']);
                 $subject = trim_string($subject);
                 $deal_content = trim_string($deal_content);
-                $data = array(
+                $data_tmp = array(
                     'id'           => $value['id'], // 此字段为主键，必须指定
                     'subject'      => $subject,
                     'deal_content' => $deal_content,
@@ -48,7 +48,7 @@ for ($i=1; $i <= $page_count; $i++) {
                 );
                 // 创建文档对象
                 $doc = new XSDocument;
-                $doc->setFields($data);
+                $doc->setFields($data_tmp);
                 // 添加到索引数据库中
                 $res = $index->add($doc);//add update
             }else{
