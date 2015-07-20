@@ -5,10 +5,12 @@
  * 这些方法, 都接受一个参数:Yaf_Dispatcher $dispatcher
  * 调用的次序, 和申明的次序相同
  */
-class Bootstrap extends Yaf_Bootstrap_Abstract {
+class Bootstrap extends Yaf_Bootstrap_Abstract
+{
 
     //语言包 设置当前用户的语言类型
-    public function _initLang() {
+    public function _initLang()
+    {
         // Yaf_Session::getInstance()->start();
         I18nHelper::getInstance()->getUserLang();
     }
@@ -16,7 +18,8 @@ class Bootstrap extends Yaf_Bootstrap_Abstract {
     /**
      * 加载配置
      */
-    public function _initConfig() {
+    public function _initConfig()
+    {
         Yaf_Registry::set('config', Yaf_Application::app()->getConfig());
         // Yaf_Dispatcher::getInstance()->autoRender(FALSE);  // 关闭自动加载模板
         //加载公共函数
@@ -27,7 +30,8 @@ class Bootstrap extends Yaf_Bootstrap_Abstract {
      * 加载注册插件
      * 重构view路径
      */
-    public function _initPlugin(Yaf_Dispatcher $dispatcher) {
+    public function _initPlugin(Yaf_Dispatcher $dispatcher)
+    {
         //添加配置中的路由
         $router = Yaf_Dispatcher::getInstance()->getRouter();
         $router->addConfig(Yaf_Registry::get("config")->routes);
@@ -39,7 +43,8 @@ class Bootstrap extends Yaf_Bootstrap_Abstract {
     /**
      * 设置页面layout
     */
-    public function _initLayout(Yaf_Dispatcher $dispatcher){
+    public function _initLayout(Yaf_Dispatcher $dispatcher)
+    {
         /*layout allows boilerplate HTML to live in /views/layout rather than every script*/
         $layout = new LayoutPlugin();
 
