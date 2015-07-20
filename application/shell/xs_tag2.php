@@ -22,7 +22,7 @@ $tokenizer = new XSTokenizerScws;   // 直接创建实例
 $dbname = Otable::DB_115;
 $db = PgsqlHelper::getInstance();
 $servers = ConfigPg::getDBMaster($dbname);
-$db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
+$db ->connect($servers[0], $servers[1], $servers[2], $dbname, $servers[3]);
 
 
 $sql = 'SELECT "id","subject","abstract","deal_content","image_thumbs","post_time","deal_content" FROM '.Otable::TABLE_115_TOPIC." WHERE need_format!=0 AND tags='{666666}'  LIMIT 200";
@@ -30,8 +30,8 @@ $sql = 'SELECT "id","subject","abstract","deal_content","image_thumbs","post_tim
 $sql_tmp = 'UPDATE ' . Otable::TABLE_115_TOPIC .' SET tags=?,update_time=? WHERE id=?;';
 
 $count = 0;
-$list_arr = $db->getAll($sql,array());
-while ( $list_arr ) {
+$list_arr = $db->getAll($sql, array());
+while ($list_arr) {
     foreach ($list_arr as $key => $value) {
         $id = $value['id'];
         $deal_content = $value['subject'] . ' ' .$value['abstract'];
@@ -40,10 +40,10 @@ while ( $list_arr ) {
         try {
             $tops = $tokenizer->getTops($deal_content, $max_num, 'n,v,vn,nr,ns,nt,nz,nz,s,l,i');//http://www.xunsearch.com/scws/docs.php#attr
             // 过滤
-            foreach ($tops as $k => $v){
+            foreach ($tops as $k => $v) {
                 if (strpos($v['word'], '礼包')!==false) {
                     unset($tops[$k]);
-                }elseif (strpos($v['word'], 'baidu')!==false) {
+                } elseif (strpos($v['word'], 'baidu')!==false) {
                     unset($tops[$k]);
                 }
             }
@@ -57,16 +57,16 @@ while ( $list_arr ) {
             // continue;//继续下一条
         }else{
             $temp = array();
-            foreach ( $tops as  $v ) {
+            foreach ($tops as $v) {
                 array_push($temp,$v['word']);
             }
             $temp_str = '{'. implode(',', $temp) .'}';
-            $vars = array($temp_str,time(),$id);
+            $vars = array($temp_str, time(), $id);
         }
-        $db->query($sql_tmp,$vars);
+        $db->query($sql_tmp, $vars);
         $count++;
     }
-    $list_arr = $db->getAll($sql,array());
+    $list_arr = $db->getAll($sql, array());
     // if ($count>15) {
     //     break;
     // }

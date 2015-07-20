@@ -31,11 +31,11 @@ $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
 
 $count = 0;
 for ($i=1; $i <= $page_count; $i++) {
-    $list_arr = TopicModel::xs_getInfoByPage($data,$i,$pagesize,"ASC");
+    $list_arr = TopicModel::xs_getInfoByPage($data, $i, $pagesize, "ASC");
     $index->openBuffer(8); // 开启缓冲区，默认 4MB，如 $index->openBuffer(8) 则表示 8MB
     if ($list_arr) {
         foreach ($list_arr as $key => $value) {
-            if (isset($value['status'])&&$value['status']==0) {
+            if (isset($value['status']) && $value['status']==0) {
                 $subject = $value['subject'];
                 $deal_content = strip_tags($value['deal_content']);
                 $subject = trim_string($subject);
@@ -64,26 +64,26 @@ for ($i=1; $i <= $page_count; $i++) {
 $dbname = Otable::DB_115;
 $db = PgsqlHelper::getInstance();
 $servers = ConfigPg::getDBMaster($dbname);
-$db ->connect($servers[0],$servers[1],$servers[2],$dbname,$servers[3]);
+$db ->connect($servers[0], $servers[1], $servers[2], $dbname, $servers[3]);
 
 $update_time = isset($value['update_time'])?intval($value['update_time']):time();
 
 
 $sql = 'SELECT * FROM "update_index" WHERE upload_id=? AND "type"=? ;';
 $vars = array(CONFIG_ENV,$search_type);
-$xun_index = $db->getOne($sql,$vars);
+$xun_index = $db->getOne($sql, $vars);
 if ($xun_index) {
-    $conditon = array('upload_id'=>CONFIG_ENV,'type'=>$search_type);
-    $update_data = array('update_time'=>$update_time);
-    $db->update("update_index",$update_data,$conditon);
+    $conditon = array('upload_id' => CONFIG_ENV,'type' => $search_type);
+    $update_data = array('update_time' => $update_time);
+    $db->update("update_index", $update_data, $conditon);
 }else{
     $insert_data = array(
-        'upload_id'   =>CONFIG_ENV,
-        'type'        =>$search_type,
-        'create_time' =>$update_time,
-        'update_time' =>$update_time,
+        'upload_id'   => CONFIG_ENV,
+        'type'        => $search_type,
+        'create_time' => $update_time,
+        'update_time' => $update_time,
         );
-    $db->insert("update_index",$insert_data);
+    $db->insert("update_index", $insert_data);
 }
 
 echo "over:",$count;
