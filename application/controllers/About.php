@@ -5,8 +5,8 @@
  * @author ldb
  * @date(2015-04-26)
  */
-
-class AboutController extends BasicController {
+class AboutController extends BasicController
+{
 
     /**
      * 搜索
@@ -14,7 +14,8 @@ class AboutController extends BasicController {
      * @author ldb
      * @date(2014-12-15)
      */
-    public function indexAction() {
+    public function indexAction()
+    {
         // $key = $this->getRequest()->getQuery("key",'');
         $key = $this->getRequest()->getParam("key", '');
         $key = urldecode($key);
@@ -24,7 +25,7 @@ class AboutController extends BasicController {
             $page = 1;
         }
         $pagesize = 20;
-        $res = SearchModel::getZoneInfo($key,$page,$pagesize);
+        $res = SearchModel::getZoneInfo($key, $page, $pagesize);
         $list_data = $res['list_data'];
         $total = $res['total'];
         if (empty($key)) {
@@ -34,7 +35,7 @@ class AboutController extends BasicController {
         $url = Yaf_Registry::get("config")->webroot . "/s/$key";
         // echo json_encode( get_defined_vars() );
         // $SERVER = $this->getRequest()->getServer();
-        $getpage = new PageModel($url,$total, $page,$pagesize,'/');
+        $getpage = new PageModel($url, $total, $page, $pagesize,'/');
         $paginate = $getpage->showpage();
         // echo $paginate;
         // exit;
@@ -47,7 +48,7 @@ class AboutController extends BasicController {
         $output['data']['pagesize']   = $pagesize;
         $output['data']['page_count'] = 0;
         $output['paginate']           = $paginate;
-        $output['key']           = $key;
+        $output['key']                = $key;
         // $output                       = cat_html($output);
         $this->getView()->assign("output", $output);
         // $this->getView()->display("topics/index.html");

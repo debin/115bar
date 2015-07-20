@@ -6,15 +6,16 @@
  * @date(2014-12-15)
  */
 
-class TController extends BasicController {
-
+class TController extends BasicController
+{
     /**
      * 登录模板
      *
      * @author dbb
      * @date(2014-12-15)
      */
-    public function indexAction() {
+    public function indexAction()
+    {
         $page = $this->getRequest()->getParam("page", 0);
         $page = intval($page);
         if (empty($page)) {
@@ -37,13 +38,13 @@ class TController extends BasicController {
                 Yaf_Dispatcher::getInstance()->autoRender(FALSE);
                 return;
             }
-            $list_arr = TopicModel::getInfoByPage($data,$page,$pagesize);
+            $list_arr = TopicModel::getInfoByPage($data, $page, $pagesize);
 
             // 分页
             $url = Yaf_Registry::get("config")->webroot . "/t";
             // echo json_encode( get_defined_vars() );
             // $SERVER = $this->getRequest()->getServer();
-            $getpage = new PageModel($url,$total, $page,$pagesize,'/');
+            $getpage = new PageModel($url, $total, $page, $pagesize,'/');
             $paginate = $getpage->showpage();
             // echo $page->showpage();
 
@@ -56,7 +57,7 @@ class TController extends BasicController {
             $output['data']['pagesize']   = $pagesize;
             $output['data']['page_count'] = $page_count;
             $output['paginate']           = $paginate;
-            $redis->set($redis_key,$output,$timeout);
+            $redis->set($redis_key, $output, $timeout);
         }
 
         $this->title = _("la_102")." › "._("la_103").' ' .$page. "/" . $output['data']['page_count'];

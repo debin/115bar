@@ -6,8 +6,8 @@
  * @date(2014-12-15)
  */
 
-class SController extends BasicController {
-
+class SController extends BasicController
+{
     /**
      * 搜索
      *
@@ -24,7 +24,7 @@ class SController extends BasicController {
             $page = 1;
         }
         $pagesize = 20;
-        $res = SearchModel::getZoneInfo($key,$page,$pagesize);//var_dump($res);exit;
+        $res = SearchModel::getZoneInfo($key, $page, $pagesize);//var_dump($res);exit;
         $list_data = $res['list_data'];
         $total = $res['total'];
         if (empty($key)) {
@@ -41,7 +41,7 @@ class SController extends BasicController {
         $url = Yaf_Registry::get("config")->webroot . "/s/$key";
         // echo json_encode( get_defined_vars() );
         // $SERVER = $this->getRequest()->getServer();
-        $getpage = new PageModel($url,$total, $page,$pagesize,'/');
+        $getpage = new PageModel($url, $total, $page, $pagesize, '/');
         $paginate = $getpage->showpage();
         // echo $paginate;
         // exit;

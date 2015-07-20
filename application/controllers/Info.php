@@ -6,15 +6,16 @@
  * @date(2015-04-15)
  */
 
-class InfoController extends BasicController {
-
+class InfoController extends BasicController
+{
     /**
      * 登录模板
      *
      * @author dbb
      * @date(2014-12-15)
      */
-    public function indexAction() {
+    public function indexAction()
+    {
         $id = $this->getRequest()->getParam("id", 0);
         $id = intval($id);
 
@@ -31,26 +32,26 @@ class InfoController extends BasicController {
             $detail = TopicModel::getInfoById($id);
 
             if (empty($detail)) {
-                throw new Exception('No this info:'.$id,YAF_ERR_NOTFOUND_ACTION);
+                throw new Exception('No this info:'.$id, YAF_ERR_NOTFOUND_ACTION);
             }
 
             // deal_content rel="nofollow"
             $pattern                = '/<a[^>]+(?>)/i';
             $callback               = 'addnofollow';
-            $deal_content           = preg_replace_callback($pattern,$callback,$detail['deal_content']);
+            $deal_content           = preg_replace_callback($pattern, $callback, $detail['deal_content']);
             $deal_content           = nl2br($deal_content);
             $detail['deal_content'] = $deal_content;
 
 
             // 推荐
             $tags    = isset($detail['tags'])?$detail['tags']:'';
-            $tags    = trim($tags,"{}");
+            $tags    = trim($tags, "{}");
             $tag_arr = ($tags)?explode (',',$tags):array();
 
             $maylike_list = array();
             if (!empty($tags)) {
                 $tags         = str_replace(",", " OR ", $tags);
-                $maylike_res  = SearchModel::getMayLikeInfo($tags,1,8);
+                $maylike_res  = SearchModel::getMayLikeInfo($tags, 1, 8);
                 $maylike_list = $maylike_res['list_data'];
                 foreach ($maylike_list as $key => $value) {
                     if ($value['id'] == $id) {
@@ -60,13 +61,13 @@ class InfoController extends BasicController {
             }
 
             // 上一篇
-            $prev_info = TopicModel::getNearInfoById($id,$detail['post_time'],'>',"ASC");
-            $next_info = TopicModel::getNearInfoById($id,$detail['post_time'],'<');
+            $prev_info = TopicModel::getNearInfoById($id, $detail['post_time'], '>', "ASC");
+            $next_info = TopicModel::getNearInfoById($id, $detail['post_time'], '<');
 
 
             // 最近更新
             $data = array('status'=>0);
-            $latest_list_arr = TopicModel::getInfoByPage($data,1,5);
+            $latest_list_arr = TopicModel::getInfoByPage($data, 1, 5);
 
             $output                 = array();
             $output['id']           = $id;
@@ -76,14 +77,14 @@ class InfoController extends BasicController {
             $output['tag_arr']      = $tag_arr;
             $output['prev_info']    = $prev_info;
             $output['next_info']    = $next_info;
-            $redis->set($redis_key,$output,$timeout);
+            $redis->set($redis_key, $output, $timeout);
 
         }
 
         // title
         $subject = !empty($output['detail']['subject'])?$output['detail']['subject']:$output['detail']['abstract'];
         $search = array(" ","|","!","»");
-        $subject = str_replace($search,'',$subject);
+        $subject = str_replace($search, '', $subject);
         $this->title = _("la_102")." › "._("la_103")." › ".$subject;
 
         $this->getView()->assign("output", $output);

@@ -6,12 +6,14 @@
  * @date(2014-12-15)
  */
 
-class SmController extends BasicController {
+class SmController extends BasicController
+{
 
     /**
      * 如果定义了控制器的init的方法, 会在__construct以后被调用
      */
-    public function init(){
+    public function init()
+    {
         Yaf_Dispatcher::getInstance()->autoRender(FALSE);
     }
 
@@ -21,7 +23,8 @@ class SmController extends BasicController {
      * @author dbb
      * @date(2014-12-15)
      */
-    public function indexAction() {
+    public function indexAction()
+    {
         $page = $this->getRequest()->getParam("page", 0);
         $page = intval($page);
         $pagesize = 20000;
@@ -36,8 +39,8 @@ class SmController extends BasicController {
             // var_dump($output);exit;
             $this->getView()->assign("output", $output);
             $this->getView()->display("sm/index.html");
-        }else{
-            $list_arr = TopicModel::getInfoByPage2($data,$page,$pagesize,"ASC");
+        } else {
+            $list_arr = TopicModel::getInfoByPage2($data, $page, $pagesize, "ASC");
 
             $output['list']               = $list_arr;
 
@@ -49,9 +52,6 @@ class SmController extends BasicController {
             // var_dump($output);exit;
             $this->getView()->display("sm/list.html");
         }
-
-
-
 
     }
 

@@ -5,12 +5,14 @@
  * 当然, 默认的控制器, 动作, 模块都是可用通过配置修改的
  * 也可以通过$dispater->setDefault*Name来修改
  */
-class TestController extends BasicController {
+class TestController extends BasicController
+{
 
     /**
      * 如果定义了控制器的init的方法, 会在__construct以后被调用
      */
-    public function init() {
+    public function init()
+    {
         //$array = array('result'=>ture);
         //echo "controller init called<br/>";
         //$config = Yaf_Application::app()->getConfig();
@@ -18,7 +20,8 @@ class TestController extends BasicController {
         //$this->getView()->assign("webroot", $config->webroot);
     }
 
-    public function indexAction() {
+    public function indexAction()
+    {
         // echo 1;exit;
         // 跳转到首页
         // $this->redirect("/t/index");
@@ -26,7 +29,8 @@ class TestController extends BasicController {
         return;
     }
 
-    public function timeAction() {
+    public function timeAction()
+    {
         Yaf_Dispatcher::getInstance()->autoRender(FALSE);
 
         $t = !empty($_REQUEST['t'])?intval($_REQUEST['t']):0;
@@ -44,21 +48,21 @@ class TestController extends BasicController {
         return;
     }
 
-    public function sendAction() {
+    public function sendAction()
+    {
         Yaf_Dispatcher::getInstance()->autoRender(FALSE);
         return;
 
-
-
         $subject = "网站异常提醒:".date("Y-m-d H:i");
         $text = "tesft";
-        MailHelper::getInstance()->sendTip($subject,$text);
+        MailHelper::getInstance()->sendTip($subject, $text);
         return;
     }
 
-    public function testAction() {
+    public function testAction()
+    {
         $key = "2";
-        $res = SearchModel::getZoneInfo($key,1,20);
+        $res = SearchModel::getZoneInfo($key, 1, 20);
         $data = $res['data'];
         foreach ($data as $key => $value) {
             echo $value['id'],$value['deal_content'],'<br/>';
@@ -68,7 +72,8 @@ class TestController extends BasicController {
         $this->getView()->display("index/index.html");
     }
 
-    public function xsAction() {
+    public function xsAction()
+    {
         return;
         require APPLICATION_PATH.'/vendor/xunsearch/php/lib/XS.php';
         $xs = new XS('115zone'); // 建立 XS 对象，项目名称为：demo
@@ -85,8 +90,7 @@ class TestController extends BasicController {
 
         var_dump($docs,$count);exit;echo '<br/><br/>';
 
-        foreach ($docs as $doc)
-        {
+        foreach ($docs as $doc) {
            $subject = $search->highlight($doc->subject); // 高亮处理 subject 字段
            $message = $search->highlight($doc->message); // 高亮处理 message 字段
            echo $doc->pid.' '. $doc->rank() . '. ' . $subject . " [" . $doc->percent() . "%] - ";
@@ -99,7 +103,8 @@ class TestController extends BasicController {
     }
 
 
-    public function xsaAction() {
+    public function xsaAction()
+    {
         return;
         require APPLICATION_PATH.'/vendor/xunsearch/php/lib/XS.php';
         $xs = new XS('115zone'); // 建立 XS 对象，项目名称为：demo
