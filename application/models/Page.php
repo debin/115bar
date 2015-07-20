@@ -13,7 +13,7 @@ class PageModel
     private $bothnum;      //两边保持数字分页的量
 
     //构造方法初始化
-    public function __construct($_url,$_total, $_page,$_pagesize,$_sep='?page=')
+    public function __construct($_url, $_total, $_page, $_pagesize, $_sep = '?page=')
     {
         $this->total    = $_total ? $_total : 1;
         $this->pagesize = $_pagesize;
@@ -34,7 +34,7 @@ class PageModel
     private function pageList()
     {
         $_pagelist = '';
-        for ($i=$this->bothnum;$i>=1;$i--) {
+        for ($i = $this->bothnum; $i>=1; $i--) {
             $_page = $this->page-$i;
             if ($_page < 1) continue;
             $url = $this->url.$this->sep.$_page;
@@ -43,9 +43,11 @@ class PageModel
         }
         $pagestr = "<li class=\"active\"><a href=\"#\">{$this->page}</a></li>";
         $_pagelist .= $pagestr;
-        for ($i=1;$i<=$this->bothnum;$i++) {
+        for ($i=1; $i <= $this->bothnum; $i++) {
             $_page = $this->page+$i;
-            if ($_page > $this->pagenum) break;
+            if ($_page > $this->pagenum) {
+                break;
+            }
             $url = $this->url.$this->sep.$_page;
             $pagestr = "<li><a href=\"{$url}\">{$_page}</a></li>";
             $_pagelist .= $pagestr;
@@ -56,7 +58,7 @@ class PageModel
     //首页
     private function first()
     {
-        if ($this->page > $this->bothnum+1) {
+        if ($this->page > $this->bothnum + 1) {
             $pagestr = "<li><a href=\"{$this->url}/1\">1</a></li>";
             $skip = "<li class=\"disabled\"><span>...</span></li>";
             $pagestr = $pagestr . $skip;

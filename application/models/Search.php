@@ -15,7 +15,6 @@ class SearchModel
      */
     public static function getZoneInfo($keyword, $page, $pagesize)
     {
-
         $offset   = ($page-1)*$pagesize;
         $index_app = '115zone';
 
@@ -50,20 +49,20 @@ class SearchModel
             $rank         = $doc->rank();
             $post_time    = intval($doc->post_time);
             $list_data[] = array(
-                'id'           =>$id,
-                'subject'      =>$subject,
-                'deal_content' =>$deal_content,
-                'post_time'    =>$post_time,
-                'rank'         =>$rank,
+                'id'           => $id,
+                'subject'      => $subject,
+                'deal_content' => $deal_content,
+                'post_time'    => $post_time,
+                'rank'         => $rank,
                 );
         }
 
         $res = array(
-            'total'         =>$count,
-            'list_data'     =>$list_data,
-            'relation_arr'  =>$words,
-            'corrected_arr' =>$corrected_arr,
-            'hot_arr'       =>$hot_arr,
+            'total'         => $count,
+            'list_data'     => $list_data,
+            'relation_arr'  => $words,
+            'corrected_arr' => $corrected_arr,
+            'hot_arr'       => $hot_arr,
             );
         return $res;
     }
@@ -74,7 +73,7 @@ class SearchModel
      * @author ldb
      * @date(2015-04-27)
      */
-    public static function getMayLikeInfo($keyword,$page,$pagesize)
+    public static function getMayLikeInfo($keyword, $page, $pagesize)
     {
         $offset   = ($page-1)*$pagesize;
         $index_app = '115zone';
