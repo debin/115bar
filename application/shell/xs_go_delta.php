@@ -5,16 +5,17 @@
  */
 ini_set('memory_limit','256M');
 
-include_once __DIR__."./../library/func_common.php";
-include_once __DIR__."./../library/Environment.php";
-include_once __DIR__."./../library/Singleton.php";
-include_once __DIR__."./../library/Otable.php";
-include_once __DIR__."./../library/ConfigPg.php";
-include_once __DIR__."./../library/PgsqlHelper.php";
-include_once __DIR__."./../models/Topic.php";
-include_once __DIR__."./../../vendor/hightman/xunsearch/lib/XS.class.php";
+include_once __DIR__."/../library/func_common.php";
+include_once __DIR__."/../library/Environment.php";
+include_once __DIR__."/../library/Singleton.php";
+include_once __DIR__."/../library/Otable.php";
+include_once __DIR__."/../library/ConfigPg.php";
+include_once __DIR__."/../library/PgsqlHelper.php";
+include_once __DIR__."/../models/Topic.php";
+include_once __DIR__."/../../vendor/hightman/xunsearch/lib/XS.class.php";
 
-define ('XS_APP_ROOT', __DIR__."./../../conf");
+$xs_path = __DIR__."/../../conf";
+define ('XS_APP_ROOT', $xs_path);
 
 $search_type = "xunsearch";
 $dbname = Otable::DB_115;
