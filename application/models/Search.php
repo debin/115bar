@@ -1,5 +1,10 @@
 <?php
-Yaf\Loader::import(APPLICATION_PATH.'/vendor/xunsearch/php/lib/XS.php');
+// Yaf\Loader::import(APPLICATION_PATH.'/vendor/xunsearch/php/lib/XS.php');
+Yaf\Loader::import(ROOT.'/vendor/autoload.php');
+
+use \XS;
+define ('XS_APP_ROOT', APPLICATION_PATH.'/vendor/xunsearch/php/app');
+
 /**
  * 搜索相关
  *

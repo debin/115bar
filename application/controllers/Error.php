@@ -14,15 +14,15 @@ class ErrorController extends Yaf\Controller_Abstract
     public function errorAction($exception = null)
     {
         if (empty($exception)) {
-            throw new Exception('Exception is empty',YAF_ERR_NOTFOUND_ACTION);
+            throw new Exception('Exception is empty',YAF\ERR\NOTFOUND\ACTION);
         }
 
         /* error occurs */
         switch ($exception->getCode()) {
-            case YAF_ERR_NOTFOUND_MODULE: //no break;
-            case YAF_ERR_NOTFOUND_CONTROLLER:
-            case YAF_ERR_NOTFOUND_ACTION:
-            case YAF_ERR_NOTFOUND_VIEW:
+            case YAF\ERR\NOTFOUND\MODULE: //no break;
+            case YAF\ERR\NOTFOUND\CONTROLLER:
+            case YAF\ERR\NOTFOUND\ACTION:
+            case YAF\ERR\NOTFOUND\VIEW:
                 $array           = array();
                 $array["result"] = false;
                 $array["code"]   = -99;
@@ -56,7 +56,7 @@ class ErrorController extends Yaf\Controller_Abstract
                 // 邮件提醒  5分钟一次
                 $subject = _("la_108").":".date("m-d H:i").' '.CONFIG_ENV;
                 $text = $exception->getMessage()."\n".$exception->getTraceAsString();
-                MailHelper::getInstance()->sendTip($subject,$text);
+                // MailHelper::getInstance()->sendTip($subject,$text);
 
                 $this->getResponse()->setHeader($this->getRequest()->getServer( 'SERVER_PROTOCOL' ), '500 Internal Server Error');
                 $this->getResponse()->response();

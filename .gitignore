@@ -2,3 +2,4 @@ Environment.php
 robots.txt
 .htaccess
 *.ini
+/vendor
