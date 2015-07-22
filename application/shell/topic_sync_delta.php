@@ -5,13 +5,13 @@
  */
 ini_set('memory_limit','256M');
 
-include_once __DIR__."./../library/func_common.php";
-include_once __DIR__."./../library/Environment.php";
-include_once __DIR__."./../library/Singleton.php";
-include_once __DIR__."./../library/Otable.php";
-include_once __DIR__."./../library/ConfigPg.php";
-include_once __DIR__."./../library/PgsqlHelper.php";
-include_once __DIR__."./../models/Topic.php";
+include_once __DIR__."/../library/func_common.php";
+include_once __DIR__."/../library/Environment.php";
+include_once __DIR__."/../library/Singleton.php";
+include_once __DIR__."/../library/Otable.php";
+include_once __DIR__."/../library/ConfigPg.php";
+include_once __DIR__."/../library/PgsqlHelper.php";
+include_once __DIR__."/../models/Topic.php";
 
 $index_type = "topicsync";
 $dbname = Otable::DB_115;
