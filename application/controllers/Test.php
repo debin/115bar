@@ -31,7 +31,7 @@ class TestController extends BasicController
 
     public function timeAction()
     {
-        Yaf_Dispatcher::getInstance()->autoRender(FALSE);
+        Yaf\Dispatcher::getInstance()->autoRender(FALSE);
 
         $t = !empty($_REQUEST['t'])?intval($_REQUEST['t']):0;
         if ($t) {
@@ -50,7 +50,7 @@ class TestController extends BasicController
 
     public function sendAction()
     {
-        Yaf_Dispatcher::getInstance()->autoRender(FALSE);
+        Yaf\Dispatcher::getInstance()->autoRender(FALSE);
         return;
 
         $subject = "网站异常提醒:".date("Y-m-d H:i");

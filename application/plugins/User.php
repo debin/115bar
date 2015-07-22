@@ -4,10 +4,10 @@
  * Ap定义了如下的7个Hook,
  * 插件之间的执行顺序是先进先Call
  */
-class UserPlugin extends Yaf_Plugin_Abstract
+class UserPlugin extends Yaf\Plugin_Abstract
 {
 
-    public function routerStartup(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function routerStartup(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
     {
         // 防止get post注入
         $_POST = cat_escape($_POST);
@@ -19,7 +19,7 @@ class UserPlugin extends Yaf_Plugin_Abstract
      * @author dbb
      * @data 2014/12/26
      */
-    public function routerShutdown(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function routerShutdown(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
     {
         $controller = strtolower($request->getControllerName());
         $action = strtolower($request->getActionName());
@@ -28,18 +28,18 @@ class UserPlugin extends Yaf_Plugin_Abstract
         if ($controller != "sign") {
 
             //项目开始，未登录跳转到登陆页面
-            if (!Yaf_Session::getInstance()->user) {
+            if (!Yaf\Session::getInstance()->user) {
                 $response->setRedirect("/sign/index");
             }
         }
     }
 
-    public function dispatchLoopStartup(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function dispatchLoopStartup(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
     {
 
     }
 
-    public function preDispatch(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function preDispatch(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
     {
 //        $id = $_REQUEST["id"];
 //        $controller = strtolower($request->getControllerName());
@@ -47,17 +47,17 @@ class UserPlugin extends Yaf_Plugin_Abstract
 //        User_LogModel::addLog($controller, $action, "123".$id);
     }
 
-    public function postDispatch(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function postDispatch(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
     {
 
     }
 
-    public function dispatchLoopShutdown(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function dispatchLoopShutdown(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
     {
 
     }
 
-    public function preResponse(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function preResponse(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
     {
 
     }
