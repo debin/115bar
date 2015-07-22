@@ -3,12 +3,12 @@
 /**
  * 当有未捕获的异常, 则控制流会流到这里
  */
-class ErrorController extends Yaf_Controller_Abstract
+class ErrorController extends Yaf\Controller_Abstract
 {
 
     public function init()
     {
-        Yaf_Dispatcher::getInstance()->disableView();
+        Yaf\Dispatcher::getInstance()->disableView();
     }
 
     public function errorAction($exception = null)

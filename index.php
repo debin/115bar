@@ -12,8 +12,8 @@ define("APPLICATION_PATH", ROOT . "/application");
  * 另外在配置文件中, 可以替换PHP的常量, 比如此处的APPLICATION_PATH
  */
 try {
-    $application = new Yaf_Application("conf/application.ini");
-    Yaf_Loader::import("Environment.php");
+    $application = new Yaf\Application("conf/application.ini");
+    Yaf\Loader::import("Environment.php");
 
 
     /* 如果打开flushIstantly, 则视图渲染结果会直接发送给请求端

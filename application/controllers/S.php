@@ -34,11 +34,11 @@ class SController extends BasicController
         if ($page>$page_count) {
             // $page = $page_count;
             $this->redirect('/s/'.$key.'/'.$page_count);
-            Yaf_Dispatcher::getInstance()->autoRender(FALSE);
+            Yaf\Dispatcher::getInstance()->autoRender(FALSE);
             return;
         }
         // 分页
-        $url = Yaf_Registry::get("config")->webroot . "/s/$key";
+        $url = Yaf\Registry::get("config")->webroot . "/s/$key";
         // echo json_encode( get_defined_vars() );
         // $SERVER = $this->getRequest()->getServer();
         $getpage = new PageModel($url, $total, $page, $pagesize, '/');

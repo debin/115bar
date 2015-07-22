@@ -35,13 +35,13 @@ class TController extends BasicController
             if ($page>$page_count) {
                 // $page = $page_count;
                 $this->redirect('/t/'.$page_count);
-                Yaf_Dispatcher::getInstance()->autoRender(FALSE);
+                Yaf\Dispatcher::getInstance()->autoRender(FALSE);
                 return;
             }
             $list_arr = TopicModel::getInfoByPage($data, $page, $pagesize);
 
             // 分页
-            $url = Yaf_Registry::get("config")->webroot . "/t";
+            $url = Yaf\Registry::get("config")->webroot . "/t";
             // echo json_encode( get_defined_vars() );
             // $SERVER = $this->getRequest()->getServer();
             $getpage = new PageModel($url, $total, $page, $pagesize,'/');

@@ -4,7 +4,7 @@
  * Ap定义了如下的7个Hook,
  * 插件之间的执行顺序是先进先Call
  */
-class LayoutPlugin extends Yaf_Plugin_Abstract
+class LayoutPlugin extends Yaf\Plugin_Abstract
 {
 
     private $_layoutDir;
@@ -22,17 +22,17 @@ class LayoutPlugin extends Yaf_Plugin_Abstract
         $this->_layoutVars[$name] = $value;
     }
 
-    public function dispatchLoopShutdown(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function dispatchLoopShutdown(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
     {
 
     }
 
-    public function dispatchLoopStartup(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function dispatchLoopStartup(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
     {
 
     }
 
-    public function postDispatch(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function postDispatch(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
     {
         /* get the body of the response */
         $body = $response->getBody();
@@ -46,14 +46,14 @@ class LayoutPlugin extends Yaf_Plugin_Abstract
         //     echo $property->getName()."<br/>";
         // }
         // exit;
-        if (!isset(Yaf_Dispatcher::getInstance()->c->layout)) {
+        if (!isset(Yaf\Dispatcher::getInstance()->c->layout)) {
             return;
         }
-        $this->_layoutFile = Yaf_Dispatcher::getInstance()->c->layout;
+        $this->_layoutFile = Yaf\Dispatcher::getInstance()->c->layout;
 
         /* wrap it in the layout */
-        $layout = new Yaf_View_Simple($this->_layoutDir);
-        $layout->title = Yaf_Dispatcher::getInstance()->c->title;
+        $layout = new Yaf\View\Simple($this->_layoutDir);
+        $layout->title = Yaf\Dispatcher::getInstance()->c->title;
         $layout->content = $body;
         $layout->assign('layout', $this->_layoutVars);
 
@@ -61,22 +61,22 @@ class LayoutPlugin extends Yaf_Plugin_Abstract
         $response->setBody($layout->render($this->_layoutFile));
     }
 
-    public function preDispatch(Yaf_Request_Abstract $request , Yaf_Response_Abstract $response)
+    public function preDispatch(Yaf\Request_Abstract $request , Yaf\Response_Abstract $response)
     {
 
     }
 
-    public function preResponse(Yaf_Request_Abstract $request , Yaf_Response_Abstract $response)
+    public function preResponse(Yaf\Request_Abstract $request , Yaf\Response_Abstract $response)
     {
 
     }
 
-    public function routerShutdown(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function routerShutdown(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
     {
 
     }
 
-    public function routerStartup(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function routerStartup(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
     {
 
     }

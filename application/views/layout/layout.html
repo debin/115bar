@@ -38,7 +38,7 @@
 
     <body>
         <?php
-            $yaf_request        = Yaf_Dispatcher::getInstance()->getRequest();
+            $yaf_request        = Yaf\Dispatcher::getInstance()->getRequest();
             $current_controller = strtolower($yaf_request->getControllerName());
         ?>
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">

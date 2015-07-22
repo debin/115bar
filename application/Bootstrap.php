@@ -5,13 +5,13 @@
  * 这些方法, 都接受一个参数:Yaf_Dispatcher $dispatcher
  * 调用的次序, 和申明的次序相同
  */
-class Bootstrap extends Yaf_Bootstrap_Abstract
+class Bootstrap extends Yaf\Bootstrap_Abstract
 {
 
     //语言包 设置当前用户的语言类型
     public function _initLang()
     {
-        // Yaf_Session::getInstance()->start();
+        // Yaf\Session::getInstance()->start();
         I18nHelper::getInstance()->getUserLang();
     }
 
@@ -20,21 +20,21 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
      */
     public function _initConfig()
     {
-        Yaf_Registry::set('config', Yaf_Application::app()->getConfig());
+        Yaf\Registry::set('config', Yaf\Application::app()->getConfig());
         // Yaf_Dispatcher::getInstance()->autoRender(FALSE);  // 关闭自动加载模板
         //加载公共函数
-        Yaf_Loader::import(APPLICATION_PATH . "/library/func_common.php");
+        Yaf\Loader::import(APPLICATION_PATH . "/library/func_common.php");
     }
 
     /**
      * 加载注册插件
      * 重构view路径
      */
-    public function _initPlugin(Yaf_Dispatcher $dispatcher)
+    public function _initPlugin(Yaf\Dispatcher $dispatcher)
     {
         //添加配置中的路由
-        $router = Yaf_Dispatcher::getInstance()->getRouter();
-        $router->addConfig(Yaf_Registry::get("config")->routes);
+        $router = Yaf\Dispatcher::getInstance()->getRouter();
+        $router->addConfig(Yaf\Registry::get("config")->routes);
         // var_dump($router->getRoutes());exit;
         // $user = new UserPlugin();
         // $dispatcher->registerPlugin($user);
@@ -43,7 +43,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
     /**
      * 设置页面layout
     */
-    public function _initLayout(Yaf_Dispatcher $dispatcher)
+    public function _initLayout(Yaf\Dispatcher $dispatcher)
     {
         /*layout allows boilerplate HTML to live in /views/layout rather than every script*/
         $layout = new LayoutPlugin();
@@ -52,7 +52,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
          * This is a hack to make up for the lack of a getPlugin
          * method in the dispatcher.
          */
-        Yaf_Registry::set('layout', $layout);
+        Yaf\Registry::set('layout', $layout);
 
         /*add the plugin to the dispatcher*/
         $dispatcher->registerPlugin($layout);

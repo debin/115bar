@@ -1,5 +1,5 @@
 <?php
-Yaf_Loader::import(APPLICATION_PATH.'/vendor/xunsearch/php/lib/XS.php');
+Yaf\Loader::import(APPLICATION_PATH.'/vendor/xunsearch/php/lib/XS.php');
 /**
  * 搜索相关
  *
