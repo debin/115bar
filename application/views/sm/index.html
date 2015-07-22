@@ -3,7 +3,7 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <?php for ($i=1; $i <= $output['page_count']; $i++): ?>
     <sitemap>
-        <loc><?php echo Yaf_Registry::get("config")->webroot.'/sm/'.$i;?></loc>
+        <loc><?php echo Yaf\Registry::get("config")->webroot.'/sm/'.$i;?></loc>
     </sitemap>
 <?php endfor;?>
 </sitemapindex>
