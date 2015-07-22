@@ -15,7 +15,7 @@ include_once __DIR__."./../library/PgsqlHelper.php";
 include_once __DIR__."./../models/Topic.php";
 include_once __DIR__."./../../vendor/hightman/xunsearch/lib/XS.class.php";
 
-$xs_path = realpath(__DIR__."./../../conf/");
+$xs_path = __DIR__."./../../conf/";
 define ('XS_APP_ROOT', realpath(__DIR__."./../../conf"));
 var_dump(__DIR__,$xs_path);exit;
 
