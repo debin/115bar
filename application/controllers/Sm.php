@@ -14,7 +14,7 @@ class SmController extends BasicController
      */
     public function init()
     {
-        Yaf_Dispatcher::getInstance()->autoRender(FALSE);
+        Yaf\Dispatcher::getInstance()->autoRender(FALSE);
     }
 
     /**
