@@ -16,6 +16,7 @@ include_once __DIR__."./../models/Topic.php";
 include_once __DIR__."./../../vendor/hightman/xunsearch/lib/XS.class.php";
 
 define ('XS_APP_ROOT', realpath(__DIR__."./../../conf"));
+var_dump(XS_APP_ROOT);exit;
 
 $xs = new XS('115zone'); // 建立 XS 对象，项目名称为：demo
 $index = $xs->index; // 获取 索引对象
