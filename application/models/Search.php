@@ -1,7 +1,5 @@
 <?php
 
-Yaf\Loader::import(ROOT.'/vendor/autoload.php');
-
 use \XS;
 
 define ('XS_APP_ROOT', ROOT.'/conf');
