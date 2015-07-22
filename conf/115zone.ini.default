@@ -1,0 +1,17 @@
+project.name = 115zone
+project.default_charset = utf-8
+server.index = 203.195.196.161:8383
+server.search = 203.195.196.161:8384
+
+[id]
+type = id
+
+[subject]
+type = title
+
+[deal_content]
+type = body
+cutlen = 300
+
+[post_time]
+type = numeric
