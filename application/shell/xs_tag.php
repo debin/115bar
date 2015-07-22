@@ -11,7 +11,9 @@ include_once __DIR__."./../library/Otable.php";
 include_once __DIR__."./../library/ConfigPg.php";
 include_once __DIR__."./../library/PgsqlHelper.php";
 include_once __DIR__."./../models/Topic.php";
-include_once __DIR__."./../vendor/xunsearch/php/lib/XS.php";
+include_once __DIR__."./../../vendor/hightman/xunsearch/lib/XS.class.php";
+
+define ('XS_APP_ROOT', __DIR__."./../../conf");
 
 $max_num = 5;//tag个数
 
@@ -30,7 +32,7 @@ $sql = 'SELECT "id","subject","abstract","deal_content","image_thumbs","post_tim
 $sql_tmp = 'UPDATE ' . Otable::TABLE_115_TOPIC .' SET tags=?,update_time=? WHERE id=?;';
 
 $count = 0;
-$list_arr = $db->getAll($sql, array());//var_dump($list_arr);exit;
+$list_arr = $db->getAll($sql, array());
 while ($list_arr) {
     foreach ($list_arr as $key => $value) {
         $id = $value['id'];

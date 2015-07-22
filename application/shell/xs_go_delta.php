@@ -12,7 +12,9 @@ include_once __DIR__."./../library/Otable.php";
 include_once __DIR__."./../library/ConfigPg.php";
 include_once __DIR__."./../library/PgsqlHelper.php";
 include_once __DIR__."./../models/Topic.php";
-include_once __DIR__."./../vendor/xunsearch/php/lib/XS.php";
+include_once __DIR__."./../../vendor/hightman/xunsearch/lib/XS.class.php";
+
+define ('XS_APP_ROOT', __DIR__."./../../conf");
 
 $search_type = "xunsearch";
 $dbname = Otable::DB_115;
@@ -38,6 +40,7 @@ $data = array('update_time' => $update_time);
 $total = TopicModel::xs_getInfoCount($data);
 $page_count = ($total<=$pagesize)?1:intval(ceil($total/$pagesize));
 $count = 0;
+
 for ($i=1; $i <= $page_count; $i++) {
     $list_arr = TopicModel::xs_getInfoByPage($data, $i, $pagesize, "ASC");
     $index->openBuffer(8); // 开启缓冲区，默认 4MB，如 $index->openBuffer(8) 则表示 8MB

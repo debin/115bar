@@ -12,7 +12,6 @@ include_once __DIR__."./../library/Otable.php";
 include_once __DIR__."./../library/ConfigPg.php";
 include_once __DIR__."./../library/PgsqlHelper.php";
 include_once __DIR__."./../models/Topic.php";
-include_once __DIR__."./../vendor/xunsearch/php/lib/XS.php";
 
 $index_type = "topicsync";
 $dbname = Otable::DB_115;
