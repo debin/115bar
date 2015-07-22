@@ -1,4 +1,4 @@
-1 rename the file below:
+1 copy name rename the file below:
     115app/conf/application.ini.default
     115app/conf/115zone.ini.default
     115app/robots.txt.default
