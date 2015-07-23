@@ -1,5 +1,6 @@
 {
     "require": {
-        "hightman/xunsearch": "~1.4"
+        "hightman/xunsearch": "~1.4",
+        "monolog/monolog": "~1.15"
     }
 }

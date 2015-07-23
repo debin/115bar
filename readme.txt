@@ -12,3 +12,6 @@
 3 composer
     cd 115app/
     php composer.phar install
+
+4 log file
+    /opt/log
