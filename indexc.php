@@ -14,7 +14,7 @@ define("APPLICATION_PATH", ROOT . "/application");
 
 try {
     $application = new Yaf\Application("conf/application.ini");
-    Yaf_Loader::import("Environment.php");
+    Yaf\Loader::import("Environment.php");
 
     $yaf_request = new Yaf\Request_Simple();
     $response = $application
