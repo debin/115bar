@@ -16,7 +16,7 @@ try {
     $application = new Yaf\Application("conf/application.ini");
     Yaf\Loader::import("Environment.php");
 
-    $yaf_request = new Yaf\Request_Simple();
+    $yaf_request = new Yaf\Request\Simple();
     $response = $application
             ->bootstrap()/* bootstrap是可选的调用 */
             ->getDispatcher()
