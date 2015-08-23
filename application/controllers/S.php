@@ -18,8 +18,8 @@ class SController extends BasicController
         // $key = $this->getRequest()->getQuery("key",'');
         $key = $this->getRequest()->getParam("key", '');
         $key = urldecode($key);
-        if (mb_strlen($key)>80) {
-            $key = mb_substr($key, 0,80,"UTF-8");
+        if (mb_strlen($key)>50) {
+            $key = mb_substr($key, 0,50,"UTF-8");
         }
         $page = $this->getRequest()->getParam("page", 1);
         $page = intval($page);
