@@ -22,7 +22,7 @@ class BasicController extends Yaf\Controller_Abstract
         // }
         $REQUEST_URI = $this->getRequest()->getServer('REQUEST_URI', '');
         if (strpos($REQUEST_URI, '/index.php') === 0) {
-            throw new Exception('index.php not allow', YAF_ERR_NOTFOUND_ACTION);
+            throw new Exception('index.php not allow', YAF\ERR\NOTFOUND\ACTION);
         }
 
         Yaf\Dispatcher::getInstance()->c = $this;//保存当前控制器

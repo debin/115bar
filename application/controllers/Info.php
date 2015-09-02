@@ -20,7 +20,7 @@ class InfoController extends BasicController
         $id = intval($id);
 
         if (abs($id) > 99999999) {
-            throw new Exception('Id is out of range for type integer:'.$id,YAF_ERR_NOTFOUND_ACTION);
+            throw new Exception('Id is out of range for type integer:'.$id,YAF\ERR\NOTFOUND\ACTION);
         }
 
         $redis = RedisHelper::getInstance();
@@ -32,7 +32,7 @@ class InfoController extends BasicController
             $detail = TopicModel::getInfoById($id);
 
             if (empty($detail)) {
-                throw new Exception('No this info:'.$id, YAF_ERR_NOTFOUND_ACTION);
+                throw new Exception('No this info:'.$id, YAF\ERR\NOTFOUND\ACTION);
             }
 
             // deal_content rel="nofollow"
