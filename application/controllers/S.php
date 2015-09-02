@@ -2,8 +2,8 @@
 
 /*
  * 搜索主题
- * @author dbb
- * @date(2014-12-15)
+ * @author ldb
+ * @date(2015-04-15)
  */
 
 class SController extends BasicController
@@ -12,7 +12,7 @@ class SController extends BasicController
      * 搜索
      *
      * @author ldb
-     * @date(2014-12-15)
+     * @date(2015-04-15)
      */
     public function indexAction() {
         // $key = $this->getRequest()->getQuery("key",'');

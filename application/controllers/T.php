@@ -2,8 +2,8 @@
 
 /*
  * 主题列表
- * @author dbb
- * @date(2014-12-15)
+ * @author ldb
+ * @date(2015-04-15)
  */
 
 class TController extends BasicController
@@ -11,8 +11,8 @@ class TController extends BasicController
     /**
      * 登录模板
      *
-     * @author dbb
-     * @date(2014-12-15)
+     * @author ldb
+     * @date(2015-04-15)
      */
     public function indexAction()
     {

@@ -12,7 +12,7 @@ class AboutController extends BasicController
      * 搜索
      *
      * @author ldb
-     * @date(2014-12-15)
+     * @date(2015-04-15)
      */
     public function indexAction()
     {

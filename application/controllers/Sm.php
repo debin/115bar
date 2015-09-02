@@ -2,8 +2,8 @@
 
 /*
  * sitemap列表
- * @author dbb
- * @date(2014-12-15)
+ * @author ldb
+ * @date(2015-04-15)
  */
 
 class SmController extends BasicController
@@ -18,10 +18,10 @@ class SmController extends BasicController
     }
 
     /**
-     * 登录模板
+     * 首页
      *
-     * @author dbb
-     * @date(2014-12-15)
+     * @author ldb
+     * @date(2015-04-15)
      */
     public function indexAction()
     {
