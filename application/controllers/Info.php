@@ -37,7 +37,7 @@ class InfoController extends BasicController
 
             // deal_content rel="nofollow"
             $pattern                = '/<a[^>]+(?>)/i';
-            $callback               = 'addnofollow';
+            $callback               = array('FuncHelper', 'addnofollow');
             $deal_content           = preg_replace_callback($pattern, $callback, $detail['deal_content']);
             $deal_content           = nl2br($deal_content);
             $detail['deal_content'] = $deal_content;
@@ -85,7 +85,7 @@ class InfoController extends BasicController
         $subject = !empty($output['detail']['subject'])?$output['detail']['subject']:$output['detail']['abstract'];
         $search = array(" ","|","!","»");
         $subject = str_replace($search, '', $subject);
-        $this->title = _("la_102")." › "._("la_103")." › ".$subject;
+        $this->title = FuncHelper::_("la_102")." › ".FuncHelper::_("la_103")." › ".$subject;
 
         $this->getView()->assign("output", $output);
         // $this->getView()->display("sign/login.html");

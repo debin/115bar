@@ -60,7 +60,7 @@ class TController extends BasicController
             $redis->set($redis_key, $output, $timeout);
         }
 
-        $this->title = _("la_102")." › "._("la_103").' ' .$page. "/" . $output['data']['page_count'];
+        $this->title = FuncHelper::_("la_102")." › ".FuncHelper::_("la_103").' ' .$page. "/" . $output['data']['page_count'];
 
         // $output                       = cat_html($output);
         $this->getView()->assign("output", $output);

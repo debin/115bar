@@ -11,6 +11,7 @@ include_once __DIR__."/../library/Environment.php";
 include_once __DIR__."/../library/Singleton.php";
 include_once __DIR__."/../library/Otable.php";
 include_once __DIR__."/../library/ConfigPg.php";
+include_once __DIR__."/../library/FuncHelper.php";
 include_once __DIR__."/../library/PgsqlHelper.php";
 include_once __DIR__."/../models/Topic.php";
 include_once __DIR__."/../../vendor/hightman/xunsearch/lib/XS.class.php";
@@ -42,8 +43,8 @@ for ($i=1; $i <= $page_count; $i++) {
             if (isset($value['status']) && $value['status']==0) {
                 $subject = $value['subject'];
                 $deal_content = strip_tags($value['deal_content']);
-                $subject = trim_string($subject);
-                $deal_content = trim_string($deal_content);
+                $subject = FuncHelper::trim_string($subject);
+                $deal_content = FuncHelper::trim_string($deal_content);
                 $data_tmp = array(
                     'id'           => $value['id'], // 此字段为主键，必须指定
                     'subject'      => $subject,

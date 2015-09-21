@@ -20,7 +20,7 @@ class AboutController extends BasicController
         // echo $paginate;
         // exit;
 
-        $this->title = _("la_102")." › " ._("la_105");
+        $this->title = FuncHelper::_("la_102")." › " .FuncHelper::_("la_105");
         $output                       = array();
         // $output                       = cat_html($output);
         $this->getView()->assign("output", $output);

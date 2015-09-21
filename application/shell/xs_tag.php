@@ -9,6 +9,7 @@ include_once __DIR__."/../library/Environment.php";
 include_once __DIR__."/../library/Singleton.php";
 include_once __DIR__."/../library/Otable.php";
 include_once __DIR__."/../library/ConfigPg.php";
+include_once __DIR__."/../library/FuncHelper.php";
 include_once __DIR__."/../library/PgsqlHelper.php";
 include_once __DIR__."/../models/Topic.php";
 include_once __DIR__."/../../vendor/hightman/xunsearch/lib/XS.class.php";
@@ -38,7 +39,7 @@ while ($list_arr) {
     foreach ($list_arr as $key => $value) {
         $id = $value['id'];
         $deal_content = strip_tags($value['deal_content']);
-        $deal_content = trim_string($deal_content);
+        $deal_content = FuncHelper::trim_string($deal_content);
         try {
             $tops = $tokenizer->getTops($deal_content, $max_num, 'n,v,vn,nr,ns,nt,nz,nz,s,l,i');//http://www.xunsearch.com/scws/docs.php#attr
             // 过滤

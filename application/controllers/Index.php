@@ -22,7 +22,7 @@ class IndexController extends BasicController
     public function indexAction()
     {
 
-        $this->title = _("la_102")." › "._("la_103")." › "._("la_104");
+        $this->title = FuncHelper::_("la_102")." › ".FuncHelper::_("la_103")." › ".FuncHelper::_("la_104");
 
         $output = array();
         $this->getView()->assign("output", $output);

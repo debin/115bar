@@ -50,9 +50,9 @@ class SController extends BasicController
         // exit;
 
         if (!empty($key)) {
-            $this->title = _("la_102")." › "._("la_103"). " › "._("la_104").'_'. $key.' '. $page. "/" . $page_count;
+            $this->title = FuncHelper::_("la_102")." › ".FuncHelper::_("la_103"). " › ".FuncHelper::_("la_104").'_'. $key.' '. $page. "/" . $page_count;
         }else{
-            $this->title = _("la_102")." › "._("la_103"). " › "._("la_104")._("la_109");
+            $this->title = FuncHelper::_("la_102")." › ".FuncHelper::_("la_103"). " › ".FuncHelper::_("la_104").FuncHelper::_("la_109");
         }
         $output                       = array();
         $output['total']              = $total;

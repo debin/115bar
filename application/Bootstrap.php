@@ -22,8 +22,6 @@ class Bootstrap extends Yaf\Bootstrap_Abstract
     {
         Yaf\Registry::set('config', Yaf\Application::app()->getConfig());
         // Yaf_Dispatcher::getInstance()->autoRender(FALSE);  // 关闭自动加载模板
-        //加载公共函数
-        Yaf\Loader::import(APPLICATION_PATH . "/library/func_common.php");
 
         // composer自动加载
         Yaf\Loader::import(ROOT.'/vendor/autoload.php');
