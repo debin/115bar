@@ -1,7 +1,7 @@
 <?php
 
-ini_set("display_errors", true);
-error_reporting(E_ALL | E_STRICT);// E_ALL E_STRICT  ~E_NOTICE E_ERROR
+// ini_set("display_errors", true);
+// error_reporting(E_ALL | E_STRICT);// E_ALL E_STRICT  ~E_NOTICE E_ERROR
 
 /* INI配置文件支持常量替换 */
 define("ROOT", dirname(__FILE__));
