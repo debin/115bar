@@ -74,7 +74,15 @@ routes.rewrite6.type="rewrite"
 routes.rewrite6.match='/sm/:page'
 routes.rewrite6.route.controller=sm
 routes.rewrite6.route.action=index
+
 webroot=http://www.115bar.com
+
+;sendgrid配置; user和pass从sendgrid获取 from发送者邮箱，to接收提示的邮箱
+mail.url=https://api.sendgrid.com/
+mail.user=
+mail.pass=
+mail.from=
+mail.to=
 
 [iknow:product]
 [dev:product]
