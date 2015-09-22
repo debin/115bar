@@ -12,7 +12,7 @@ class ConfigRedis
      */
     private static $dbmaster = array(
         // DEV
-        'dev' => array("203.195.196.161", 6379),
+        'dev' => array("127.0.0.1", 6379),
         // ONLINE
         'ol' => array("192.168.189.6", 6379),
     );
