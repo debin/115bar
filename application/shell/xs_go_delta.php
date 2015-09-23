@@ -5,7 +5,7 @@
  */
 ini_set('memory_limit','256M');
 
-include_once __DIR__."/../library/func_common.php";
+// include_once __DIR__."/../library/func_common.php";
 include_once __DIR__."/../library/Environment.php";
 include_once __DIR__."/../library/Singleton.php";
 include_once __DIR__."/../library/Otable.php";
