@@ -14,7 +14,7 @@ class ConfigRedis
         // DEV
         'dev' => array("127.0.0.1", 6379),
         // ONLINE
-        'ol' => array("192.168.189.6", 6379),
+        'ol' => array("127.0.0.1", 6379),
     );
 
     /**
