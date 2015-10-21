@@ -9,7 +9,7 @@
 class InfoController extends BasicController
 {
     /**
-     * 登录模板
+     * 信息详情页面
      *
      * @author ldb
      * @date(2015-04-15)

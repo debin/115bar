@@ -9,7 +9,7 @@
 class TController extends BasicController
 {
     /**
-     * 登录模板
+     * 主题列表页面
      *
      * @author ldb
      * @date(2015-04-15)

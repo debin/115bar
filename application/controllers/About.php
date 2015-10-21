@@ -9,7 +9,7 @@ class AboutController extends BasicController
 {
 
     /**
-     * 搜索
+     * 联系页面
      *
      * @author ldb
      * @date(2015-04-15)

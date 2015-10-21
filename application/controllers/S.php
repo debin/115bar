@@ -9,7 +9,7 @@
 class SController extends BasicController
 {
     /**
-     * 搜索
+     * 搜索页面
      *
      * @author ldb
      * @date(2015-04-15)

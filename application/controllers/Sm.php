@@ -18,7 +18,7 @@ class SmController extends BasicController
     }
 
     /**
-     * 首页
+     * 给搜索引擎用的sitemap xml页面
      *
      * @author ldb
      * @date(2015-04-15)
